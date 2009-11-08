@@ -2,3 +2,4 @@ Icon?
 .DS_Store
 .svn
 nbproject
+application/config/*.php

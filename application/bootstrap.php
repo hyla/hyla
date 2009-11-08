@@ -51,11 +51,11 @@ Kohana::$config->attach(new Kohana_Config_File);
 Kohana::modules(array(
 	   'theme'		=> DOCROOT.'themes/default', // default theme
 	   'kocode'		=> MODPATH.'kocode',	     // Core kocode module
-	// 'auth'       => MODPATH.'auth',           // Basic authentication
+	   'auth'       => MODPATH.'auth',           // Basic authentication
 	// 'codebench'  => MODPATH.'codebench',      // Benchmarking tool
-	// 'database'   => MODPATH.'database',       // Database access
+	   'database'   => MODPATH.'database',       // Database access
 	// 'image'      => MODPATH.'image',          // Image manipulation
-	// 'orm'        => MODPATH.'orm',            // Object Relationship Mapping
+	   'orm'        => MODPATH.'orm',            // Object Relationship Mapping
 	// 'pagination' => MODPATH.'pagination',     // Paging of results
 	// 'userguide'  => MODPATH.'userguide',      // User guide and API documentation
 	));
