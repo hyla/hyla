@@ -33,7 +33,7 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array('base_url' => '/kohana/'));
+Kohana::init(array('base_url' => '/'));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -49,13 +49,15 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'pagination' => MODPATH.'pagination', // Paging of results
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	   'theme'		=> DOCROOT.'themes/default', // default theme
+	   'kocode'		=> MODPATH.'kocode',	     // Core kocode module
+	// 'auth'       => MODPATH.'auth',           // Basic authentication
+	// 'codebench'  => MODPATH.'codebench',      // Benchmarking tool
+	// 'database'   => MODPATH.'database',       // Database access
+	// 'image'      => MODPATH.'image',          // Image manipulation
+	// 'orm'        => MODPATH.'orm',            // Object Relationship Mapping
+	// 'pagination' => MODPATH.'pagination',     // Paging of results
+	// 'userguide'  => MODPATH.'userguide',      // User guide and API documentation
 	));
 
 /**
@@ -64,8 +66,8 @@ Kohana::modules(array(
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
+		'controller' => 'project',
+		'action'     => 'list',
 	));
 
 /**
