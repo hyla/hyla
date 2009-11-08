@@ -11,6 +11,10 @@
 </head>
 
 <body>
-    <div>CONTENT HERE!! YAY!!!</div>
+    <?php echo $content; ?>
+
+	<div id="kohana-profiler">
+	<?php echo View::factory('profiler/stats') ?>
+	</div>
 </body>
 </html>

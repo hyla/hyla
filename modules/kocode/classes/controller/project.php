@@ -4,6 +4,6 @@ class Controller_Project extends Controller_Website {
 
 	public function action_list()
 	{
-		
+		$this->template->content = View::factory('project/list');
 	}
 }

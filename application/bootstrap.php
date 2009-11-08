@@ -33,7 +33,11 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array('base_url' => '/'));
+Kohana::init(array
+	(
+		'base_url' => '/',
+		'index_file' => FALSE,
+	));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
