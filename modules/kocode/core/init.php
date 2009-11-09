@@ -13,6 +13,11 @@ Kohana::modules($modules);
 // Clean up
 unset($modules, $enabled);
 
+Route::set('project/crud', 'projects(/<name>)/<action>', array('action' => '(?:create|update|delete)'))
+	->defaults(array(
+		'controller' => 'projects',
+	));
+
 Route::set('project', 'projects(/<name>)')
 	->defaults(array(
 		'controller' => 'projects',
