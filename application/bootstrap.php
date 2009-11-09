@@ -18,6 +18,14 @@ date_default_timezone_set('America/Chicago');
  */
 spl_autoload_register(array('Kohana', 'auto_load'));
 
+/**
+ * Enable the Kohana auto-loader for unserialization.
+ *
+ * @see  http://php.net/spl_autoload_call
+ * @see  http://php.net/manual/var.configuration.php#unserialize-callback-func
+ */
+ini_set('unserialize_callback_func', 'spl_autoload_call');
+
 //-- Configuration and initialization -----------------------------------------
 
 /**
@@ -33,9 +41,8 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array
-	(
-		'base_url' => '/',
+Kohana::init(array(
+		'base_url'   => '/',
 		'index_file' => FALSE,
 	));
 
@@ -53,25 +60,9 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	   'theme'		=> DOCROOT.'themes/default', // default theme
-	   'kocode'		=> MODPATH.'kocode',	     // Core kocode module
-	   'auth'       => MODPATH.'auth',           // Basic authentication
-	// 'codebench'  => MODPATH.'codebench',      // Benchmarking tool
-	   'database'   => MODPATH.'database',       // Database access
-	// 'image'      => MODPATH.'image',          // Image manipulation
-	   'orm'        => MODPATH.'orm',            // Object Relationship Mapping
-	// 'pagination' => MODPATH.'pagination',     // Paging of results
-	// 'userguide'  => MODPATH.'userguide',      // User guide and API documentation
-	));
-
-/**
- * Set the routes. Each route must have a minimum of a name, a URI and a set of
- * defaults for the URI.
- */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'project',
-		'action'     => 'list',
+	'database'   => MODPATH.'database',       // Database access
+	'sprig'      => MODPATH.'sprig',          // Sprig modeling
+	'core'       => MODPATH.'kocode/core',    // Core kocode module
 	));
 
 /**
