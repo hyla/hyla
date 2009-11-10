@@ -1,10 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Module extends Sprig {
+class Model_Plugin extends Sprig {
 
 	protected function _init()
 	{
 		$this->_fields += array(
+			'id' => new Sprig_Field_Auto,
 			'name' => new Sprig_Field_Char(array(
 				'primary' => TRUE,
 				'unique' => TRUE,
@@ -19,4 +20,4 @@ class Model_Module extends Sprig {
 		);
 	}
 
-} // End Module
+} // End Plugin

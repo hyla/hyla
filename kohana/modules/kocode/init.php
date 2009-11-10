@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-$enabled = Sprig::factory('module', array('enabled' => 1))
+$enabled = Sprig::factory('plugin', array('enabled' => 1))
 	->load(NULL, FALSE);
 
 $modules = Kohana::modules();
