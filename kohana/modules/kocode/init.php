@@ -4,9 +4,9 @@ $enabled = Sprig::factory('plugin', array('enabled' => 1))
 	->load(NULL, FALSE);
 
 $modules = Kohana::modules();
-foreach ($enabled as $mod)
+foreach ($enabled as $plugin)
 {
-	$modules[$mod->name] = MODPATH.'kocode/'.$mod->name;
+	$modules[$plugin->name] = DOCROOT.'kocode/plugins/'.$plugin->name;
 }
 Kohana::modules($modules);
 
