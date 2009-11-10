@@ -62,7 +62,7 @@ Kohana::$config->attach(new Kohana_Config_File);
 Kohana::modules(array(
 	'database'   => MODPATH.'database',       // Database access
 	'sprig'      => MODPATH.'sprig',          // Sprig modeling
-	'core'       => MODPATH.'kocode/core',    // Core kocode module
+	'core'       => MODPATH.'kocode',    // Core kocode module
 	));
 
 /**
