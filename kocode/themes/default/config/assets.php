@@ -2,7 +2,7 @@
 
 /**
  * This is where assets and asset dependencies are defined.
- *
+ * 
  * rules:
  * directories - if a view is used in one of these directories, the asset is loaded
  * views - if any of the views are used, the asset is loaded
@@ -23,7 +23,10 @@ return array
 (
 	'default_styles' => array
 	(
-		'file' => array('themes/default/media/css/styles.css', 'css'),
+		'css_files' => array
+		(
+			'kocode/themes/default/media/css/styles.css' => array(),
+		),
 		'weight' => 50,
 		// rules for when this asset should be included
 		'rules' => array
@@ -31,6 +34,21 @@ return array
 			// when any view inside the templates dir is loaded
 			'directories' => array('templates'),
 			// except for templates/ajax.php
+			'exclude_views' => array('templates/ajax'),
+		),
+	),
+	'framework' => array
+	(
+		'css_files' => array
+		(
+			'kocode/themes/default/media/css/960/reset.css'	=> array(),
+			'kocode/themes/default/media/css/960/text.css'	=> array(),
+			'kocode/themes/default/media/css/960/960.css'	=>array(),
+		),
+		'weight' => 0,
+		'rules' => array
+		(
+			'directories'	=> array('templates'),
 			'exclude_views' => array('templates/ajax'),
 		),
 	),

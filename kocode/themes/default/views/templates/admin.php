@@ -7,6 +7,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>KoCode - Admin Panel</title>
+
+<?php echo Assets::instance()->render(); ?>
+
 </head>
 
 <body>
