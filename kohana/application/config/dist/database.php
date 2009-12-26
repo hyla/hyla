@@ -18,10 +18,10 @@ return array
 			 * string   database
 			 */
 			'hostname'   => 'localhost',
-			'username'   => 'zeelot_kocode',
-			'password'   => 'kocode566',
+			'username'   => 'user',
+			'password'   => 'pass',
 			'persistent' => FALSE,
-			'database'   => 'zeelot_kocode',
+			'database'   => 'kocode',
 		),
 		'table_prefix' => '',
 		'charset'      => 'utf8',
