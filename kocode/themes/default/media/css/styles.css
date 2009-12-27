@@ -3,3 +3,18 @@ html {
 	color: #DDD;
 }
 
+#main_frame {
+	margin-top: 20px; margin-bottom: 20px;
+	border: 1px solid #CCC;
+	background: #555;
+}
+
+table {
+	width: 95%;
+	margin: 0px auto;
+}
+
+table thead {
+	border-bottom: 1px solid #777;
+	text-align: left;
+}

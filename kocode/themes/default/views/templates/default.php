@@ -13,10 +13,19 @@
 </head>
 
 <body>
-    <?php echo $content; ?>
+     <div class="container_16" id="main_frame">
+		<div class="grid_16 section header">
+			IMAGE HERE!
+		</div>
+		<div class="grid_16">
+			<?php echo $content; ?>
+		</div>
+
+		<div class="clear"></div>
+    </div>
 
 	<div id="kohana-profiler">
-	<?php echo View::factory('profiler/stats') ?>
+		<?php echo View::factory('profiler/stats') ?>
 	</div>
 </body>
 </html>

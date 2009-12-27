@@ -41,9 +41,9 @@ return array
 	(
 		'css_files' => array
 		(
-			'kocode/themes/default/media/css/960/reset.css'	=> array(),
-			'kocode/themes/default/media/css/960/text.css'	=> array(),
-			'kocode/themes/default/media/css/960/960.css'	=>array(),
+			'kocode/themes/default/media/css/960gs/reset.css'	=> array(),
+			'kocode/themes/default/media/css/960gs/text.css'	=> array(),
+			'kocode/themes/default/media/css/960gs/960.css'	=>array(),
 		),
 		'weight' => 0,
 		'rules' => array
