@@ -6,6 +6,7 @@
  *
  */
 ?>
+<h2>Plugins</h2>
 <table id="plugin_table">
 	<thead>
 		<tr>

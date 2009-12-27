@@ -15,7 +15,7 @@
 <body>
      <div class="container_16" id="main_frame">
 		<div class="grid_16 section header">
-			IMAGE HERE!
+			<h1>KoCode</h1>
 		</div>
 		<div class="grid_16">
 			<?php echo $content; ?>

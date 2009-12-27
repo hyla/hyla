@@ -3,6 +3,12 @@ html {
 	color: #DDD;
 }
 
+h1 {
+	font-size: 3em;
+	text-align: center;
+	color: #F93;
+}
+
 #main_frame {
 	margin-top: 20px; margin-bottom: 20px;
 	border: 1px solid #CCC;
