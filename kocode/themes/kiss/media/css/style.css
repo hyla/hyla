@@ -1,0 +1,223 @@
+body {
+	/*background-image: url(pattern.jpg);*/
+}
+
+#header-container {
+	background-color: #101010;
+	color: #e7e7e7;
+	border-bottom: 1px solid #3d3d3d;
+}
+
+#header-container #header h1 {
+	font-size: 1.6em;
+}
+
+#header-container #header h2 {
+	font-size: 1.4em;
+}
+
+#header-container #header h1,
+#header-container #header h2 {
+	display: inline;
+	margin-bottom: 0;
+}
+
+#header-container #header .divider {
+	font-size: 1.8em;
+}
+
+/** Menu stuff **/
+
+.horizontal-menu {
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.horizontal-menu li {
+	display: block;
+	float: left;
+	margin: 0;
+}
+
+.horizontal-menu li a {
+	display: block;
+	vertical-align: center;
+	text-decoration: none;
+}
+
+#menu-container #menu {
+	background-color: #101010;
+	border: 1px solid #3d3d3d;
+	border-top: none;
+}
+
+#menu-container #menu ul:first-child {
+	border-left: 1px solid #484848;
+}
+
+#menu-container #menu li {
+	border-right: 1px solid #484848;
+}
+
+#menu-container #menu li a:link, #menu li a:visited {
+	display: block;
+	text-decoration: none;
+	color: #CECECE;
+	padding: 5px 9px;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+}
+
+#menu-container #menu li a:hover {
+	color: #FEFEFE;
+	background-color: #373737;
+}
+
+/** End menu stuff **/
+/** Info stuff **/
+#info-container {
+	margin-top: 15px;
+}
+
+#info-container #info {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #101010;
+	color: #FEFEFE;
+	border:2px solid #CECECE;
+	border-bottom: 1px solid #CECECE;
+}
+
+#info-container #info h2 {
+	margin-bottom: 0;
+}
+
+#info-container #info .horizontal-menu {
+	float: right;
+	margin-bottom: -1px;
+}
+
+#info-container #info .horizontal-menu li {
+	display: block;
+	margin: 9px 5px 0px;
+}
+
+#info-container #info .horizontal-menu li a {
+	padding: 5px 5px;
+	background-color: #F2F2F2;
+	border-bottom: 1px solid #CECECE;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-topright: 2px;
+	color: #000;
+}
+
+#info-container #info .horizontal-menu li a.active {
+	border-bottom: 1px solid white;
+}
+
+#info-container #info .horizontal-menu li a:hover {
+	text-decoration: underline;
+}
+
+#info-container #info .horizontal-menu li a.active,
+#info-container #info .horizontal-menu li a:hover {
+	background-color: #FFF;
+}
+
+/** End info stuff **/
+/** Main stuff **/
+
+#main-container {
+}
+
+#main {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	background-color: #FEFEFE;
+	border:1px solid #CECECE;
+	border-top: none;
+	padding-top: 5px;
+}
+/** End main stuff **/
+
+/** Shared components **/
+.inline-actions {
+	position: absolute;
+	top: 2px;
+	right: 1px;
+}
+
+.inline-actions > * {
+	float: left;
+}
+
+.inline-actions dt a{
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	text-indent: -9999px;
+	display: block;
+	margin-left: 4px;
+	outline: none;
+}
+.inline-actions dt.edit a{background-image: url(../icons/pencil.png);}
+.inline-actions dt.delete a{background-image: url(../icons/cross.png);}
+
+
+/* If js is enabled then we need to absolute position them*/
+body.jsEnabled .inline-actions dd {
+	position: absolute;
+	top: 17px;
+	right: 0px;
+	width: 75px;
+	font-size: 0.8em;
+	text-align: right;
+}
+
+/** End shared components **/
+
+/* Project lists */
+ul#projects-list {
+	list-style: none;
+}
+
+#projects-list > li {
+	margin: 10px;
+	position: relative;
+	border: 2px solid #eaeaea;
+	padding: 10px 10px 10px 84px;
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	background-image: url(../../images/project_icon.png);
+}
+
+#projects-list > li h3 {
+	margin-bottom: 3px;
+}
+
+#projects-list > li > .inline-actions {
+	top: 10px;
+	right: 10px;
+}
+
+span.sub-projects {
+	font-weight: bold;
+}
+
+ul.sub-projects {
+
+}
+
+ul.sub-projects li {
+	position: relative;
+	float: left;
+	clear: both;
+	padding-right: 75px;
+}
+
+ul.sub-projects li .inline-actions dd {
+	display: none;
+}
+/* End projects lists*/
