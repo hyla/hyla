@@ -4,6 +4,3 @@
 [submodule "kohana/modules/database"]
 	path = kohana/modules/database
 	url = git://github.com/kohana/database.git
-[submodule "kohana/modules/sprig"]
-	path = kohana/modules/sprig
-	url = git://github.com/shadowhand/sprig.git
