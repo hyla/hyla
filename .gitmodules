@@ -4,3 +4,6 @@
 [submodule "kohana/modules/database"]
 	path = kohana/modules/database
 	url = git://github.com/kohana/database.git
+[submodule "kohana/modules/orm"]
+	path = kohana/modules/orm
+	url = git://github.com/Zeelot/orm.git
