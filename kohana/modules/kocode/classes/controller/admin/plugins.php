@@ -6,8 +6,6 @@ class Controller_Admin_Plugins extends Controller_Template_Kocode_Admin {
 	{
 		$this->template->content = View::factory('admin/plugins/list')
 			->bind('plugins', $plugins);
-
-		$plugins = Sprig::factory('plugin')->load(NULL, FALSE);
 	}
 
 } // End Admin Plugins

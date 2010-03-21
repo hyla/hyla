@@ -1,13 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-$enabled = Sprig::factory('plugin', array('enabled' => 1))
-	->load(NULL, FALSE);
+//$enabled = Sprig::factory('plugin', array('enabled' => 1))
+//	->load(NULL, FALSE);
 
 $modules = Kohana::modules();
-foreach ($enabled as $plugin)
-{
-	$modules[$plugin->name] = DOCROOT.'kocode/plugins/'.$plugin->name;
-}
+//foreach ($enabled as $plugin)
+//{
+//	$modules[$plugin->name] = DOCROOT.'kocode/plugins/'.$plugin->name;
+//}
 Kohana::modules($modules);
 
 // Clean up

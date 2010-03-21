@@ -17,8 +17,9 @@ class Controller_Projects extends Controller_Template_Kocode {
 		$this->template->content = View::factory('projects/list')
 			->bind('projects', $projects);
 
-		$projects = Sprig::factory('project', array('public' => TRUE))
-			->load(NULL, FALSE);
+#		$projects = Sprig::factory('project', array('public' => TRUE))
+#			->load(NULL, FALSE);
+		$projects = array();
 	}
 
 	public function action_detail()
@@ -26,8 +27,8 @@ class Controller_Projects extends Controller_Template_Kocode {
 		$this->template->content = View::factory('projects/detail')
 			->bind('project', $project);
 
-		$project = Sprig::factory('project', array('name' => $this->request->param('name')))
-			->load();
+#		$project = Sprig::factory('project', array('name' => $this->request->param('name')))
+#			->load();
 
 		if ( ! $project->loaded())
 		{
@@ -41,7 +42,7 @@ class Controller_Projects extends Controller_Template_Kocode {
 			->bind('project', $project)
 			->bind('errors', $errors);
 
-		$project = Sprig::factory('project');
+#		$project = Sprig::factory('project');
 
 		if ($name = $this->request->param('name'))
 		{
@@ -69,8 +70,8 @@ class Controller_Projects extends Controller_Template_Kocode {
 			->bind('project', $project)
 			->bind('errors', $errors);
 
-		$project = Sprig::factory('project', array('name' => $this->request->param('name')))
-			->load();
+#		$project = Sprig::factory('project', array('name' => $this->request->param('name')))
+#			->load();
 
 		if ( ! $project->loaded())
 		{
