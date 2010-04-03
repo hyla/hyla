@@ -60,12 +60,12 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'database'  => MODPATH.'database',              // Database access
+	'database'  => MODPATH.'database',            // Database access
 	'orm'     => MODPATH.'sprig',                 // Sprig modeling
-	'assets'	=> MODPATH.'assets',				// Yuriko Assets Module
+	'assets'	=> MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
-	'theme'		=> DOCROOT.'kocode/themes/kiss', // default kocode theme
-	'kocode'    => MODPATH.'kocode',                // Core kocode module
+	'theme'		=> DOCROOT.'kocode/themes/kiss',  // default kocode theme
+	'kocode'    => MODPATH.'kocode',              // Core kocode module
 	));
 
 /**
