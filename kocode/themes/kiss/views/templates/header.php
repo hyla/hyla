@@ -11,8 +11,10 @@
 		<div id="header" class="container_12">
 			<div class="grid_8">
 				<h1>Site title here</h1>
+			<?php if(isset($active_project)): ?>
 				<span class="divider">/</span>
-				<h1>Project title</h1>
+				<h1><?php echo $active_project->name; ?></h1>
+			<?php endif; ?>
 			</div>
 			<div id="user-box" class="grid_4">
 				Hello Guest
@@ -30,7 +32,7 @@
 	</div>
 	<div class="clearfix" id="info-container">
 		<div id="info" class="clearfix container_12">
-			<h2 class="grid_7">Page title</h2>
+			<h2 id="page-title" class="grid_7"><?php echo isset($page_title) ? $page_title : 'Page title not set...'; ?></h2>
 			<div class="grid_5 clearfix">
 				<ul class="horizontal-menu clearfix">
 					<li><a class="active" href="#">Overview</a></li>

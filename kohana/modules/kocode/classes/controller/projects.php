@@ -1,17 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Projects extends Controller_Template_Kocode {
-
-	public function before()
-	{
-		if ( ! $this->request->action AND $this->request->param('name'))
-		{
-			$this->request->action = 'detail';
-		}
-
-		parent::before();
-	}
-
+class Controller_Projects extends Controller_Template_Kocode
+{
 	public function action_index()
 	{
 		$this->template->content = View::factory('projects/list')
@@ -92,6 +82,5 @@ class Controller_Projects extends Controller_Template_Kocode {
 			}
 		}
 	}
-
 
 } // End Projects

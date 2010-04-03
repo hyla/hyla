@@ -9,21 +9,14 @@ body {
 }
 
 #header-container #header h1 {
-	font-size: 1.6em;
-}
-
-#header-container #header h2 {
-	font-size: 1.4em;
-}
-
-#header-container #header h1,
-#header-container #header h2 {
+	font-size: 1.55em;
 	display: inline;
-	margin-bottom: 0;
+	padding: 0.1em 1px;
+	margin: 0px;
 }
 
 #header-container #header .divider {
-	font-size: 1.8em;
+	font-size: 1.55em;
 }
 
 /** Menu stuff **/

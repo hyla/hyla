@@ -20,12 +20,14 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
 		'directory'		=> 'admin',
 	));
 
-Route::set('project/crud', 'projects(/<name>)/<action>', array('action' => '(?:create|update|delete)'))
+	
+Route::set('project/crud', 'projects(/<name>)/<action>', array('action' => '(?:delete)'))
 	->defaults(array(
 		'controller' => 'projects',
 	));
 
-Route::set('project', 'projects(/<name>)')
+Route::set('project/general', 'projects/<name>(/<controller>(/<action>))')
 	->defaults(array(
-		'controller' => 'projects',
+		'directory'		=> 'projects',
+		'controller' 	=> 'main',
 	));

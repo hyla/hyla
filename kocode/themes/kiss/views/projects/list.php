@@ -5,7 +5,7 @@
 				<ul id="projects-list">
 				<?php foreach($projects as $project): ?>
 					<li>
-						<h3><?php echo HTML::anchor(Route::get('project')->uri(array('name' => $project->name)), $project->name) ?></h3>
+						<h3><?php echo HTML::anchor(Route::get('project/general')->uri(array('name' => $project->name)), $project->name) ?></h3>
 						<?php echo Text::auto_p(Text::auto_link($project->description)) ?>
 						<dl class="inline-actions">
 							<dt class="edit"><a href="#">Edit</a></dt>
