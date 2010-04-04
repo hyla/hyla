@@ -13,21 +13,13 @@ Kohana::modules($modules);
 // Clean up
 unset($modules, $enabled);
 
-Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
+Route::set('kocode-admin', 'admin(/<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller'	=> 'main',
-		'action'		=> 'index',
 		'directory'		=> 'admin',
 	));
 
-	
-Route::set('project/crud', 'projects(/<name>)/<action>', array('action' => '(?:delete)'))
+Route::set('kocode-main', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'projects',
-	));
-
-Route::set('project/general', 'projects/<name>(/<controller>(/<action>))')
-	->defaults(array(
-		'directory'		=> 'projects',
-		'controller' 	=> 'main',
+		'controller' => 'main',
 	));
