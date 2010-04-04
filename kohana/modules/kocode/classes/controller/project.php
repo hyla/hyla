@@ -1,15 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Projects extends Controller_Template_Kocode
+class Controller_Project extends Controller_Template_Kocode
 {
 	public function action_index()
 	{
 		$this->template->content = View::factory('projects/list')
 			->bind('projects', $projects);
 
-#		$projects = Sprig::factory('project', array('public' => TRUE))
-#			->load(NULL, FALSE);
-		$projects = array();
+		$projects = ORM::factory('project')->find_all();
 	}
 
 	public function action_detail()
