@@ -12,15 +12,20 @@ class Controller_Project extends Controller_Template_Kocode
 
 	public function action_details()
 	{
-		$this->template->content = View::factory('projects/detail')
+		$this->template->content = View::factory('project/details')
 			->bind('project', $project);
 
-#		$project = Sprig::factory('project', array('name' => $this->request->param('name')))
-#			->load();
+		$name = $this->request->param('id');
+		$project = ORM::factory('project')
+			->where('name', '=', $name)
+			->find();
 
 		if ( ! $project->loaded())
 		{
-			$this->request->redirect(Route::get('project')->uri());
+			$this->request->redirect(Route::get('kocode-main')->uri(array
+				(
+					'controller' => 'project',
+				)));
 		}
 	}
 
