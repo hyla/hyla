@@ -37,12 +37,11 @@ return array
 			'exclude_views' => array('templates/ajax'),
 		),
 	),
-	/** Need to fix bug in assets module, line 77
 	'scripts' => array
 	(
 		'js_files' => array
 		(
-			'kocode/themes/kiss/media/js/script.js' => array(),
+			//'kocode/themes/kiss/media/js/script.js' => array(),
 			'kocode/themes/kiss/media/js/jquery.js' => array(),
 		),
 
@@ -55,7 +54,7 @@ return array
 			// except for templates/ajax.php
 			'exclude_views' => array('templates/ajax'),
 		),
-	),*/
+	),
 	'framework' => array
 	(
 		'css_files' => array
