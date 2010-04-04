@@ -6,7 +6,12 @@
 				<?php foreach($projects as $project): ?>
 					<li>
 						<h3><?php echo HTML::anchor(Route::get('kocode-main')
-							->uri(array('controller' => 'project', 'action' => 'details', 'id' => $project->name)), $project->name) ?></h3>
+							->uri(array
+							(
+								'controller' => 'project',
+								'action' => 'details',
+								'id' => $project->name
+							)), $project->name) ?></h3>
 						<?php echo Text::auto_p(Text::auto_link($project->description)) ?>
 						<dl class="inline-actions">
 							<dt class="edit"><a href="#">Edit</a></dt>

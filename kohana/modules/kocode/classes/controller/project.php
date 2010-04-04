@@ -35,24 +35,26 @@ class Controller_Project extends Controller_Template_Kocode
 			->bind('project', $project)
 			->bind('errors', $errors);
 
-#		$project = Sprig::factory('project');
-
-		if ($name = $this->request->param('name'))
-		{
-			$project->name = $name;
-		}
+		$project = ORM::factory('project');
 
 		if ($_POST)
 		{
 			try
 			{
-				$project->values($_POST)->create();
+				$project->values($_POST, array('name', 'title', 'description'));
+				$project->create();
 
-				$this->request->redirect(Route::get('project')->uri(array('name' => $project->name)));
+				$this->request->redirect(Route::get('kocode-main')
+					->uri(array
+					(
+						'controller' => 'project',
+						'action'     => 'details',
+						'id'         => $project->name
+					)));
 			}
-			catch (Validate_Exception $e)
+			catch (ORM_Validation_Exception $e)
 			{
-				$errors = $e->array->errors('project/edit');
+				$errors = $e->object->errors('project/edit');
 			}
 		}
 	}
