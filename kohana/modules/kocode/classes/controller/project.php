@@ -4,13 +4,13 @@ class Controller_Project extends Controller_Template_Kocode
 {
 	public function action_index()
 	{
-		$this->template->content = View::factory('projects/list')
+		$this->template->content = View::factory('project/list')
 			->bind('projects', $projects);
 
 		$projects = ORM::factory('project')->find_all();
 	}
 
-	public function action_detail()
+	public function action_details()
 	{
 		$this->template->content = View::factory('projects/detail')
 			->bind('project', $project);
