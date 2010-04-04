@@ -61,10 +61,10 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	'database'  => MODPATH.'database',            // Database access
-	'orm'     => MODPATH.'sprig',                 // Sprig modeling
-	'assets'	=> MODPATH.'assets',              // Yuriko Assets Module
+	'orm'       => MODPATH.'orm',                 // ORM modeling
+	'assets'    => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
-	'theme'		=> DOCROOT.'kocode/themes/kiss',  // default kocode theme
+	'theme'     => DOCROOT.'kocode/themes/kiss',  // default kocode theme
 	'kocode'    => MODPATH.'kocode',              // Core kocode module
 	));
 
