@@ -42,7 +42,7 @@ return array
 		'js_files' => array
 		(
 			//'kocode/themes/kiss/media/js/script.js' => array(),
-			'kocode/themes/kiss/media/js/jquery.js' => array(),
+			'kocode/themes/kiss/media/js/jquery-1.4.2-min.js' => array(),
 		),
 
 		'weight' => 50,
