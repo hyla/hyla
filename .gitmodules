@@ -12,4 +12,4 @@
 	url = git://github.com/Zeelot/kohana-assets.git
 [submodule "kohana/modules/unittest"]
 	path = kohana/modules/unittest
-	url = git@github.com:kohana/unittest.git
+	url = git://github.com/kohana/unittest.git
