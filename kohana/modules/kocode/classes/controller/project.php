@@ -2,7 +2,7 @@
 
 class Controller_Project extends Controller_Template_Kocode
 {
-	public function action_index()
+	public function action_list()
 	{
 		$this->template->content = View::factory('project/list')
 			->bind('projects', $projects);
@@ -15,7 +15,7 @@ class Controller_Project extends Controller_Template_Kocode
 		$this->template->content = View::factory('project/details')
 			->bind('project', $project);
 
-		$name = $this->request->param('id');
+		$name = $this->request->param('name');
 		$project = ORM::factory('project')
 			->where('name', '=', $name)
 			->find();
