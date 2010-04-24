@@ -64,8 +64,8 @@ Kohana::modules(array(
 	'orm'       => MODPATH.'orm',                 // ORM modeling
 	'assets'    => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
-	'theme'     => DOCROOT.'kocode/themes/kiss',  // default kocode theme
-	'kocode'    => MODPATH.'kocode',              // Core kocode module
+	'theme'     => DOCROOT.'hyla/themes/kiss',    // default kocode theme
+	'hyla'      => MODPATH.'hyla',              // Core kocode module
 	));
 
 /**

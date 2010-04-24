@@ -25,7 +25,7 @@ return array
 	(
 		'css_files' => array
 		(
-			'kocode/themes/kiss/media/css/style.css' => array(),
+			'hyla/themes/kiss/media/css/style.css' => array(),
 		),
 		'weight' => 50,
 		// rules for when this asset should be included
@@ -42,7 +42,7 @@ return array
 		'js_files' => array
 		(
 			//'kocode/themes/kiss/media/js/script.js' => array(),
-			'kocode/themes/kiss/media/js/jquery-1.4.2-min.js' => array(),
+			'hyla/themes/kiss/media/js/jquery-1.4.2-min.js' => array(),
 		),
 
 		'weight' => 50,
@@ -59,9 +59,9 @@ return array
 	(
 		'css_files' => array
 		(
-			'kocode/themes/kiss/media/css/960.gs/reset.css'	=> array(),
-			'kocode/themes/kiss/media/css/960.gs/text.css'	=> array(),
-			'kocode/themes/kiss/media/css/960.gs/960.css'	=>array(),
+			'hyla/themes/kiss/media/css/960.gs/reset.css'	=> array(),
+			'hyla/themes/kiss/media/css/960.gs/text.css'	=> array(),
+			'hyla/themes/kiss/media/css/960.gs/960.css'	=>array(),
 		),
 		'weight' => 0,
 		'rules' => array
