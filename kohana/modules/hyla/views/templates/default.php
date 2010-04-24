@@ -24,10 +24,10 @@
 
 			<div class="clear"></div>
 			<div class="grid_12 ui-tabs ui-widget ui-widget-content ui-corner-all"  id="tabs">
-			  	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-			  		<li class="ui-state-default ui-corner-top">
-			  			<a href="#tabs-1">Latest News</a>
-			  		</li>
+				<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+					<li class="ui-state-default ui-corner-top">
+						<a href="#tabs-1">Latest News</a>
+					</li>
 					<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
 						<a href="#tabs-2">Projects</a>
 					</li>
@@ -48,6 +48,6 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		
+
 	</body>
 </html>
