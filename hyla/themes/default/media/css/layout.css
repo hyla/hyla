@@ -600,12 +600,15 @@ ul#project_list li {
 	border-bottom:1px dotted #d92a1a;
 }
 
-
-
-ul#project_list li a {
+ul#project_list li h3 {
+	font-size:1.4em;
 	position:relative;
 	top:-5px;
-font-size:1.4em;
+}
+
+ul#project_list li a {
+	
+
 display:block;
 padding-left:30px;
 background: url(../images/icons/24px/folder-horizontal.png) no-repeat center left;
@@ -614,7 +617,7 @@ text-decoration:underline;
 ul#project_list li a:hover {
 	background: url(../images/icons/24px/folder-horizontal-open.png) no-repeat center left;	
 }
-ul#project_list li p.project_description {
+ul#project_list li div.project_description {
 	margin-left:40px;
 	font-size:1em;	
 }
