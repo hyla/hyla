@@ -11,9 +11,9 @@
 		<li>
 			<h3><?php echo HTML::anchor(Route::get('project/crud')
 							->uri(array('name' => $project->name)), $project->name) ?></h3>
-			<p class="project_description">
+			<div class="project_description">
 				<?php echo Text::auto_p(Text::auto_link($project->description)) ?>
-			<p>
+			<div>
 		</li>
 	</ul>
 
