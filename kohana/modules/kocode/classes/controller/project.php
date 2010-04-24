@@ -31,7 +31,7 @@ class Controller_Project extends Controller_Template_Kocode
 
 	public function action_create()
 	{
-		$this->template->content = View::factory('projects/edit')
+		$this->template->content = View::factory('project/create')
 			->bind('project', $project)
 			->bind('errors', $errors);
 
