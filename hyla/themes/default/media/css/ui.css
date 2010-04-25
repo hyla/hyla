@@ -455,18 +455,6 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-slider-vertical .ui-slider-range-min { bottom: 0; }
 .ui-slider-vertical .ui-slider-range-max { top: 0; }/* Tabs
 ----------------------------------*/
-.ui-tabs { background: #FFFFFF; position: relative; padding: .2em; zoom: 1; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; border: 0px none; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-.ui-tabs .ui-tabs-nav { border-color: #a8a8a8; border-width: 0px 0px 1px 0px; margin: 0; padding: 0; background: transparent; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }
-.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; -moz-border-radius-topleft: 3px; -webkit-border-top-left-radius: 3px; border-top-left-radius: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-right-radius: 3px; border-top-right-radius: 3px; }
-.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; font-size: 12px; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
-.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs .ui-tabs-panel { display: block; border: 0; padding: 1em 1.4em; background: none; font-size: 12px; border-color: #a8a8a8; border-width: 0px 1px 1px 1px; border-style: solid; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px;}
-.ui-tabs .ui-tabs-hide { display: none !important; }
-.ui-tabs .ui-state-default { background: #cccccc url(../images/button_bg.png) 0px 0px repeat-x; border-color: #a8a8a8; }
-	.ui-tabs .ui-state-default a { color: #4f4f4f !important; text-shadow: 0px 1px 0px rgba(255,255,255,0.8); }
-.ui-tabs .ui-state-active { background: #FFFFFF; }
 
 /* Datepicker
 ----------------------------------*/
