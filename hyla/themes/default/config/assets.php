@@ -20,9 +20,7 @@ return array
 			'hyla/themes/default/media/css/960.css' => array(),
 			'hyla/themes/default/media/css/layout.css' => array(),
 			'hyla/themes/default/media/css/nav.css' => array(),
-			'hyla/themes/default/media/css/ui.core.css' => array(),
-			'hyla/themes/default/media/css/ui.theme.css' => array(),
-			'hyla/themes/default/media/css/tabs.css' => array(),
+			'hyla/themes/default/media/css/ui.css' => array(),
 			'hyla/themes/default/media/css/ie6.css' => array
 			(
 				// adds IE 6 conditionals around the stylesheet

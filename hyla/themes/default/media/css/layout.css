@@ -543,6 +543,7 @@ input.search.button {
 #account_links {
 	margin-right:0px;
 	background:transparent;
+	float:right;
 }
 
 #account_links ul, #account_links a, #top_nav, #top_nav a {
@@ -646,7 +647,7 @@ table#project_tickets thead tr th {
 
 table#project_tickets thead tr {
 		color: #4f4f4f !important; text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
-background: #cccccc url(images/button_bg.png) 0px 0px repeat-x; border-color: #a8a8a8; 
+background: #cccccc url(../images/button_bg.png) 0px 0px repeat-x; border-color: #a8a8a8; 
 }
 
 .tickets_links {
