@@ -650,19 +650,12 @@ table#project_tickets thead tr {
 background: #cccccc url(../images/button_bg.png) 0px 0px repeat-x; border-color: #a8a8a8; 
 }
 
-.tickets_links {
-	float:right;
+.tickets_links, .source_links {
+	text-align:right;
 	padding-bottom:15px;
-	margin:0px 20px;
-	
+	margin:10px 20px;
 }
 
-.tickets_links a {
-	padding:5px;
-	color: #4f4f4f !important; text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
-}
-
-.tickets_links img {
-	position:relative;
-	top:3px;
+#source_panel .grid_9 {
+	margin:0px;
 }
