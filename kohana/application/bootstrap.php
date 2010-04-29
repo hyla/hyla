@@ -66,6 +66,7 @@ Kohana::modules(array(
 	// temporary until theme is taken from user/site settings
 	'theme'     => DOCROOT.'hyla/themes/default', // default kocode theme
 	'hyla'      => MODPATH.'hyla',                // Core kocode module
+	'geshi'      => MODPATH.'geshi',
 	));
 
 /**

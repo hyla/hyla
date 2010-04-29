@@ -6,7 +6,7 @@ Class GeSHi_Loader {
 	{
 		if (strtolower($class) === 'geshi')
 		{
-			require Kohana::find_file('vendor', 'geshi/geshi');
+			require Kohana::find_file('vendor', 'geshi');
 			return TRUE;
 		}
 		return FALSE;
