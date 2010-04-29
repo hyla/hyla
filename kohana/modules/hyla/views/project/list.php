@@ -11,8 +11,9 @@ $source = '$foo = 45;
 	$language = 'php';
 
 	$geshi = new GeSHi($source, $language);
-	$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-
+	$geshi->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, 2);
+	$geshi->set_line_style('background: #fcfcfc;', 'background: #f0f0f0;');
+	
 	echo $geshi->parse_code();
 
 	       ?>
