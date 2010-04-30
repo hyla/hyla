@@ -67,7 +67,8 @@ Kohana::modules(array(
 	// temporary until theme is taken from user/site settings
 	'theme'     => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'      => MODPATH.'hyla',                // Core hyla module
-	));
+	'geshi'      => MODPATH.'geshi',
+));
 
 /**
  * PHPUnit support, disables request handling if we are testing from cli

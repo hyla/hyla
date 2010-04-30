@@ -10,7 +10,7 @@
 	<body>
 	<div class="container_12 ui-corner-bottom">
 			<div class="grid_12">
-				<div class="grid_4 " style="float:right;" id="account_links">
+				<div class="grid_4" id="account_links">
 					<ul class="nav ui-corner-bl">
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Account Settings</a></li>
