@@ -24,10 +24,18 @@ Route::set('project/general', 'project(/<action>)', array('action' => '(?:list|c
 		'controller' => 'project',
 		'action'     => 'list',
 	));
-Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:details|edit|delete|archive)'))
+
+Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:home|delete|archive)'))
 	->defaults(array(
 		'controller' => 'project',
-		'action'     => 'details',
+		'action'     => 'home',
+	));
+
+Route::set('project/settings', 'project/<name>/settings(/<action>)', array('action' => '(?:main|members)'))
+	->defaults(array(
+		'directory'  => 'project',
+		'controller' => 'settings',
+		'action'     => 'main',
 	));
 
 Route::set('kocode-main', '(<controller>(/<action>(/<id>)))')
