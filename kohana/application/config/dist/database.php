@@ -21,7 +21,7 @@ return array
 			'username'   => 'user',
 			'password'   => 'pass',
 			'persistent' => FALSE,
-			'database'   => 'kocode',
+			'database'   => 'hyla',
 		),
 		'table_prefix' => '',
 		'charset'      => 'utf8',

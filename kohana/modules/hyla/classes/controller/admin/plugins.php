@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Admin_Plugins extends Controller_Template_Kocode_Admin {
+class Controller_Admin_Plugins extends Controller_Template_Hyla_Admin {
 
 	public function action_index()
 	{

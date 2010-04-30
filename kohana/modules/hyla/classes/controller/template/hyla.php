@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Template_Kocode extends Controller_Template {
+class Controller_Template_Hyla extends Controller_Template {
 
 	public $template = 'templates/default';
 
-} // End Template_Kocode
+} // End Template_Hyla
