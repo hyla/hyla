@@ -6,14 +6,14 @@
 $modules = Kohana::modules();
 //foreach ($enabled as $plugin)
 //{
-//	$modules[$plugin->name] = DOCROOT.'kocode/plugins/'.$plugin->name;
+//	$modules[$plugin->name] = DOCROOT.'hyla/plugins/'.$plugin->name;
 //}
 Kohana::modules($modules);
 
 // Clean up
 unset($modules, $enabled);
 
-Route::set('kocode-admin', 'admin(/<controller>(/<action>(/<id>)))')
+Route::set('hyla-admin', 'admin(/<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'main',
 		'directory'  => 'admin',
@@ -24,13 +24,21 @@ Route::set('project/general', 'project(/<action>)', array('action' => '(?:list|c
 		'controller' => 'project',
 		'action'     => 'list',
 	));
-Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:details|edit|delete|archive)'))
+
+Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:home|delete|archive)'))
 	->defaults(array(
 		'controller' => 'project',
-		'action'     => 'details',
+		'action'     => 'home',
 	));
 
-Route::set('kocode-main', '(<controller>(/<action>(/<id>)))')
+Route::set('project/settings', 'project/<name>/settings(/<action>)', array('action' => '(?:main|members)'))
+	->defaults(array(
+		'directory'  => 'project',
+		'controller' => 'settings',
+		'action'     => 'main',
+	));
+
+Route::set('hyla-main', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'main',
 	));

@@ -62,18 +62,25 @@ Kohana::$config->attach(new Kohana_Config_File);
 Kohana::modules(array(
 	'database'  => MODPATH.'database',            // Database access
 	'orm'       => MODPATH.'orm',                 // ORM modeling
+	'unittest'	=> MODPATH.'unittest',            // PHPUnit support
 	'assets'    => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
-	'theme'     => DOCROOT.'hyla/themes/default', // default kocode theme
-	'hyla'      => MODPATH.'hyla',                // Core kocode module
+	'theme'     => DOCROOT.'hyla/themes/default', // default hyla theme
+	'hyla'      => MODPATH.'hyla',                // Core hyla module
 	'geshi'      => MODPATH.'geshi',
-	));
+));
 
 /**
- * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
- * If no source is specified, the URI will be automatically detected.
+ * PHPUnit support, disables request handling if we are testing from cli
  */
-echo Request::instance()
-	->execute()
-	->send_headers()
-	->response;
+if( ! defined('SUPPRESS_REQUEST'))
+{
+	/**
+	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+	 * If no source is specified, the URI will be automatically detected.
+	 */
+	echo Request::instance()
+		->execute()
+		->send_headers()
+		->response;
+}

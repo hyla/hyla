@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Project extends Controller_Template_Kocode
-{
+class Controller_Project extends Controller_Template_Hyla {
+
 	public function action_list()
 	{
 		$this->template->content = View::factory('project/list')
@@ -22,7 +22,7 @@ class Controller_Project extends Controller_Template_Kocode
 
 		if ( ! $project->loaded())
 		{
-			$this->request->redirect(Route::get('kocode-main')->uri(array
+			$this->request->redirect(Route::get('hyla-main')->uri(array
 				(
 					'controller' => 'project',
 				)));
@@ -44,7 +44,7 @@ class Controller_Project extends Controller_Template_Kocode
 				$project->values($_POST, array('name', 'title', 'description'));
 				$project->create();
 
-				$this->request->redirect(Route::get('kocode-main')
+				$this->request->redirect(Route::get('hyla-main')
 					->uri(array
 					(
 						'controller' => 'project',

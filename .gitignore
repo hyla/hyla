@@ -3,3 +3,5 @@ Icon?
 .svn
 nbproject
 kohana/application/config/*.php
+*.swp
+*~
