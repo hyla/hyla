@@ -15,4 +15,4 @@
 	url = git://github.com/kohana/unittest.git
 [submodule "kohana/modules/geshi"]
 	path = kohana/modules/geshi
-	url = git@github.com:JustLikeIcarus/kohana-geshi.git
+	url = http://github.com/JustLikeIcarus/kohana-geshi.git
