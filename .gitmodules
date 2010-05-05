@@ -18,7 +18,7 @@
 	url = http://github.com/JustLikeIcarus/kohana-geshi.git
 [submodule "kohana/modules/doctrinemigrations"]
 	path = kohana/modules/doctrinemigrations
-	url = http://github.com/synapsestudios/kohana-doctrinemigrations.git
+	url = http://github.com/JustLikeIcarus/kohana-doctrinemigrations.git
 [submodule "kohana/application/vendor/doctrine"]
 	path = kohana/application/vendor/doctrine
 	url = http://github.com/doctrine/doctrine1.git
