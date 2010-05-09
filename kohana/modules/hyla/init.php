@@ -38,6 +38,12 @@ Route::set('project/settings', 'project/<name>/settings(/<action>)', array('acti
 		'action'     => 'main',
 	));
 
+Route::set('account', 'account(/<action>)', array('action' => '(?:login|register)'))
+	->defaults(array(
+		'controller' => 'account',
+		'action'     => 'login',
+	));
+
 Route::set('hyla-main', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'main',
