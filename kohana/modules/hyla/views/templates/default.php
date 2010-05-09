@@ -12,19 +12,9 @@
 			<div class="grid_12">
 				<div class="grid_4" id="account_links">
 					<ul class="nav ui-corner-bl">
-						<?php if(Auth::instance()->logged_in() != 0){?>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Account Settings</a></li>
 						<li><a href="#">Logout</a></li>
-						<?php }else{?>
-						<li>
-							<?php echo HTML::anchor(Route::get('hyla-main')->uri(array
-								(
-									'controller' => 'account',
-									'action'     => 'login'
-								)), 'Login'); ?>
-						</li>
-						<?php }?>
 					</ul>
 				</div>
 				<h1 id="branding">
