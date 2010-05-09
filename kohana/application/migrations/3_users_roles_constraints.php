@@ -29,31 +29,40 @@
 				'created_on' => $int + $notnull + $unsigned,
 				'last_update' => $int + $notnull + $unsigned,
 			));
-
+            
+            $this->createTable('user_tokens', array
+			(
+				'id' => $int + $notnull + $unsigned + $ai + $pk,
+				'user_id' => $int + $notnull + $unsigned,
+				'user_agent' => $varchar + $notnull,
+				'token' => $varchar + $notnull,
+				'created' => $int + $notnull + $unsigned,
+				'expires' => $int + $notnull + $unsigned,
+			));
+            
 			$this->createTable('roles', array
 			(
 				'id' => $int + $notnull + $unsigned + $ai + $pk,
-				'name' => $varchar + $notnull
+				'name' => $varchar + $notnull,
+				'description' => $varchar
 			));
 
-			$this->createTable('users_roles', array
+			$this->createTable('roles_users', array
 			(
 				'user_id' => $int + $notnull + $unsigned,
 				'role_id' => $int + $notnull + $unsigned
 			));
 			
-			
 			$definition = array
 			(
 				'fields' => array
 				(				
-					'user_id' => array(),
-					'role_id' => array()
+					'token' => array()
 				),
 				'unique' => true
 			);
 
-			$this->createConstraint('users_roles', 'users_roles_unique_key', $definition);
+			$this->createConstraint('user_tokens', 'user_tokens_uniq_token', $definition);
 			
 			$definition = array
 			(
@@ -63,7 +72,17 @@
 				'onDelete'     =>  'cascade'
 			);
 
-			$this->createForeignKey('users_roles', 'users_roles_user_foreign_key', $definition);
+			$this->createForeignKey('user_tokens', 'user_tokens_user_foreign_key', $definition);
+			
+			$definition = array
+			(
+				'local'         => 'user_id',
+				'foreign'       => 'id',
+				'foreignTable'  => 'users',
+				'onDelete'     =>  'cascade'
+			);
+
+			$this->createForeignKey('roles_users', 'roles_users_user_foreign_key', $definition);
 		
 			$definition = array
 			(
@@ -73,19 +92,7 @@
 				'onDelete'     =>  'cascade'
 			);
 
-			$this->createForeignKey('users_roles', 'users_roles_role_foreign_key', $definition);			
-			
-			$definition = array
-			(
-				'fields' => array
-				(
-					'ticket_id' => array(),
-					'label_id' => array()
-				),
-				'unique' => true
-			);
-
-			//$this->createConstraint('tickets_labels', 'tickets_labels_unique_key', $definition);
+			$this->createForeignKey('roles_users', 'roles_users_role_foreign_key', $definition);			
 				
 			$definition = array
 			(
@@ -154,7 +161,26 @@
 			$this->createForeignKey('tickets_labels', 'tickets_labels_label_foreign_key', $definition);										
 
 		}
-
+        
+        public function postUp()
+            {
+                $models = APPPATH.'migration_models';
+                
+                Doctrine_Core::generateModelsFromDb($models);
+                Doctrine_Core::loadModels($models.'/generated');
+                Doctrine_Core::loadModels($models);
+                $roles = new Roles();
+                $roles->name = 'login';
+                $roles->description = "Role to login";
+                $roles->save();
+                $roles = new Roles();
+                $roles->name = 'admin';
+                $roles->description = "Role to administer";
+                $roles->save();
+                Doctrine_Lib::removeDirectories($models);
+                
+            }
+        
 		public function down()
 		{
 			
@@ -166,7 +192,8 @@
 			$this->dropForeignKey('comments', 'comments_user_foreign_key');
 			$this->dropForeignKey('tickets_labels', 'tickets_labels_ticket_foreign_key');
 			$this->dropForeignKey('tickets_labels', 'tickets_labels_label_foreign_key');
-			$this->dropTable('users_roles');
+			$this->dropTable('roles_users');
+			$this->dropTable('user_tokens');
 			$this->dropTable('users');
 			$this->dropTable('roles');
 		}
