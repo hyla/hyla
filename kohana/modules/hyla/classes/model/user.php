@@ -3,6 +3,10 @@
 class Model_User extends ORM
 {
 	protected $_has_many = array('projects' => array(), 'tickets' => array(), 'comments' => array());
+	protected $_ignored_columns = array
+	(
+		'password_confirm',
+	);
 	
 	public function rules()
 	{
@@ -10,7 +14,10 @@ class Model_User extends ORM
 		(
 			'username' => array('not_empty' => array()),
 			'email' => array('not_empty' => array(), 'email' => array()),
+			'password_confirm => array('matches' => array('password')),
+			'password => array('not_empty' => array())
+
 		);
 		return $rules;
 	}	
-}
+}
