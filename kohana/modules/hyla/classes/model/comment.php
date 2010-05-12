@@ -17,3 +17,4 @@ class Model_Comment extends ORM
 		return $rules;
 	}
 } 
+
