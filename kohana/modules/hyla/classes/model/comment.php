@@ -3,7 +3,10 @@
 class Model_Comment extends ORM
 {
 	protected $_belongs_to = array('ticket' => array(), 'user' => array());
-	
+
+	protected $_created_column = array('created_on' => TRUE);
+	protected $_updated_column = array('last_update' => TRUE);
+
 	public function rules()
 	{
 		$rules = array
@@ -13,4 +16,4 @@ class Model_Comment extends ORM
 		);
 		return $rules;
 	}
-} 
+} 
