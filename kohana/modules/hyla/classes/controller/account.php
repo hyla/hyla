@@ -30,7 +30,7 @@ class Controller_Account extends Controller_Template_Hyla {
 			if ($post->check())
 			{
 				#Affects the sanitized vars to the user object
-				$user->values($post->as_array());
+				$user->values($_POST);
 				
 				#create the account
 				$user->save();
