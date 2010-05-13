@@ -20,12 +20,10 @@ class Controller_Account extends Controller_Template_Hyla {
 			$user = ORM::factory('user');	
  
 			#Load the validation rules, filters etc...
-			$post = Validation::factory($_POST)
-			               ->pre_filter('trim')
-			               ->add_rules('email',	'required', 'length[4,64]', 'email')
-			               ->add_rules('username', 'required', 'length[2,16]', 'standard_text')
-			               ->add_rules('password', 'required', 'length[5,16]');
-
+			$post = Validate::factory($_POST)
+				->rule('password', 'not_empty')
+				->rule('password', 'min_length', array('6'))
+				->rule('password_confirm',  'matches', array('password'));
 	
  
 			#If the post data validates using the rules setup in the user model
