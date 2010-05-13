@@ -69,6 +69,7 @@ Kohana::modules(array(
 	'hyla'      => MODPATH.'hyla',                // Core hyla module
 	'geshi'     => MODPATH.'geshi',
 	'doctrinemigrations'	=> MODPATH.'doctrinemigrations',
+	'auth'     => MODPATH.'auth',
 ));
 
 /**
