@@ -18,4 +18,4 @@
 	url = http://github.com/JustLikeIcarus/kohana-geshi.git
 [submodule "kohana/modules/auth"]
 	path = kohana/modules/auth
-	url = git://github.com/JustLikeIcarus/auth.git
+	url = http://github.com/JustLikeIcarus/auth.git
