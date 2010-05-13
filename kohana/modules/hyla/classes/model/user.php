@@ -10,9 +10,7 @@ class Model_User extends ORM
 		(
 			'username' => array('not_empty' => array()),
 			'email' => array('not_empty' => array(), 'email' => array()),
-			'password_confirm' => array('matches' => array('password')),
 			'password' => array('not_empty' => array())
-
 		);
 		return $rules;
 	}	
