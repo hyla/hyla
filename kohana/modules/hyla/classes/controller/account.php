@@ -40,10 +40,10 @@ class Controller_Account extends Controller_Template_Hyla {
 				$user->add('roles',$login_role);
  
 				#sign the user in
-				Auth::instance()->login($user->username, $user->password);
+				$content = Kohana::debug(Auth::instance()->login($_POST['username'], $_POST['password']));
  
 				#redirect to the user account
-				Request::instance()->redirect('account/profile');
+				#Request::instance()->redirect('account/profile');
 			}
 			else
 			{
