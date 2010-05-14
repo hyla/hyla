@@ -93,7 +93,7 @@ class Controller_Account extends Controller_Template_Hyla {
 	public function action_profile()
 	{
 		$content = $this->template->content = View::factory('account/profile');
-		$content = Kohana::debug(Auth::instance()->get_user());
+		$content->user = Kohana::debug(Auth::instance()->get_user());
 	}
  
 	public function action_logout()
