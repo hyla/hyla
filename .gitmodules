@@ -10,9 +10,6 @@
 [submodule "kohana/modules/assets"]
 	path = kohana/modules/assets
 	url = git://github.com/Zeelot/kohana-assets.git
-[submodule "kohana/modules/unittest"]
-	path = kohana/modules/unittest
-	url = git://github.com/kohana/unittest.git
 [submodule "kohana/modules/doctrinemigrations"]
 	path = kohana/modules/doctrinemigrations
 	url = git://github.com/JustLikeIcarus/kohana-doctrinemigrations.git
@@ -22,3 +19,7 @@
 [submodule "kohana/modules/auth"]
 	path = kohana/modules/auth
 	url = http://github.com/JustLikeIcarus/auth.git
+
+[submodule "kohana/modules/unittest"]
+	path = kohana/modules/unittest
+	url = git://github.com/kohana/unittest.git
