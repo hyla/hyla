@@ -40,7 +40,7 @@ class Controller_Account extends Controller_Template_Hyla {
 				$user->add('roles',$login_role);
  
 				#sign the user in
-				Auth::instance()->login($post['username'], $post['password']);
+				Auth::instance()->login($user->username, $user->password);
  
 				#redirect to the user account
 				Request::instance()->redirect('account/profile');
