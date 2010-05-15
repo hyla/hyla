@@ -13,3 +13,7 @@
 </fieldset>
 <button type="submit" value="submit"><?php echo __('Login'); ?></button>
 <?php echo Form::close(); ?>
+<div>
+<?php echo View::factory('profiler/stats');?>
+</div>
+<?php echo Kohana::debug($userdata);?>
