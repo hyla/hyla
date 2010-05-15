@@ -61,16 +61,17 @@ class Controller_Account extends Controller_Template_Hyla {
 		#If user already signed-in
 		if(Auth::instance()->logged_in() != 0){
 			#redirect to the user account
-			Request::instance()->redirect('account/profile');		
+			Request::instance()->redirect('project/list');		
 		}
  
 		$content = $this->template->content = View::factory('account/login');	
 		$content->errors = NULL;
+		$content->userdata = NULL;
 		#If there is a post and $_POST is not empty
 		if ($_POST)
 		{
 			#Instantiate a new user
-			$user = ORM::factory('user');
+			$user = $content->userdata = ORM::factory('user');
  
 			#Check Auth
 			$status = $user->login($_POST);
@@ -79,7 +80,8 @@ class Controller_Account extends Controller_Template_Hyla {
 			if ($status)
 			{		
 				#redirect to the user account
-				Request::instance()->redirect('account/profile');
+				Request::instance()->redirect('project/list');
+				
 			}else
 			{
                                 #Get errors for display in view
