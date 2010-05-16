@@ -4,90 +4,83 @@ class Controller_Account extends Controller_Template_Hyla {
 	
 	function action_register()
 		{	
-			#If user already signed-in
+			//If user already signed-in
 			if(Auth::instance()->logged_in()!= 0){
-				#redirect to the user account
+				//Redirect to the user account
 				Request::instance()->redirect('account/profile');
 			}
  
-		#Load the view
-		$content = $this->template->content = View::factory('account/register');		
-		$content->errors = NULL;
-		#If there is a post and $_POST is not empty
-		if ($_POST)
-		{
-			#Instantiate a new user
-			$user = ORM::factory('user');	
- 
-			#Load the validation rules, filters etc...
-			$post = Validate::factory($_POST)
-				->rule('password', 'not_empty')
-				->rule('password', 'min_length', array('6'))
-				->rule('password_confirm',  'matches', array('password'));
-	
- 
-			#If the post data validates using the rules setup in the user model
-			if ($post->check())
+			//Load the view
+			$this->template->content = View::factory('account/register')
+				->bind('errors', $errors);	
+
+			//If there is a post and $_POST is not empty
+			if ($_POST)
 			{
-				#Affects the sanitized vars to the user object
-				$user->values($_POST);
+				//Instantiate a new user
+				$user = ORM::factory('user');	
+ 
+				//Load the validation rules, filters etc...
+				$validate_pw_confirm = Validate::factory($_POST)
+					->rule('password_confirm',  'matches', array('password'));
+			
+				try
+				{
+					//Affects the sanitized vars to the user object
+					$user->values($_POST);
 				
-				#create the account
-				$user->save();
+					//create the account
+					$user->create($validate_pw_confirm );
  
-				#Add the login role to the user
-				$login_role = new Model_Role(array('name' =>'login'));
-				$user->add('roles',$login_role);
- 
-				#sign the user in
-				$content = Kohana::debug(Auth::instance()->login($_POST['username'], $_POST['password']));
- 
-				#redirect to the user account
-				#Request::instance()->redirect('account/profile');
-			}
-			else
-			{
-				#Get errors for display in view
-				$content->errors = $post->errors('register');
-			}			
-		}		
-	}
+					//Add the login role to the user
+					$user->activate();
+
+					//Sign the user in
+					Auth::instance()->login($_POST['username'], $_POST['password']);
+				}
+				catch(ORM_Validation_Exception $e)
+				{
+					//Get errors for display in view
+					$errors = $validate_pw_confirm->errors('user');
+				}			
+			}		
+		}
  
  
  
  
 	public function action_login()
 	{
-		#If user already signed-in
+		//If user already signed-in
 		if(Auth::instance()->logged_in() != 0){
-			#redirect to the user account
+			//Redirect to the user account
 			Request::instance()->redirect('project/list');		
 		}
  
 		$content = $this->template->content = View::factory('account/login');	
 		$content->errors = NULL;
 		$content->userdata = NULL;
-		#If there is a post and $_POST is not empty
+		//If there is a post and $_POST is not empty
 		if ($_POST)
 		{
-			#Instantiate a new user
+			//Instantiate a new user
 			$user = $content->userdata = ORM::factory('user');
  
-			#Check Auth
+			//Check Auth
 			$status = $user->login($_POST);
  
-			#If the post data validates using the rules setup in the user model
+			//If the post data validates using the rules setup in the user model
 			if ($status)
 			{		
-				#redirect to the user account
+				//redirect to the user account
 				Request::instance()->redirect('project/list');
 				
-			}else
+			}
+			else
 			{
-                                #Get errors for display in view
+        //Get errors for display in view
 				$content->errors = $_POST->errors('signin');
 			}
- 
 		}
 	}
  
@@ -100,10 +93,10 @@ class Controller_Account extends Controller_Template_Hyla {
  
 	public function action_logout()
 	{
-		#Sign out the user
+		//Sign out the user
 		Auth::instance()->logout();
  
-		#redirect to the user account and then the signin page if logout worked as expected
+		//Redirect to the user account and then the signin page if logout worked as expected
 		Request::instance()->redirect('account/profile');		
 	}
 	

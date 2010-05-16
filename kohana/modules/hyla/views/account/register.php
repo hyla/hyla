@@ -1,5 +1,11 @@
 <?php if ($errors): ?>
-<div class="error"><?php echo __('Login Failed'); ?></div>
+<div class="error">
+		<p class="message">Registration Failed</p>
+		<ul class="errors">
+		<?php foreach ($errors as $message): ?>
+	    <li><?php echo $message ?></li>
+		<?php endforeach ?>
+</div>
 <?php endif; ?>
 <?php echo Form::open(); ?>
 <fieldset>
@@ -13,5 +19,5 @@
 	<label for="password_confirm"><?php echo __('Re-Type Password'); ?></label>
 	<input type="password" name="password_confirm" id="password_confirm" />
 </fieldset>
-<button type="submit" value="submit"><?php echo __('Login'); ?></button>
+<button type="submit" value="submit"><?php echo __('Register'); ?></button>
 <?php echo Form::close(); ?>
