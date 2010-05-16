@@ -10,4 +10,6 @@ class Model_User extends Model_Auth_User
 		'tickets'     => array(), 
 		'comments'    => array()
 	);
+	
+	protected $_created_column = array('created_on' => TRUE);
 }
