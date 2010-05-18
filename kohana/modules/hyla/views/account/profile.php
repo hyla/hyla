@@ -1,4 +1,5 @@
 <div>
-	<?php echo $user;?>
-<?php print_r($_SESSION); ?>
+<?php echo Kohana::debug(Auth::instance()); ?>
+<hr />
+<?php echo Kohana::debug(Session::instance()); ?>
 </div>
