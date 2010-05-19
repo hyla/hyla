@@ -12,9 +12,8 @@ class Model_User extends Model_Auth_User
 	);
 	
 	protected $_created_column = array('created_on' => TRUE);
-        public function __sleep()
+       public function pk()
 	{
-		// Store only information about the object
-		return array('_object_name', '_object', '_changed', '_loaded', '_saved', '_sorting', '_primary_key_value');
+		return $this->_object[$this->_primary_key];
 	}
 }
