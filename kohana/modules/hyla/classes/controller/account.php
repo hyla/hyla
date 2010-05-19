@@ -73,7 +73,7 @@ class Controller_Account extends Controller_Template_Hyla {
 			if ($status)
 			{		
 				//redirect to the user account
-				Request::instance()->redirect('project/list');
+				//Request::instance()->redirect('project/list');
 				
 			}
 			else
