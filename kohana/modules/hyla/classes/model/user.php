@@ -14,6 +14,6 @@ class Model_User extends Model_Auth_User
 	protected $_created_column = array('created_on' => TRUE);
        public function pk()
 	{
-		return $this->_object[$this->_primary_key];
+		return $this->_object['id'];
 	}
 }
