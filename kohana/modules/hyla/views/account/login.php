@@ -7,7 +7,7 @@
 	<label for="username"><?php echo __('Username'); ?></label>
 	<input type="text" name="username" id="username" />
 	<label for="password"><?php echo __('Password'); ?></label>
-	<input type="text" name="password" id="password" />
+	<input type="password" name="password" id="password" />
 	<input type="checkbox" name="remember_me" id="remember_me" />
 	<label for="remember_me"><?php echo __('Remember Me'); ?></label>
 </fieldset>
@@ -15,4 +15,3 @@
 <?php echo Form::close(); ?>
 <div>
 </div>
-<?php echo Kohana::debug(Session::instance());?>
