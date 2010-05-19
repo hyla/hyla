@@ -16,9 +16,9 @@
 [submodule "kohana/modules/geshi"]
 	path = kohana/modules/geshi
 	url = git://github.com/JustLikeIcarus/kohana-geshi.git
-[submodule "kohana/modules/auth"]
-	path = kohana/modules/auth
-	url = http://github.com/JustLikeIcarus/auth.git
 [submodule "kohana/modules/unittest"]
 	path = kohana/modules/unittest
 	url = git://github.com/kohana/unittest.git
+[submodule "kohana/modules/auth"]
+	path = kohana/modules/auth
+	url = git://github.com/hyla/kohana-auth.git
