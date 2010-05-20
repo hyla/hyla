@@ -72,6 +72,8 @@ Kohana::modules(array(
 	'auth'     => MODPATH.'auth',
 ));
 
+Session::$type = 'cookie';
+
 /**
  * PHPUnit support, disables request handling if we are testing from cli
  */
