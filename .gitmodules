@@ -16,3 +16,6 @@
 [submodule "kohana/modules/geshi"]
 	path = kohana/modules/geshi
 	url = http://github.com/JustLikeIcarus/kohana-geshi.git
+[submodule "kohana/modules/doctrine-migrations"]
+	path = kohana/modules/doctrine-migrations
+	url = git://github.com/hyla/kohana-doctrine-migrations.git
