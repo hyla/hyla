@@ -4,6 +4,8 @@ class TicketsCommentsStatusesLabels extends Doctrine_Migration_Base
 {
 	public function up()
 	{
+		parent::setDefaultTableOptions(array('type' => 'INNODB', 'charset' => 'utf8'));
+
 		// Types
 		$int     = array('type' => 'integer', 'length' => 8);
 		$varchar = array('type' => 'varchar', 'length' => 255);
@@ -14,9 +16,7 @@ class TicketsCommentsStatusesLabels extends Doctrine_Migration_Base
 		$unsigned = array('unsigned' => TRUE);
 		$pk       = array('primary' => TRUE);
 		$ai       = array('autoincrement' => TRUE);
-		
-		parent::setDefaultTableOptions(array('type' => 'INNODB', 'charset' => 'utf8'));
-		
+
 		$this->createTable('tickets', array
 		(
 			'id'          => $int + $notnull + $unsigned + $ai + $pk,
@@ -57,15 +57,14 @@ class TicketsCommentsStatusesLabels extends Doctrine_Migration_Base
 			'ticket_id' => $int + $notnull + $unsigned,
 			'label_id' => $int + $notnull + $unsigned
 		));
+	}
 
-    }
-
-    public function down()
-    {
-      $this->dropTable('tickets');
-      $this->dropTable('statuses');
-      $this->dropTable('comments');
-      $this->dropTable('labels');
-      $this->dropTable('tickets_labels');
-    }
+	public function down()
+	{
+		$this->dropTable('tickets');
+		$this->dropTable('statuses');
+		$this->dropTable('comments');
+		$this->dropTable('labels');
+		$this->dropTable('tickets_labels');
+	}
 }
