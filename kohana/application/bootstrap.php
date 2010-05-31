@@ -61,6 +61,7 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	'database'   => MODPATH.'database',            // Database access
+	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
 	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	'assets'     => MODPATH.'assets',              // Yuriko Assets Module
@@ -68,7 +69,6 @@ Kohana::modules(array(
 	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
 	'geshi'      => MODPATH.'geshi',
-	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
 ));
 
 /**
