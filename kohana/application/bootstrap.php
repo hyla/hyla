@@ -68,6 +68,7 @@ Kohana::modules(array(
 	'theme'     => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'      => MODPATH.'hyla',                // Core hyla module
 	'geshi'     => MODPATH.'geshi',
+	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
 ));
 
 /**
