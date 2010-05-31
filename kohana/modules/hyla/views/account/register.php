@@ -2,7 +2,7 @@
 <?php if ($errors): ?>
 
 <div class="error">
-	<p class="message">Registration Failed</p>
+	<p class="message"><?php echo __('Registration Failed'); ?></p>
 	<ul class="errors">
 
 	<?php foreach ($errors as $message): ?>
