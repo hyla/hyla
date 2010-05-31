@@ -7,7 +7,7 @@
 
 	<?php foreach ($errors as $message): ?>
 
-		<li><?php echo $message ?></li>
+		<li><?php echo $message; ?></li>
 
 	<?php endforeach ?>
 
