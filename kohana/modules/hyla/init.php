@@ -25,7 +25,7 @@ Route::set('project/general', 'project(/<action>)', array('action' => '(?:list|c
 		'action'     => 'list',
 	));
 
-Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:home|delete|archive)'))
+Route::set('project/crud', 'project/<name>(/<action>)', array('action' => '(?:details|home|delete|archive)'))
 	->defaults(array(
 		'controller' => 'project',
 		'action'     => 'home',
