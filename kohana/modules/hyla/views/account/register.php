@@ -1,13 +1,21 @@
+
 <?php if ($errors): ?>
+
 <div class="error">
-		<p class="message">Registration Failed</p>
-		<ul class="errors">
-		<?php foreach ($errors as $message): ?>
-	    <li><?php echo $message ?></li>
-		<?php endforeach ?>
+	<p class="message">Registration Failed</p>
+	<ul class="errors">
+
+	<?php foreach ($errors as $message): ?>
+
+		<li><?php echo $message ?></li>
+
+	<?php endforeach ?>
+
 </div>
+
 <?php endif; ?>
 <?php echo Form::open(); ?>
+
 <fieldset>
 	<legend><?php echo __('Registration'); ?></legend>
 	<label for="username"><?php echo __('Username'); ?></label>
@@ -20,4 +28,5 @@
 	<input type="password" name="password_confirm" id="password_confirm" />
 </fieldset>
 <button type="submit" value="submit"><?php echo __('Register'); ?></button>
+
 <?php echo Form::close(); ?>
