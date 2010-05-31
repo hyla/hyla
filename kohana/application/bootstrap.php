@@ -60,14 +60,15 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'database'  => MODPATH.'database',            // Database access
-	'orm'       => MODPATH.'orm',                 // ORM modeling
-	'unittest'	=> MODPATH.'unittest',            // PHPUnit support
-	'assets'    => MODPATH.'assets',              // Yuriko Assets Module
+	'database'   => MODPATH.'database',            // Database access
+	'orm'        => MODPATH.'orm',                 // ORM modeling
+	'unittest'   => MODPATH.'unittest',            // PHPUnit support
+	'assets'     => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
-	'theme'     => DOCROOT.'hyla/themes/default', // default hyla theme
-	'hyla'      => MODPATH.'hyla',                // Core hyla module
-	'geshi'     => MODPATH.'geshi',
+	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
+	'hyla'       => MODPATH.'hyla',                // Core hyla module
+	'geshi'      => MODPATH.'geshi',
+	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
 ));
 
 /**
