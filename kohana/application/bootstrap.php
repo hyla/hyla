@@ -69,7 +69,10 @@ Kohana::modules(array(
 	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
 	'geshi'      => MODPATH.'geshi',
+	'auth'       => MODPATH.'auth',
 ));
+
+Session::$type = 'cookie';
 
 /**
  * PHPUnit support, disables request handling if we are testing from cli
