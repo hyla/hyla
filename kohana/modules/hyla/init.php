@@ -1,18 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-//$enabled = Sprig::factory('plugin', array('enabled' => 1))
-//	->load(NULL, FALSE);
-
-$modules = Kohana::modules();
-//foreach ($enabled as $plugin)
-//{
-//	$modules[$plugin->name] = DOCROOT.'hyla/plugins/'.$plugin->name;
-//}
-Kohana::modules($modules);
-
-// Clean up
-unset($modules, $enabled);
-
 Route::set('hyla-admin', 'admin(/<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'main',
