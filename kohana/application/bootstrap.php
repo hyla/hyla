@@ -1,19 +1,41 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-//-- Environment setup --------------------------------------------------------
+// -- Environment setup --------------------------------------------------------
+
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core'.EXT;
+
+if (is_file(APPPATH.'classes/kohana'.EXT))
+{
+	// Application extends the core
+	require APPPATH.'classes/kohana'.EXT;
+}
+else
+{
+	// Load empty core extension
+	require SYSPATH.'classes/kohana'.EXT;
+}
 
 /**
  * Set the default time zone.
  *
- * @see  http://docs.kohanaphp.com/features/localization#time
+ * @see  http://docs.kohanaphp.com/about.configuration
  * @see  http://php.net/timezones
  */
-date_default_timezone_set('America/Chicago');
+date_default_timezone_set('America/Phoenix');
+
+/**
+ * Set the default locale.
+ *
+ * @see  http://docs.kohanaphp.com/about.configuration
+ * @see  http://php.net/setlocale
+ */
+setlocale(LC_ALL, 'en_US.utf-8', 'english-us');
 
 /**
  * Enable the Kohana auto-loader.
  *
- * @see  http://docs.kohanaphp.com/features/autoloading
+ * @see  http://docs.kohanaphp.com/about.autoloading
  * @see  http://php.net/spl_autoload_register
  */
 spl_autoload_register(array('Kohana', 'auto_load'));
@@ -26,7 +48,34 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  */
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 
-//-- Configuration and initialization -----------------------------------------
+// -- Configuration and initialization -----------------------------------------
+
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
+
+/**
+ * Set Kohana::$environment if $_ENV['KOHANA_ENV'] has been supplied.
+ *
+ */
+if (isset($_ENV['KOHANA_ENV']))
+{
+	Kohana::$environment = $_ENV['KOHANA_ENV'];
+}
+
+/**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+Kohana_Config::instance()->attach(new Kohana_Config_File);
+
+/**
+ * Attach the environment specific configuration file reader to config if not in production.
+ */
+if (Kohana::$environment != Kohana::PRODUCTION)
+{
+	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
+}
 
 /**
  * Initialize Kohana, setting the default options.
@@ -41,10 +90,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array(
-		'base_url'   => '/',
-		'index_file' => FALSE,
-	));
+Kohana::init(Kohana_Config::instance()->load('init')->as_array());
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -52,37 +98,14 @@ Kohana::init(array(
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 
 /**
- * Attach a file reader to config. Multiple readers are supported.
- */
-Kohana::$config->attach(new Kohana_Config_File);
-
-/**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
 	'database'   => MODPATH.'database',            // Database access
-	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
+	'minion'     => MODPATH.'minion', // Migrations module
 	'orm'        => MODPATH.'orm',                 // ORM modeling
-	'unittest'   => MODPATH.'unittest',            // PHPUnit support
-	'assets'     => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
 	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
-	'geshi'      => MODPATH.'geshi',
 	'auth'       => MODPATH.'auth',
 ));
-
-/**
- * PHPUnit support, disables request handling if we are testing from cli
- */
-if( ! defined('SUPPRESS_REQUEST'))
-{
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo Request::instance()
-		->execute()
-		->send_headers()
-		->response;
-}
