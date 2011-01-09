@@ -104,8 +104,8 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',            // Database access
 	'minion'     => MODPATH.'minion', // Migrations module
 	'orm'        => MODPATH.'orm',                 // ORM modeling
+	'auth'       => MODPATH.'auth',
 	// temporary until theme is taken from user/site settings
 	'theme'      => HYLAPATH.'themes/default',     // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
-	'auth'       => MODPATH.'auth',
 ));
