@@ -102,6 +102,6 @@ Kohana::modules(array(
 	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	// temporary until theme is taken from user/site settings
-	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
+	'theme'      => HYLAPATH.'themes/default',     // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
 ));
