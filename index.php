@@ -24,6 +24,11 @@ $modules = 'kohana/modules';
 $system = 'kohana/system';
 
 /**
+ * The directory in which the Hyla resources are located.
+ */
+$hyla = 'hyla';
+
+/**
  * The default extension of resource files. If you change this, all resources
  * must be renamed to use the new extension.
  *
@@ -68,10 +73,15 @@ if ( ! is_dir($modules) AND is_dir(DOCROOT.$modules))
 if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
 	$system = DOCROOT.$system;
 
+// Make the hyla path relative to the docroot
+if ( ! is_dir($hyla) AND is_dir(DOCROOT.$hyla))
+	$hyla = DOCROOT.$hyla;
+
 // Define the absolute paths for configured directories
 define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
 define('MODPATH', realpath($modules).DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
+define('HYLAPATH', realpath($hyla).DIRECTORY_SEPARATOR);
 
 // Clean up the configuration vars
 unset($application, $modules, $system);
