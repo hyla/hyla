@@ -10,3 +10,6 @@
 [submodule "kohana/modules/database"]
 	path = kohana/modules/database
 	url = git://github.com/hyla/kohana-database.git
+[submodule "kohana/modules/minion"]
+	path = kohana/modules/minion
+	url = git://github.com/hyla/kohana-minion.git
