@@ -4,3 +4,9 @@
 [submodule "kohana/modules/orm"]
 	path = kohana/modules/orm
 	url = git://github.com/hyla/kohana-orm.git
+[submodule "kohana/system"]
+	path = kohana/system
+	url = git://github.com/hyla/kohana-core.git
+[submodule "kohana/modules/database"]
+	path = kohana/modules/database
+	url = git://github.com/hyla/kohana-database.git
