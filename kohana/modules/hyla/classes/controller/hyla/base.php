@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Controller_Base extends Controller {
+abstract class Controller_Hyla_Base extends Controller {
 
 	/**
 	 * @var object the content View object
@@ -18,7 +18,7 @@ abstract class Controller_Base extends Controller {
 
 		try
 		{
-			$this->view = Kostache::factory('page/'.$controller_path);
+			$this->view = Kostache::factory($controller_path);
 		}
 		catch (Kohana_View_Exception $x)
 		{
