@@ -101,8 +101,7 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// temporary until theme is taken from user/site settings
-	'theme'      => HYLAPATH.'themes/default',     // default hyla theme
+	'theme'      => HYLAPATH.'themes/_default',     // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
 	'kostache'   => MODPATH.'kostache',            // View Classes
 	'database'   => MODPATH.'database',            // Database access
