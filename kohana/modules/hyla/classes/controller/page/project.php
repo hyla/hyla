@@ -1,18 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Project extends Controller_Template_Hyla {
-
+class Controller_Page_Project extends Controller_Hyla_Page
+{
 	public function action_list()
 	{
-		$this->template->content = View::factory('project/list')
+		$this->view
 			->bind('projects', $projects);
 
-		$projects = ORM::factory('project')->find_all();
+		$projects = array();
 	}
 
 	public function action_details()
 	{
-		$this->template->content = View::factory('project/details')
+		$this->view
 			->bind('project', $project);
 
 		$name = $this->request->param('name');
@@ -31,7 +31,7 @@ class Controller_Project extends Controller_Template_Hyla {
 
 	public function action_create()
 	{
-		$this->template->content = View::factory('project/create')
+		$this->view
 			->bind('project', $project)
 			->bind('errors', $errors);
 
@@ -61,7 +61,7 @@ class Controller_Project extends Controller_Template_Hyla {
 
 	public function action_update()
 	{
-		$this->template->content = View::factory('projects/edit')
+		$this->view
 			->bind('project', $project)
 			->bind('errors', $errors);
 
@@ -87,5 +87,4 @@ class Controller_Project extends Controller_Template_Hyla {
 			}
 		}
 	}
-
-} // End Projects
+}

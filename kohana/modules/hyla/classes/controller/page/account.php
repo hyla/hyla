@@ -1,18 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Account extends Controller_Template_Hyla {
-
+class Controller_Page_Account extends Controller_Hyla_Page
+{
 	function action_register()
 	{
-		// If user already signed-in
-		if (Auth::instance()->logged_in())
-		{
-			//Redirect to the user account
-			Request::instance()->redirect('account/profile');
-		}
-
-		// Load the view
-		$this->template->content = View::factory('account/register')
+		$this->view
 			->bind('errors', $errors);
 
 		// If there is a post and $_POST is not empty
@@ -49,13 +41,7 @@ class Controller_Account extends Controller_Template_Hyla {
 
 	public function action_login()
 	{
-		// If user already signed-in
-		if(Auth::instance()->logged_in() != 0){
-			// Redirect to the user account
-			Request::instance()->redirect('project/list');
-		}
-
-		$this->template->content = View::factory('account/login')
+		$this->view
 			->bind('errors', $errors)
 			->bind('userdata', $userdata);
 
@@ -84,8 +70,9 @@ class Controller_Account extends Controller_Template_Hyla {
 
 	public function action_profile()
 	{
-		$this->template->content = View::factory('account/profile')
+		$this->view
 			->bind('user', $user);
+
 		$user = Kohana::debug(Auth::instance()->get_user());
 	}
 
