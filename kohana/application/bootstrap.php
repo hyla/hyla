@@ -101,6 +101,7 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
+	'kostache'   => MODPATH.'kostache',            // View Classes
 	'database'   => MODPATH.'database',            // Database access
 	'minion'     => MODPATH.'minion', // Migrations module
 	'orm'        => MODPATH.'orm',                 // ORM modeling
