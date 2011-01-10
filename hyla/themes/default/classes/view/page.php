@@ -21,7 +21,6 @@ abstract class View_Page extends View_Layout {
 
 	public function _initialize()
 	{
-		Assets::add_group('default-template');
 		parent::_initialize();
 	}
 
