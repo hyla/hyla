@@ -3,4 +3,6 @@
 class Kohana extends Kohana_Core {
 
 	const HYLA_VERSION = '1.0.0';
+
+	public $environment_string = 'develop';
 }
