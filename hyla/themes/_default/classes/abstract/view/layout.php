@@ -6,14 +6,14 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-class View_Layout extends View_Base
-{
+abstract class Abstract_View_Layout extends Abstract_View_Base {
+
 	protected $_layout = 'layout/default';
 
 	/**
 	 * Renders the body template into the layout
 	 */
-	public function render($template = null, $view = null, $partials = null)
+	public function render($template = NULL, $view = NULL, $partials = NULL)
 	{
 		$this->_partial_paths += array
 		(

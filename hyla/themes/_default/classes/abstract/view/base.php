@@ -6,4 +6,4 @@
  * @category   Kostache
  * @author     Hyla
  */
-abstract class View_Base extends Kostache {}
+abstract class Abstract_View_Base extends Kostache {}

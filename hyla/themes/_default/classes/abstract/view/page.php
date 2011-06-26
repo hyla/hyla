@@ -6,23 +6,10 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-abstract class View_Page extends View_Layout {
+abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 	// The Page Title
 	public $title = NULL;
-
-	public function i18n()
-	{
-		return function($string)
-		{
-			return __($string);
-		};
-	}
-
-	public function _initialize()
-	{
-		parent::_initialize();
-	}
 
 	public function title()
 	{
