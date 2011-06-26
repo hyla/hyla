@@ -1,21 +1,21 @@
-[submodule "kohana/modules/auth"]
-	path = kohana/modules/auth
-	url = git://github.com/hyla/kohana-auth.git
-[submodule "kohana/modules/orm"]
-	path = kohana/modules/orm
-	url = git://github.com/hyla/kohana-orm.git
-[submodule "kohana/system"]
-	path = kohana/system
-	url = git://github.com/hyla/kohana-core.git
-[submodule "kohana/modules/database"]
-	path = kohana/modules/database
-	url = git://github.com/hyla/kohana-database.git
 [submodule "kohana/modules/minion"]
 	path = kohana/modules/minion
 	url = git://github.com/hyla/kohana-minion.git
-[submodule "kohana/modules/kostache"]
-	path = kohana/modules/kostache
-	url = git://github.com/hyla/kohana-kostache.git
 [submodule "kohana/modules/media"]
 	path = kohana/modules/media
 	url = git://github.com/hyla/kohana-media.git
+[submodule "kohana/system"]
+	path = kohana/system
+	url = git://github.com/kohana/core.git
+[submodule "kohana/modules/database"]
+	path = kohana/modules/database
+	url = git://github.com/kohana/database.git
+[submodule "kohana/modules/unittest"]
+	path = kohana/modules/unittest
+	url = git://github.com/kohana/unittest.git
+[submodule "kohana/modules/orm"]
+	path = kohana/modules/orm
+	url = git://github.com/hyla/kohana-orm.git
+[submodule "kohana/modules/kostache"]
+	path = kohana/modules/kostache
+	url = git://github.com/hyla/kohana-kostache.git

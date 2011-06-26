@@ -19,7 +19,7 @@ else
 /**
  * Set the default time zone.
  *
- * @see  http://docs.kohanaphp.com/about.configuration
+ * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
 date_default_timezone_set('America/Phoenix');
@@ -33,9 +33,17 @@ date_default_timezone_set('America/Phoenix');
 setlocale(LC_ALL, 'en_US.utf-8', 'english-us');
 
 /**
+ * Set the default locale.
+ *
+ * @see  http://kohanaframework.org/guide/using.configuration
+ * @see  http://php.net/setlocale
+ */
+setlocale(LC_ALL, 'en_US.utf-8');
+
+/**
  * Enable the Kohana auto-loader.
  *
- * @see  http://docs.kohanaphp.com/about.autoloading
+ * @see  http://kohanaframework.org/guide/using.autoloading
  * @see  http://php.net/spl_autoload_register
  */
 spl_autoload_register(array('Kohana', 'auto_load'));
@@ -56,25 +64,14 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 I18n::lang('en-us');
 
 /**
- * Set Kohana::$environment if $_ENV['KOHANA_ENV'] has been supplied.
+ * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
  *
+ * Note: If you supply an invalid environment name, a PHP warning will be thrown
+ * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
  */
-if (isset($_ENV['KOHANA_ENV']))
+if (isset($_SERVER['KOHANA_ENV']))
 {
-	Kohana::$environment = $_ENV['KOHANA_ENV'];
-}
-
-/**
- * Attach a file reader to config. Multiple readers are supported.
- */
-Kohana_Config::instance()->attach(new Kohana_Config_File);
-
-/**
- * Attach the environment specific configuration file reader to config if not in production.
- */
-if (Kohana::$environment != Kohana::PRODUCTION)
-{
-	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
+	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
 
 /**
@@ -101,12 +98,13 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'theme'      => HYLAPATH.'themes/_default', // default hyla theme
-	'hyla'       => MODPATH.'hyla',             // Core hyla module
-	'media'      => MODPATH.'media',            // Kohana CFS Media Module
-	'kostache'   => MODPATH.'kostache',         // View Classes
-	'database'   => MODPATH.'database',         // Database access
-	'minion'     => MODPATH.'minion',           // Migrations module
-	'orm'        => MODPATH.'orm',              // ORM modeling
-	'auth'       => MODPATH.'auth',
+	'hyla'       => MODPATH.'hyla',                // Core hyla module
+	'media'      => MODPATH.'media',               // Kohana CFS Media Module
+	'kostache'   => MODPATH.'kostache',            // View Classes
+	'minion'     => MODPATH.'minion',              // CLI module
+	'database'   => MODPATH.'database',            // Database access
+	'orm'        => MODPATH.'orm',                 // ORM modeling
+	'unittest'   => MODPATH.'unittest',            // PHPUnit support
+	// temporary until theme is taken from user/site settings
+	'theme'      => HYLAPATH.'themes/default',     // default hyla theme
 ));
