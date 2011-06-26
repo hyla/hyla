@@ -19,3 +19,6 @@
 [submodule "kohana/modules/kostache"]
 	path = kohana/modules/kostache
 	url = git://github.com/hyla/kohana-kostache.git
+[submodule "kohana/modules/assets"]
+	path = kohana/modules/assets
+	url = git://github.com/hyla/kohana-assets.git
