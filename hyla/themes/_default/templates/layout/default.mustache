@@ -6,7 +6,34 @@
 		[[assets_head]]
 	</head>
 	<body>
-		{{>body}}
+		<div class="page">
+			<div class="header">
+				<h1><img src="{{logo_url}}" alt="{{title}}" /></h1>
+				<nav>
+					<ul>
+						<li>Home</li>
+						<li>Account Settings</li>
+						<li>Log Out</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="content">
+				<nav>
+					<ul>
+						<li>Tab #1</li>
+						<li>Tab #2</li>
+						<li>Tab #3</li>
+						<li>Tab #4</li>
+					</ul>
+				</nav>
+				<div class="body">{{>body}}</div>
+			</div>
+			<div class="footer">
+				<div class="copyright">
+					<p>Copyright &copy;2010-2011 the Hyla Team</p>
+				</div>
+			</div>
+		</div>
 		[[assets_body]]
 	</body>
 </html>

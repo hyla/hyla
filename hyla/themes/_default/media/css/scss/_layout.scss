@@ -1,0 +1,51 @@
+body {
+	background: #CCC;
+}
+
+.page {
+	@include container;
+
+	.header, .content, .footer {
+		@include column(16);
+	}
+	.header {
+		background: #182612;
+
+		nav {
+			@include column(6, true);
+
+			ul {
+				@include horizontal-list;
+				background: #D92A1A;
+				padding: 5px;
+			}
+		}
+		h1 {
+			@include column(10);
+		}
+	}
+	.content, .footer {
+		background: #D92A1A;
+	}
+	.content {
+		nav ul {
+			@include horizontal-list;
+
+			padding: 5px;
+		}
+		.body {
+			@include column(16, true);
+			@include clearfix;
+			background: #FFF;
+			padding: 5px;
+		}
+	}
+	.footer {
+		@include border-radius(0 0 5px 5px);
+
+		.copyright {
+			padding: 5px;
+			font-size: 0.6em;
+		}
+	}
+}

@@ -8,6 +8,11 @@
  */
 abstract class Abstract_View_Base extends Kostache {
 
+	public function logo_url()
+	{
+		return Media::url('images/hyla.png');
+	}
+
 	/**
 	 * Assets object to add css/js groups to
 	 */
