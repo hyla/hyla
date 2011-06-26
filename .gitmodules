@@ -13,9 +13,6 @@
 [submodule "kohana/modules/unittest"]
 	path = kohana/modules/unittest
 	url = git://github.com/kohana/unittest.git
-[submodule "kohana/modules/doctrine-migrations"]
-	path = kohana/modules/doctrine-migrations
-	url = git://github.com/hyla/kohana-doctrine-migrations.git
 [submodule "kohana/modules/auth"]
 	path = kohana/modules/auth
 	url = git://github.com/hyla/kohana-auth.git
