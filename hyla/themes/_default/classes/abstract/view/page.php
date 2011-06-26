@@ -16,6 +16,13 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		return $this->title;
 	}
 
+	public function assets($assets)
+	{
+		// All pages should have this asset group
+		$assets->group('default-page');
+		return parent::assets($assets);
+	}
+
 	public function assets_head()
 	{
 		if ( ! $this->_assets)
