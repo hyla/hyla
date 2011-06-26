@@ -1,19 +1,41 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-//-- Environment setup --------------------------------------------------------
+// -- Environment setup --------------------------------------------------------
+
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core'.EXT;
+
+if (is_file(APPPATH.'classes/kohana'.EXT))
+{
+	// Application extends the core
+	require APPPATH.'classes/kohana'.EXT;
+}
+else
+{
+	// Load empty core extension
+	require SYSPATH.'classes/kohana'.EXT;
+}
 
 /**
  * Set the default time zone.
  *
- * @see  http://docs.kohanaphp.com/features/localization#time
+ * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
 date_default_timezone_set('America/Chicago');
 
 /**
+ * Set the default locale.
+ *
+ * @see  http://kohanaframework.org/guide/using.configuration
+ * @see  http://php.net/setlocale
+ */
+setlocale(LC_ALL, 'en_US.utf-8');
+
+/**
  * Enable the Kohana auto-loader.
  *
- * @see  http://docs.kohanaphp.com/features/autoloading
+ * @see  http://kohanaframework.org/guide/using.autoloading
  * @see  http://php.net/spl_autoload_register
  */
 spl_autoload_register(array('Kohana', 'auto_load'));
@@ -26,7 +48,23 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  */
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 
-//-- Configuration and initialization -----------------------------------------
+// -- Configuration and initialization -----------------------------------------
+
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
+
+/**
+ * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
+ *
+ * Note: If you supply an invalid environment name, a PHP warning will be thrown
+ * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
+ */
+if (isset($_SERVER['KOHANA_ENV']))
+{
+	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+}
 
 /**
  * Initialize Kohana, setting the default options.
@@ -61,28 +99,9 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	'database'   => MODPATH.'database',            // Database access
-	'migrations' => MODPATH.'doctrine-migrations', // Migrations module
 	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
-	'assets'     => MODPATH.'assets',              // Yuriko Assets Module
 	// temporary until theme is taken from user/site settings
 	'theme'      => DOCROOT.'hyla/themes/default', // default hyla theme
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
-	'geshi'      => MODPATH.'geshi',
-	'auth'       => MODPATH.'auth',
 ));
-
-/**
- * PHPUnit support, disables request handling if we are testing from cli
- */
-if( ! defined('SUPPRESS_REQUEST'))
-{
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo Request::instance()
-		->execute()
-		->send_headers()
-		->response;
-}
