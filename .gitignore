@@ -5,3 +5,4 @@ nbproject
 kohana/application/config/*.php
 *.swp
 *~
+*.sass-cache
