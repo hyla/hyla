@@ -14,7 +14,7 @@ abstract class Abstract_Controller_Hyla_Page extends Abstract_Controller_Hyla_Ba
 
 		try
 		{
-			$view = Kostache::factory('page/'.$controller_path);
+			$view = Kostache::factory($controller_path);
 		}
 		catch (Kohana_View_Exception $x)
 		{
