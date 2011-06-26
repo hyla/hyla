@@ -90,7 +90,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/',
+	'base_url'   => 'http://dev.vm/hyla/',
 	'index_file' => FALSE,
 ));
 
@@ -109,6 +109,7 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
 	'hyla'       => MODPATH.'hyla',                // Core hyla module
+	'assets'     => MODPATH.'assets',              // Asset Library
 	'media'      => MODPATH.'media',               // Kohana CFS Media Module
 	'kostache'   => MODPATH.'kostache',            // View Classes
 	'minion'     => MODPATH.'minion',              // CLI module
@@ -116,5 +117,5 @@ Kohana::modules(array(
 	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	// temporary until theme is taken from user/site settings
-	'theme'      => HYLAPATH.'themes/default',     // default hyla theme
+	'theme'      => HYLAPATH.'themes/_default',     // default hyla theme
 ));
