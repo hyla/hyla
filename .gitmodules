@@ -10,3 +10,6 @@
 [submodule "kohana/modules/orm"]
 	path = kohana/modules/orm
 	url = git://github.com/hyla/kohana-orm.git
+[submodule "kohana/modules/kostache"]
+	path = kohana/modules/kostache
+	url = git://github.com/hyla/kohana-kostache.git
