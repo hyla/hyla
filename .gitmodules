@@ -4,18 +4,9 @@
 [submodule "kohana/modules/database"]
 	path = kohana/modules/database
 	url = git://github.com/kohana/database.git
-[submodule "kohana/modules/assets"]
-	path = kohana/modules/assets
-	url = git://github.com/Zeelot/kohana-assets.git
-[submodule "kohana/modules/geshi"]
-	path = kohana/modules/geshi
-	url = git://github.com/JustLikeIcarus/kohana-geshi.git
 [submodule "kohana/modules/unittest"]
 	path = kohana/modules/unittest
 	url = git://github.com/kohana/unittest.git
-[submodule "kohana/modules/auth"]
-	path = kohana/modules/auth
-	url = git://github.com/hyla/kohana-auth.git
 [submodule "kohana/modules/orm"]
 	path = kohana/modules/orm
 	url = git://github.com/hyla/kohana-orm.git
