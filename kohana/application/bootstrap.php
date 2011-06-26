@@ -72,6 +72,8 @@ I18n::lang('en-us');
 if (isset($_SERVER['KOHANA_ENV']))
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+	// Useful for use in file paths and such
+	Kohana::$environment_string = $_SERVER['KOHANA_ENV'];
 }
 
 /**
@@ -87,12 +89,20 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(Kohana_Config::instance()->load('init')->as_array());
+Kohana::init(array(
+	'base_url'   => '/',
+	'index_file' => FALSE,
+));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+
+/**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+Kohana::$config->attach(new Config_File);
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
