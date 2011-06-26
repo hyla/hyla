@@ -22,6 +22,3 @@
 [submodule "kohana/modules/assets"]
 	path = kohana/modules/assets
 	url = git://github.com/hyla/kohana-assets.git
-[submodule "kohana/modules/hyla/vendor/sag"]
-	path = kohana/modules/hyla/vendor/sag
-	url = git://github.com/hyla/sag.git
