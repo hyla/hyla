@@ -6,4 +6,30 @@
  * @category   Kostache
  * @author     Hyla
  */
-abstract class Abstract_View_Base extends Kostache {}
+abstract class Abstract_View_Base extends Kostache {
+
+	/**
+	 * Assets object to add css/js groups to
+	 */
+	protected $_assets;
+
+	/**
+	 * Sets the Assets object in the view
+	 * Extend this method in Views to add Asset groups.
+	 *
+	 *     public function assets($assets)
+	 *     {
+	 *         $assets->group('default-template');
+	 *         return parent::assets($assets);
+	 *     }
+	 *
+	 * @param  Object the Assets object
+	 * @return this
+	 */
+	public function assets($assets)
+	{
+		$this->_assets = $assets;
+
+		return $this;
+	}
+}
