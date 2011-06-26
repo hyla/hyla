@@ -43,5 +43,5 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		return (bool) $_POST;
 	}
 
-	abstract protected function _init_view()
+	abstract protected function _request_view();
 }

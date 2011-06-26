@@ -2,7 +2,7 @@
 
 Route::set('hyla/home', '')
 	->defaults(array(
-		'directory'  => 'hyla',
+		'directory'  => 'page',
 		'controller' => 'main',
 		'action'     => 'home',
 	));
