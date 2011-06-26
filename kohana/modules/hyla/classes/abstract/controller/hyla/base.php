@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Controller_Hyla_Base extends Controller {
+abstract class Abstract_Controller_Hyla_Base extends Controller {
 
 	/**
 	 * @var object the content View object
@@ -9,25 +9,7 @@ abstract class Controller_Hyla_Base extends Controller {
 
 	public function before()
 	{
-		// Set default content view (path only)
-		$directory  = $this->request->directory();
-		$controller = $this->request->controller();
-		$action     = $this->request->action();
-
-		$controller_path = trim($directory.'/'.$controller.'/'.$action, '/');
-
-		try
-		{
-			$this->view = Kostache::factory($controller_path);
-		}
-		catch (Kohana_View_Exception $x)
-		{
-			/*
-			 * The View class could not be found, so the controller action is
-			 * repsonsible for making sure this is resolved.
-			 */
-			$this->view = NULL;
-		}
+		$this->view = $this->_request_view();
 	}
 
 	/**
@@ -47,7 +29,7 @@ abstract class Controller_Hyla_Base extends Controller {
 
 	/**
 	 * Returns true if the post has a valid CSRF
-	 * 
+	 *
 	 * @return  bool
 	 */
 	public function valid_post()
@@ -58,7 +40,8 @@ abstract class Controller_Hyla_Base extends Controller {
 		}
 
 		// @TODO: add CSRF checks
-
 		return (bool) $_POST;
 	}
+
+	abstract protected function _init_view()
 }
