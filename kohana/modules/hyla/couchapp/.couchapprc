@@ -1,0 +1,7 @@
+{
+	"env": {
+		"default": {
+			"db": "http://dev.vm:5984/hyla"
+		}
+	}
+}
