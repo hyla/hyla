@@ -19,7 +19,7 @@ class Model_Project extends Couch_Model {
 		$uri = '/_design/couchapp/_view/find_project_by_name?key="'.$value.'"';
 		$response = $this->_sag->get($uri);
 
-		if ($response->body['total_rows'] > 0)
+		if (count($response->body['rows']) > 0)
 		{
 			if ($this->loaded())
 			{
@@ -37,7 +37,7 @@ class Model_Project extends Couch_Model {
 		$uri = '/_design/couchapp/_view/find_project_by_name?key="'.$name.'"';
 		$response = $this->_sag->get($uri);
 
-		if ($response->body['total_rows'] > 0)
+		if (count($response->body['total_rows']) > 0)
 		{
 			$this->find($response->body['rows'][0]['id']);
 		}
