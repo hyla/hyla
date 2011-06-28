@@ -56,12 +56,21 @@ abstract class Couch_Model {
 		return $this->set($response->body);
 	}
 
-	public function find_all()
+	public function find_all($as_array = FALSE)
 	{
 		$uri = '/_design/couchapp/_view/find_all_models?key="'.$this->get('model').'";include_docs=true';
-		$data = $this->_sag->get($uri);
+		$response = $this->_sag->get($uri);
 
-		return $data;
+		$models = array();
+		foreach ($response->body['rows'] as $row)
+		{
+			$model = Couch_Model::factory($this->get('model'), $this->_sag)
+				->find($row['id']);
+
+			$models[] = $as_array ? $model->document() : $model;
+		}
+
+		return $models;
 	}
 
 	public function create()
