@@ -119,3 +119,6 @@ Kohana::modules(array(
 	// temporary until theme is taken from user/site settings
 	'theme'      => HYLAPATH.'themes/_default',     // default hyla theme
 ));
+
+// Include Sag for working with CouchDB
+require Kohana::find_file('vendor/sag/src', 'Sag');
