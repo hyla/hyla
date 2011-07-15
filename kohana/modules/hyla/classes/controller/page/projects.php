@@ -2,11 +2,5 @@
 
 class Controller_Page_Projects extends Abstract_Controller_Hyla_Page {
 
-	public function action_list()
-	{
-		$this->view
-			->bind('projects', $projects);
-
-		$projects = array();
-	}
+	public function action_list() {}
 }

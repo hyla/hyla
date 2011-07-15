@@ -2,7 +2,10 @@
 {{#has_projects}}
 	<ul>
 	{{#projects}}
-		<li>{{name}}</li>
+		<li>
+			<h2><a href="{{url}}">{{name}}</a></h2>
+			<div>{{description}}</div>
+		</li>
 	{{/projects}}
 	</ul>
 {{/has_projects}}

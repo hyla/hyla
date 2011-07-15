@@ -12,8 +12,22 @@ class View_Page_Projects_List extends Abstract_View_Page {
 			return $this->_cached['projects'];
 
 		$config = Kohana::config('couchdb');
-		return Couch_Model::factory('project', new Sag($config->host, $config->port))
+		$projects = Couch_Model::factory('project', new Sag($config->host, $config->port))
 			->find_all(TRUE);
+
+		$data = array();
+		foreach ($projects as $project)
+		{
+			$item = (array) $project;
+			$item['url'] = Route::url('hyla/single-project', array(
+				'slug'   => $item['slug'],
+				'action' => 'home',
+			));
+
+			$data[] = $item;
+		}
+
+		return $this->_cached['projects'] = $data;
 	}
 
 	public function has_projects()
