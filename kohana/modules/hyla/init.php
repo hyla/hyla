@@ -7,16 +7,9 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
-Route::set('hyla/project', 'project(/<action>)', array('action' => '(?:list|create)'))
+Route::set('hyla/projects', 'projects')
 	->defaults(array(
 		'directory'  => 'page',
-		'controller' => 'project',
+		'controller' => 'projects',
 		'action'     => 'list',
-	));
-
-Route::set('hyla/project/crud', 'project/<name>(/<action>)', array('action' => '(?:details|home|delete|archive)'))
-	->defaults(array(
-		'directory'  => 'page',
-		'controller' => 'project',
-		'action'     => 'home',
 	));
