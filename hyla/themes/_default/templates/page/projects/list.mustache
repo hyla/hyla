@@ -1,0 +1,11 @@
+<h1>Projects</h1>
+{{#has_projects}}
+	<ul>
+	{{#projects}}
+		<li>{{name}}</li>
+	{{/projects}}
+	</ul>
+{{/has_projects}}
+{{^has_projects}}
+	<p>No projects found.</p>
+{{/has_projects}}

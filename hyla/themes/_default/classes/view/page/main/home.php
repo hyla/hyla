@@ -2,10 +2,10 @@
 
 class View_Page_Main_Home extends Abstract_View_Page {
 
-	public function projects()
+	public function pages()
 	{
-		$config = Kohana::config('couchdb');
-		return Couch_Model::factory('project', new Sag($config->host, $config->port))
-			->find_all(TRUE);
+		return array(
+			'projects' => Route::url('hyla/projects'),
+		);
 	}
 }
