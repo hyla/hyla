@@ -7,15 +7,9 @@
 [submodule "kohana/system"]
 	path = kohana/system
 	url = git://github.com/kohana/core.git
-[submodule "kohana/modules/database"]
-	path = kohana/modules/database
-	url = git://github.com/kohana/database.git
 [submodule "kohana/modules/unittest"]
 	path = kohana/modules/unittest
 	url = git://github.com/kohana/unittest.git
-[submodule "kohana/modules/orm"]
-	path = kohana/modules/orm
-	url = git://github.com/hyla/kohana-orm.git
 [submodule "kohana/modules/kostache"]
 	path = kohana/modules/kostache
 	url = git://github.com/hyla/kohana-kostache.git
