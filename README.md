@@ -2,7 +2,7 @@
 
 ## Quick Intro
 
-Hyla is a highly modular project manager. At it's core, it will basically only allow you to create, edit, and delete projects. Everything else will be built into plugins. I will be ditributing a packages Hyla with the plugins that are most useful to me, but everyone seems to have slightly different needs for a project manager, Hyla should accommodate everyone nicely (eventually). Because of the need for flexibility, Hyla will require both CouchDB and RabbitMQ. I feel like these two dependencies will greatly improve Hyla's ability to adapt to everyone's needs.
+Hyla is a highly modular project manager. At it's core, it will basically only allow you to create, edit, and delete projects. Everything else will be built into plugins. I will be distributing a packaged Hyla with the plugins that are most useful to me, but as everyone seems to have slightly different needs for a project manager, Hyla should accommodate everyone nicely (eventually). Because of the need for flexibility, Hyla will require both CouchDB and RabbitMQ. I feel like these two dependencies will greatly improve Hyla's ability to adapt to everyone's needs.
 
 ## Installation
 
