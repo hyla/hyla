@@ -4,6 +4,7 @@ body {
 
 .page {
 	@include container;
+	@include single-box-shadow;
 
 	.header, .content, .footer {
 		@include column(16);
@@ -36,12 +37,12 @@ body {
 		.body {
 			@include column(16, true);
 			@include clearfix;
+			min-height: 300px;
 			background: #FFF;
 			padding: 5px;
 		}
 	}
 	.footer {
-		@include border-radius(0 0 5px 5px);
 
 		.copyright {
 			padding: 5px;
