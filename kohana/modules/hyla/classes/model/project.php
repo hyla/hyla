@@ -5,18 +5,19 @@ class Model_Project extends Couch_Model {
 	protected $_document = array(
 		'model'       => 'project',
 		'name'        => NULL,
+		'slug'        => NULL,
 		'description' => NULL,
 	);
 
 	protected function _setup_validation(Validation $validation)
 	{
 		return parent::_setup_validation($validation)
-			->rule('name', array($this, 'unique_name'));
+			->rule('slug', array($this, 'unique_slug'));
 	}
 
-	public function unique_name($value)
+	public function unique_slug($value)
 	{
-		$uri = '/_design/couchapp/_view/find_project_by_name?key="'.$value.'"';
+		$uri = '/_design/couchapp/_view/find_project_by_slug?key="'.$value.'"';
 		$response = $this->_sag->get($uri);
 
 		if (count($response->body['rows']) > 0)
@@ -32,9 +33,9 @@ class Model_Project extends Couch_Model {
 		return TRUE;
 	}
 
-	public function find_by_name($name)
+	public function find_by_slug($name)
 	{
-		$uri = '/_design/couchapp/_view/find_project_by_name?key="'.$name.'"';
+		$uri = '/_design/couchapp/_view/find_project_by_slug?key="'.$name.'"';
 		$response = $this->_sag->get($uri);
 
 		if (count($response->body['total_rows']) > 0)
