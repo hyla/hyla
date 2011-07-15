@@ -13,3 +13,9 @@ Route::set('hyla/projects', 'projects')
 		'controller' => 'projects',
 		'action'     => 'list',
 	));
+
+Route::set('hyla/single-project', 'projects/<slug>/<action>')
+	->defaults(array(
+		'directory'  => 'page',
+		'controller' => 'projects',
+	));
