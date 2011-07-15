@@ -2,7 +2,6 @@ Icon?
 .DS_Store
 .svn
 nbproject
-kohana/application/config/*.php
 *.swp
 *~
 *.sass-cache
