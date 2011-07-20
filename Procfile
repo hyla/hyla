@@ -1,0 +1,1 @@
+worker: ./minion workers:test
