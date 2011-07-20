@@ -15,3 +15,19 @@ The application is initially set to function from the url `http://dev.vm/hyla`. 
 1. if altering the `couchdb.php` config, make sure to adjust `kohana/modules/hyla/couchapp/.couchapprc` as well.
 1. create a `hyla` database on your CouchDB server
 1. `cd` into `kohana/modules/hyla/couchapp` and run `couchapp push` (install couchapp if needed)
+
+## Using the Procfile
+
+The Procfile is used to define background processes that need to be run along with the Hyla web interface. Hyla will be using background workers (written with Minion) for performing tasks independantly of the web interface. Common uses of worker processes is for offloading the sending of emails and the generation of PDFs so that the user is not waiting for these things to be done before being shown a page.
+
+I have added the minion task `workers:test` which simply runs forever and does nothing. It's simply used as an example of how to define its dependency in a Procfile and how to use Foreman and Upstart in order to start the dependencies along with Hyla.
+
+### Foreman
+
+Foreman is used during development only and is an awesome tool to quickly start up all background processes and monitor their output. It is a tool written in Ruby so install it using `gem install foreman`. You can then start all the processes defined in the Procfile by running `foreman start` from the root of the Hyla repository.
+
+### Upstart
+
+Upstart is used in Ubuntu for starting and stopping services. Since Hyla isn't ready for production yet, I won't waste time writing the tutorials for deploying it to the various platforms. Here is a great article about the process I am using though: [http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/]
+
+I will update this section as soon as I feel it's worth deploying Hyla to a real server (soon!) In the meantime, use Foreman for development :)
