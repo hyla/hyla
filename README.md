@@ -16,15 +16,15 @@ The application is initially set to function from the url `http://dev.vm/hyla`. 
 1. create a `hyla` database on your CouchDB server
 1. `cd` into `kohana/modules/hyla/couchapp` and run `couchapp push` (install couchapp if needed)
 
-## Using the Procfile
+## Using Procfile
 
-The Procfile is used to define background processes that need to be run along with the Hyla web interface. Hyla will be using background workers (written with Minion) for performing tasks independantly of the web interface. Common uses of worker processes is for offloading the sending of emails and the generation of PDFs so that the user is not waiting for these things to be done before being shown a page.
+Procfile is used to define background processes that need to be run along with the Hyla web interface. The file is at the root of the repository and currently contains an example entry. Hyla will be using background workers (written with Minion) for performing tasks independantly of the web interface. Common uses of worker processes is for offloading the sending of emails and the generation of PDFs so that the user is not waiting for these things to be done before being shown a page.
 
 I have added the minion task `workers:test` which simply runs forever and does nothing. It's simply used as an example of how to define its dependency in a Procfile and how to use Foreman and Upstart in order to start the dependencies along with Hyla.
 
 ### Foreman
 
-Foreman is used during development only and is an awesome tool to quickly start up all background processes and monitor their output. It is a tool written in Ruby so install it using `gem install foreman`. You can then start all the processes defined in the Procfile by running `foreman start` from the root of the Hyla repository.
+Foreman is used during development only and is an awesome tool to quickly start up all background processes and monitor their output. It is a tool written in Ruby so install it using `gem install foreman`. You can then start all the processes defined in the Procfile by running `foreman start` from the root of the Hyla repository. The output from all the processes started by Foreman will be combined and shown in the terminal. This is great for debugging background processes.
 
 ### Upstart
 
