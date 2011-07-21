@@ -108,7 +108,6 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'hyla'       => MODPATH.'hyla',                // Core hyla module
 	'assets'     => MODPATH.'assets',              // Asset Library
 	'media'      => MODPATH.'media',               // Kohana CFS Media Module
 	'kostache'   => MODPATH.'kostache',            // View Classes
@@ -120,6 +119,7 @@ Kohana::modules(array(
 	// temporary until theme is taken from user/site settings
 	'theme'      => HYLAPATH.'themes/_default',    // default hyla theme
 	'tracker'    => HYLAPATH.'plugins/tracker',    // Tracker Plugin
+	'hyla'       => MODPATH.'hyla',                // Core hyla module
 ));
 
 // Include Sag for working with CouchDB
