@@ -18,7 +18,9 @@
 			<div class="content">
 				<nav>
 					<ul>
-						<li> </li>
+						{{#sub_navigation}}
+						<li><a href="{{url}}">{{text}}</a></li>
+						{{/sub_navigation}}
 					</ul>
 				</nav>
 				<div class="body">{{>body}}</div>
