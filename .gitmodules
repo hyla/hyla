@@ -19,3 +19,6 @@
 [submodule "kohana/modules/hyla/vendor/sag"]
 	path = kohana/modules/hyla/vendor/sag
 	url = git://github.com/hyla/sag.git
+[submodule "kohana/modules/event-dispatcher"]
+	path = kohana/modules/event-dispatcher
+	url = git://github.com/hyla/kohana-event-dispatcher.git
