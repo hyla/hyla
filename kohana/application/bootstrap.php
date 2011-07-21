@@ -118,7 +118,8 @@ Kohana::modules(array(
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	'events'     => MODPATH.'event-dispatcher',    // Event Dispatcher,
 	// temporary until theme is taken from user/site settings
-	'theme'      => HYLAPATH.'themes/_default',     // default hyla theme
+	'theme'      => HYLAPATH.'themes/_default',    // default hyla theme
+	'tracker'    => HYLAPATH.'plugins/tracker',    // Tracker Plugin
 ));
 
 // Include Sag for working with CouchDB
