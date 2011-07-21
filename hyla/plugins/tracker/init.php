@@ -2,7 +2,7 @@
 
 Route::set('tracker/home', 'projects/<slug>/tracker')
 	->defaults(array(
-		'directory'  => 'page',
+		'directory'  => 'page/projects',
 		'controller' => 'tracker',
 		'action'     => 'home',
 	));
