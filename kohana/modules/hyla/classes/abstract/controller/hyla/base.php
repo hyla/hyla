@@ -17,6 +17,9 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->view = $this->_request_view();
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
+
+		$config = Kohana::config('couchdb');
+		$this->couchdb = new Sag($config->host, $config->port);
 	}
 
 	/**
@@ -32,7 +35,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			throw new Kohana_View_Exception('There was no View created for this request.');
 
 		$this->view
-			->set('dispatcher', $this->dispatcher);
+			->set('dispatcher', $this->dispatcher)
+			->set('couchdb', $this->couchdb);
 
 		$this->response->body($this->view);
 	}
