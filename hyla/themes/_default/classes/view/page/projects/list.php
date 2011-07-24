@@ -11,8 +11,7 @@ class View_Page_Projects_List extends Abstract_View_Page {
 		if ($this->_cached['projects'] !== NULL)
 			return $this->_cached['projects'];
 
-		$config = Kohana::config('couchdb');
-		$projects = Couch_Model::factory('project', new Sag($config->host, $config->port))
+		$projects = Couch_Model::factory('project', $this->couchdb)
 			->find_all(TRUE);
 
 		$data = array();

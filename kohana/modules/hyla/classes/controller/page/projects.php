@@ -9,8 +9,7 @@ class Controller_Page_Projects extends Abstract_Controller_Hyla_Page {
 		$this->view
 			->bind('project', $project);
 
-		$config = Kohana::config('couchdb');
-		$project = Couch_Model::factory('project', new Sag($config->host, $config->port))
+		$project = Couch_Model::factory('project', $this->couchdb)
 			->find_by_slug($this->request->param('slug'));
 
 		if ( ! $project->loaded())
