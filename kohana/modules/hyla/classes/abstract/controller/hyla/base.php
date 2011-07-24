@@ -12,6 +12,11 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $dispatcher;
 
+	/**
+	 * @var object the Sag object for this request
+	 */
+	public $couchdb;
+
 	public function before()
 	{
 		$this->view = $this->_request_view();
