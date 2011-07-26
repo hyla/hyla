@@ -44,6 +44,23 @@ abstract class Couch_Model {
 		return $this;
 	}
 
+	public function values( Array $values, Array $fields = NULL)
+	{
+		if ($fields === NULL)
+		{
+			$keys = array_keys($this->_document);
+			// We don't want to ever set _id
+			$fields = array_diff($keys, array('_id'));
+		}
+
+		foreach ($fields as $field)
+		{
+			$this->set($field, Arr::get($values, $field));
+		}
+
+		return $this;
+	}
+
 	public function document()
 	{
 		return $this->_document;

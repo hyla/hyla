@@ -22,3 +22,6 @@
 [submodule "kohana/modules/event-dispatcher"]
 	path = kohana/modules/event-dispatcher
 	url = git://github.com/hyla/kohana-event-dispatcher.git
+[submodule "kohana/modules/yform"]
+	path = kohana/modules/yform
+	url = git://github.com/hyla/kohana-yform.git
