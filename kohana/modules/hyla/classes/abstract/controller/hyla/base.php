@@ -40,6 +40,7 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			throw new Kohana_View_Exception('There was no View created for this request.');
 
 		$this->view
+			->set('request', $this->request)
 			->set('dispatcher', $this->dispatcher)
 			->set('couchdb', $this->couchdb);
 
