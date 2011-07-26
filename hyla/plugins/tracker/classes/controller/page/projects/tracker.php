@@ -48,4 +48,20 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 			}
 		}
 	}
+
+	public function action_view()
+	{
+		$this->view
+			->bind('project', $project)
+			->bind('ticket', $ticket);
+
+		$project = Couch_Model::factory('project', $this->couchdb)
+			->find_by_slug($this->request->param('slug'));
+
+		$ticket = Couch_Model::factory('ticket', $this->couchdb)
+			->find($this->request->param('ticket'));
+
+		if ( ! $project->loaded() OR ! $ticket->loaded())
+			throw new HTTP_Exception_404;
+	}
 }
