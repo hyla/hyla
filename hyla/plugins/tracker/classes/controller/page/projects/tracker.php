@@ -34,9 +34,13 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 
 			try
 			{
-				$ticket = Couch_Model::factory('ticket');
+				$ticket = Couch_Model::factory('ticket', $this->couchdb);
 				$ticket->values($values, array('title', 'description'));
 				$ticket->create();
+
+				$this->request->redirect(Route::url('hyla-tracker', array(
+					'slug' => $project->get('slug'),
+				)));
 			}
 			catch (Validation_Exception $e)
 			{
