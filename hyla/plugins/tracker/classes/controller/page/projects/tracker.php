@@ -2,16 +2,66 @@
 
 class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 
-	public function action_home()
+	public function action_list()
 	{
 		$this->view
 			->bind('project', $project);
 
-		$config = Kohana::config('couchdb');
-		$project = Couch_Model::factory('project', new Sag($config->host, $config->port))
+		$project = Couch_Model::factory('project', $this->couchdb)
 			->find_by_slug($this->request->param('slug'));
 
 		if ( ! $project->loaded())
+			throw new HTTP_Exception_404;
+	}
+
+	public function action_new()
+	{
+		$this->view
+			->bind('project', $project)
+			->bind('ticket', $ticket)
+			->bind('values', $values)
+			->bind('errors', $errors);
+
+		$project = Couch_Model::factory('project', $this->couchdb)
+			->find_by_slug($this->request->param('slug'));
+
+		if ( ! $project->loaded())
+			throw new HTTP_Exception_404;
+
+		if ($this->request->post())
+		{
+			$values = $this->request->post();
+
+			try
+			{
+				$ticket = Couch_Model::factory('ticket', $this->couchdb);
+				$ticket->values($values, array('title', 'description'));
+				$ticket->create();
+
+				$this->request->redirect(Route::url('hyla-tracker', array(
+					'slug' => $project->get('slug'),
+				)));
+			}
+			catch (Validation_Exception $e)
+			{
+				$errors = $e->array->errors('validation');
+			}
+		}
+	}
+
+	public function action_view()
+	{
+		$this->view
+			->bind('project', $project)
+			->bind('ticket', $ticket);
+
+		$project = Couch_Model::factory('project', $this->couchdb)
+			->find_by_slug($this->request->param('slug'));
+
+		$ticket = Couch_Model::factory('ticket', $this->couchdb)
+			->find($this->request->param('ticket'));
+
+		if ( ! $project->loaded() OR ! $ticket->loaded())
 			throw new HTTP_Exception_404;
 	}
 }

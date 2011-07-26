@@ -23,7 +23,7 @@ class Subscriber_Tracker_Navigation implements Interface_Subscriber {
 		$project = Arr::get($event->get_arguments(), 'project');
 
 		$navigation->add(array(
-			'url'  => Route::url('tracker/home', array('slug' => $project->get('slug'))),
+			'url'  => Route::url('hyla-tracker', array('slug' => $project->get('slug'))),
 			'text' => 'Tracker',
 		));
 	}
