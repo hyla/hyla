@@ -116,6 +116,7 @@ Kohana::modules(array(
 	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	'events'     => MODPATH.'event-dispatcher',    // Event Dispatcher,
+	'yform'      => MODPATH.'yform',               // Form Generation
 	// temporary until theme is taken from user/site settings
 	'theme'      => HYLAPATH.'themes/_default',    // default hyla theme
 	'tracker'    => HYLAPATH.'plugins/tracker',    // Tracker Plugin
