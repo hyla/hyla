@@ -1,0 +1,28 @@
+<h2>Tickets</h2>
+
+<table class="tickets">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Created On</th>
+			<th>Updated On</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="3"><a href="{{#urls}}{{new-ticket}}{{/urls}}">New Ticket</a></td>
+		</tr>
+		{{#tickets}}
+		<tr>
+			<td class="title"><a href="{{url}}">{{title}}</a></td>
+			<td>{{created_on}}</td>
+			<td>{{updated_on}}</td>
+		</li>
+		{{/tickets}}
+		{{^tickets}}
+		<tr>
+			<td colspan="3">No tickets found.</td>
+		</li>
+		{{/tickets}}
+	</tbody>
+</table>
