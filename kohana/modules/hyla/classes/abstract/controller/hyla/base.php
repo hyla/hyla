@@ -23,7 +23,7 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
 
-		$config = Kohana::config('couchdb');
+		$config = Kohana::$config->load('couchdb');
 		$this->couchdb = new Sag($config->host, $config->port);
 	}
 
