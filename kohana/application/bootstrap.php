@@ -112,8 +112,6 @@ Kohana::modules(array(
 	'media'      => MODPATH.'media',               // Kohana CFS Media Module
 	'kostache'   => MODPATH.'kostache',            // View Classes
 	'minion'     => MODPATH.'minion',              // CLI module
-	'database'   => MODPATH.'database',            // Database access
-	'orm'        => MODPATH.'orm',                 // ORM modeling
 	'unittest'   => MODPATH.'unittest',            // PHPUnit support
 	'events'     => MODPATH.'event-dispatcher',    // Event Dispatcher,
 	'yform'      => MODPATH.'yform',               // Form Generation
