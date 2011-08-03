@@ -18,13 +18,13 @@ class Subscriber_Tracker_Navigation implements Interface_Subscriber {
 	public function sub_navigation(Interface_Event $event)
 	{
 		// The navigation object gets passed in from the event
-		$navigation = $event->get_subject();
+		$navigation = &$event->get_subject();
 		// The project is passed as arguments in the event
 		$project = Arr::get($event->get_arguments(), 'project');
 
-		$navigation->add(array(
+		$navigation[] = array(
 			'url'  => Route::url('hyla-tracker', array('slug' => $project->get('slug'))),
 			'text' => 'Tracker',
-		));
+		);
 	}
 }
