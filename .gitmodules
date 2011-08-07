@@ -22,3 +22,6 @@
 [submodule "kohana/modules/yform"]
 	path = kohana/modules/yform
 	url = git://github.com/hyla/kohana-yform.git
+[submodule "hyla/core/vendor/sag"]
+	path = hyla/core/vendor/sag
+	url = git://github.com/hyla/sag.git
