@@ -118,7 +118,7 @@ Kohana::modules(array(
 	// temporary until theme is taken from user/site settings
 	'theme'      => HYLAPATH.'themes/_default',    // default hyla theme
 	'tracker'    => HYLAPATH.'plugins/tracker',    // Tracker Plugin
-	'hyla'       => MODPATH.'hyla',                // Core hyla module
+	'hyla'       => HYLAPATH.'core',               // Core hyla module
 ));
 
 // Include Sag for working with CouchDB
