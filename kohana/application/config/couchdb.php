@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 return array(
-	'host' => 'dev.vm',
+	'host' => '192.168.0.2',
 	'port' => '5984',
+	'db'   => 'hyla',
 );
