@@ -15,4 +15,29 @@ class Controller_Page_Projects extends Abstract_Controller_Hyla_Page {
 		if ( ! $project->loaded())
 			throw new HTTP_Exception_404;
 	}
+
+	public function action_create()
+	{
+		$this->view
+			->bind('values', $values)
+			->bind('errors', $errors);
+
+		if ($this->request->post())
+		{
+			$values = $this->request->post();
+
+			try
+			{
+				$project = Couch_Model::factory('project', $this->couchdb);
+				$project->values($values, array('name', 'slug', 'description'));
+				$project->create();
+
+				$this->request->redirect(Route::url('hyla/projects'));
+			}
+			catch (Validation_Exception $e)
+			{
+				$errors = $e->array->errors('validation');
+			}
+		}
+	}
 }
