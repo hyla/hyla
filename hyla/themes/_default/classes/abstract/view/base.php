@@ -13,6 +13,11 @@ abstract class Abstract_View_Base extends Kostache {
 		return Media::url('images/hyla.png');
 	}
 
+	public function home_url()
+	{
+		return Route::url('hyla/home');
+	}
+
 	/**
 	 * Assets object to add css/js groups to
 	 */
