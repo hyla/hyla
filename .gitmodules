@@ -25,3 +25,6 @@
 [submodule "hyla/core/vendor/sag"]
 	path = hyla/core/vendor/sag
 	url = git://github.com/hyla/sag.git
+[submodule "kohana/modules/config-driver-couchdb"]
+	path = kohana/modules/config-driver-couchdb
+	url = git@github.com:hyla/kohana-config-driver-couchdb.git
