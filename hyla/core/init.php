@@ -7,7 +7,7 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
-Route::set('hyla/projects', 'projects')
+Route::set('hyla/projects', 'projects(/<action>)', array('action' => 'create'))
 	->defaults(array(
 		'directory'  => 'page',
 		'controller' => 'projects',

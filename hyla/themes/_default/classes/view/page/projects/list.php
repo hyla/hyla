@@ -6,6 +6,11 @@ class View_Page_Projects_List extends Abstract_View_Page {
 		'projects' => NULL,
 	);
 
+	public function create_url()
+	{
+		return Route::url('hyla/projects', array('action' => 'create'));
+	}
+
 	public function projects()
 	{
 		if ($this->_cached['projects'] !== NULL)
