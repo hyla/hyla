@@ -12,6 +12,8 @@ class Model_Project extends Couch_Model {
 	protected function _setup_validation(Validation $validation)
 	{
 		return parent::_setup_validation($validation)
+			->rule('name', 'not_empty')
+			->rule('slug', 'not_empty')
 			->rule('slug', array($this, 'unique_slug'));
 	}
 
