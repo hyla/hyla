@@ -7,6 +7,20 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
+Route::set('hyla/log_in', 'log_in/github')
+	->defaults(array(
+		'directory'  => 'page',
+		'controller' => 'authentication',
+		'action'     => 'github',
+	));
+
+Route::set('hyla/log_out', 'log_out')
+	->defaults(array(
+		'directory'  => 'page',
+		'controller' => 'authentication',
+		'action'     => 'log_out',
+	));
+
 Route::set('hyla/projects', 'projects(/<action>)', array('action' => 'create'))
 	->defaults(array(
 		'directory'  => 'page',
