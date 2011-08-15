@@ -42,4 +42,9 @@ abstract class Abstract_View_Base extends Kostache {
 
 		return $this;
 	}
+
+	public function logged_in()
+	{
+		return $this->auth->loaded();
+	}
 }
