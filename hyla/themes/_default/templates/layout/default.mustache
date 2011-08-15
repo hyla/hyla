@@ -11,7 +11,9 @@
 				<h1><a href="{{home_url}}"><img src="{{logo_url}}" alt="{{title}}" /></a></h1>
 				<nav>
 					<ul>
-						<li></li>
+						{{#auth_navigation}}
+						<li><a href="{{url}}">{{text}}</a></li>
+						{{/auth_navigation}}
 					</ul>
 				</nav>
 			</div>

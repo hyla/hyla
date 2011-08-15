@@ -51,6 +51,35 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		return $assets;
 	}
 
+	public function auth_navigation()
+	{
+		$navigation = array();
+
+		if ($this->logged_in())
+		{
+			$navigation += array(
+				'url'  => Route::url('hyla/log_out'),
+				'text' => 'Log Out',
+			);
+		}
+		else
+		{
+			$navigation += array(
+				'url'  => Route::url('hyla/log_in', array(
+					'action' => 'github',
+				)),
+				'text' => 'Log In with Github',
+			);
+		}
+
+		$arguments = array('auth' => $this->auth);
+
+		// Trigger this event so plugins can alter the navigation before it's rendered
+		$this->dispatcher->trigger('hyla:auth-nav', new Event($navigation, $arguments));
+
+		return $navigation;
+	}
+
 	public function render($template = NULL, $view = NULL, $partials = NULL)
 	{
 		$content = parent::render($template, $view, $partials);
