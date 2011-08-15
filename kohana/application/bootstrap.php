@@ -94,6 +94,8 @@ Kohana::init(array(
 	'index_file' => FALSE,
 ));
 
+Cookie::$salt = '28930v542308989h0f4fjksk-0sk';
+
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
