@@ -17,6 +17,11 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $couchdb;
 
+	/**
+	 * @var object the authenticated user model
+	 */
+	public $auth;
+
 	public function before()
 	{
 		$this->view = $this->_request_view();
@@ -25,6 +30,10 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 
 		$config = Kohana::$config->load('couchdb');
 		$this->couchdb = new Sag($config->host, $config->port);
+
+		// Try to log the user in
+		$this->auth = Couch_Model::factory('user', $this->couchdb)
+			->find(Cookie::get('auth'));
 	}
 
 	/**
@@ -42,7 +51,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->view
 			->set('request', $this->request)
 			->set('dispatcher', $this->dispatcher)
-			->set('couchdb', $this->couchdb);
+			->set('couchdb', $this->couchdb)
+			->set('auth', $this->auth);
 
 		$this->response->body($this->view);
 	}
