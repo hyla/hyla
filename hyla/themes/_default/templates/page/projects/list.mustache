@@ -1,5 +1,7 @@
 <h1>Projects</h1>
+{{#can_create_project}}
 <p><a href="{{create_url}}">Create a new project</a></p>
+{{/can_create_project}}
 {{#has_projects}}
 	<ul>
 	{{#projects}}

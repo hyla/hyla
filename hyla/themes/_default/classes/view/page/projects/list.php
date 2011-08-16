@@ -6,6 +6,11 @@ class View_Page_Projects_List extends Abstract_View_Page {
 		'projects' => NULL,
 	);
 
+	public function can_create_project()
+	{
+		return $this->auth->can('createProject');
+	}
+
 	public function create_url()
 	{
 		return Route::url('hyla/projects', array('action' => 'create'));
