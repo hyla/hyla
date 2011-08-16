@@ -1,10 +1,64 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_User extends Couch_Model {
+class Model_User extends Couch_Model implements Model_ACL_User {
 
 	protected $_document = array(
 		'model'       => 'user',
 	);
+
+	/**
+	 * Wrapper method to execute ACL policies. Only returns a boolean, if you
+	 * need a specific error code, look at Policy::$last_code
+	 *
+	 * @param string $policy_name the policy to run
+	 * @param array  $args        arguments to pass to the rule
+	 *
+	 * @return boolean
+	 */
+	public function can($policy_name, $args = array())
+	{
+		$status = FALSE;
+
+		$refl = new ReflectionClass('Policy_' . $policy_name);
+		$class = $refl->newInstanceArgs();
+		$status = $class->execute($this, $args);
+
+		if ($status === TRUE)
+		{
+			return TRUE;
+		}
+		elseif ($status === FALSE)
+		{
+			// We don't know what kind of specific error this was
+			$status = Policy::GENERAL_FAILURE;
+		}
+
+		Policy::$last_code = $status;
+
+		return FALSE;
+	}
+
+	/**
+	 * Wrapper method for self::can() but throws an exception instead of bool
+	 *
+	 * @param string $policy_name the policy to run
+	 * @param array  $args        arguments to pass to the rule
+	 *
+	 * @throws Policy_Exception
+	 *
+	 * @return null
+	 */
+	public function assert($policy_name, $args = array())
+	{
+		$status = $this->can($policy_name, $args);
+
+		if ($status !== TRUE)
+		{
+			throw new Policy_Exception('Could not authorize policy :policy', array(
+					':policy' => $policy_name
+				), Policy::$last_code);
+		}
+	}
 
 	public function github_auth($token)
 	{
