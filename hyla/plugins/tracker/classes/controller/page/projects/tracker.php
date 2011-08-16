@@ -36,6 +36,7 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 			{
 				$ticket = Couch_Model::factory('ticket', $this->couchdb);
 				$ticket->values($values, array('title', 'description'));
+				$ticket->set('created_by', $this->auth->get('_id'));
 				$ticket->create();
 
 				$this->request->redirect(Route::url('hyla-tracker', array(
