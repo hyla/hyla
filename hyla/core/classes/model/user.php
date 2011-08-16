@@ -60,6 +60,11 @@ class Model_User extends Couch_Model implements Model_ACL_User {
 		}
 	}
 
+	public function is($group)
+	{
+		return in_array($group, $this->get('groups', array()));
+	}
+
 	public function github_auth($token)
 	{
 		$config = Kohana::$config->load('oauth')->github;
