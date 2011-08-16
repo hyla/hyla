@@ -110,6 +110,7 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
+	'acl'        => MODPATH.'acl',                 // ACL Module
 	'assets'     => MODPATH.'assets',              // Asset Library
 	'media'      => MODPATH.'media',               // Kohana CFS Media Module
 	'kostache'   => MODPATH.'kostache',            // View Classes
