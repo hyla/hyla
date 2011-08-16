@@ -30,6 +30,11 @@ class View_Page_Projects_Tracker_List extends Abstract_View_Page_Project {
 		return $this->_cached['tickets'] = $data;
 	}
 
+	public function can_create_ticket()
+	{
+		return $this->auth->can('createTicket');
+	}
+
 	public function urls()
 	{
 		return array(

@@ -9,9 +9,11 @@
 		</tr>
 	</thead>
 	<tbody>
+		{{#can_create_ticket}}
 		<tr>
 			<td colspan="3"><a href="{{#urls}}{{new-ticket}}{{/urls}}">New Ticket</a></td>
 		</tr>
+		{{/can_create_ticket}}
 		{{#tickets}}
 		<tr>
 			<td class="title"><a href="{{url}}">{{title}}</a></td>
