@@ -28,3 +28,6 @@
 [submodule "kohana/modules/config-driver-couchdb"]
 	path = kohana/modules/config-driver-couchdb
 	url = git@github.com:hyla/kohana-config-driver-couchdb.git
+[submodule "kohana/modules/acl"]
+	path = kohana/modules/acl
+	url = git://github.com/hyla/acl.git
