@@ -49,6 +49,13 @@ abstract class Couch_Model implements Interface_Model {
 		return $this;
 	}
 
+	public function append($key, $value)
+	{
+		$this->_document[$key][] = $value;
+
+		return $this;
+	}
+
 	public function values( Array $values, Array $fields = NULL)
 	{
 		if ($fields === NULL)
