@@ -65,4 +65,43 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 		if ( ! $project->loaded() OR ! $ticket->loaded())
 			throw new HTTP_Exception_404;
 	}
+
+	public function action_update()
+	{
+		$this->view
+			->bind('project', $project)
+			->bind('ticket', $ticket)
+			->bind('values', $values)
+			->bind('errors', $errors);
+
+		$project = Couch_Model::factory('project', $this->couchdb)
+			->find_by_slug($this->request->param('slug'));
+
+		$ticket = Couch_Model::factory('ticket', $this->couchdb)
+			->find($this->request->param('ticket'));
+
+		if ( ! $project->loaded() OR ! $ticket->loaded())
+			throw new HTTP_Exception_404;
+
+		if ($this->request->post())
+		{
+			$comment = $this->request->post('comment');
+
+			try
+			{
+				$ticket->add_comment($this->auth->get('_id'), $comment);
+				$ticket->update();
+
+				$this->request->redirect(Route::url('hyla-tracker', array(
+					'action' => 'view',
+					'slug'   => $project->get('slug'),
+					'ticket' => $ticket->get('_id'),
+				)));
+			}
+			catch (Validation_Exception $e)
+			{
+				$errors = $e->array->errors('validation');
+			}
+		}
+	}
 }
