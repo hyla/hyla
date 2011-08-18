@@ -16,4 +16,18 @@ class View_Model_Ticket extends View_Model {
 	{
 		return View_Model::factory($this->_model->get_author());
 	}
+
+	public function history()
+	{
+		$data = array();
+
+		foreach ($this->_model->get('history') as $item)
+		{
+			$item['date_time'] = date('m/d/Y h:i a', $item['time']);
+			$item['author'] = View_Model::factory($this->_model->get_author($item['created_by']));
+			$data[] = $item;
+		}
+
+		return $data;
+	}
 }
