@@ -1,7 +1,19 @@
 {{#ticket}}
 <h1>{{title}}</h1>
-{{#author}}
-<div class="author">{{display_name}}</div>
-{{/author}}
+{{#author}}<div class="author">{{display_name}}</div>{{/author}}
 <div class="description">{{description}}</div>
+<h2>History</h2>
+{{#history}}
+	<div class="{{action}}">
+		{{#comment}}
+			<h3>Comment - {{date_time}}</h3>
+			{{#author}}<div class="author">{{display_name}}</div>{{/author}}
+			<div>{{comment}}</div>
+		{{/comment}}
+	</div>
+{{/history}}
 {{/ticket}}
+
+{{#update_url}}
+<a href="{{update_url}}">Update</a>
+{{/update_url}}
