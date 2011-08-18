@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Couch_Model {
+abstract class Couch_Model implements Interface_Model {
 
 	public static function factory($model, Sag $sag)
 	{
@@ -18,6 +18,11 @@ abstract class Couch_Model {
 
 		if ( ! isset($this->_document))
 			throw new Kohana_Exception('Must define $_document[\'model\']');
+	}
+
+	public function path($path, $default = NULL)
+	{
+		return Arr::path($this->_document, $path, $default);
 	}
 
 	public function get($key, $default = NULL)
