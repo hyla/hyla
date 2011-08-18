@@ -4,7 +4,10 @@ class Model_Ticket extends Couch_Model {
 
 	protected $_document = array(
 		'model'       => 'ticket',
+		'project'     => NULL,
 		'created_by'  => NULL,
+		'created_on'  => NULL,
+		'updated_on'  => NULL,
 		'title'       => NULL,
 		'description' => NULL,
 		'status'      => 'open',
@@ -19,6 +22,26 @@ class Model_Ticket extends Couch_Model {
 			->rule('description', 'not_empty');
 	}
 
+	public function create()
+	{
+		if ( ! $this->get('created_on'))
+		{
+			$this->set('created_on', time());
+		}
+
+		return parent::create();
+	}
+
+	public function update()
+	{
+		if ( ! $this->get('updated_on'))
+		{
+			$this->set('updated_on', time());
+		}
+
+		return parent::create();
+	}
+
 	public function get_author($id = NULL)
 	{
 		if ($id === NULL)
@@ -28,6 +51,12 @@ class Model_Ticket extends Couch_Model {
 
 		return Couch_Model::factory('user', $this->_sag)
 			->find($id);
+	}
+
+	public function get_project()
+	{
+		return Couch_Model::factory('project', $this->_sag)
+			->find($this->get('project_id'));
 	}
 
 	public function add_comment($author_id, $comment)
