@@ -12,19 +12,12 @@ class View_Page_Projects_Tracker_List extends Abstract_View_Page_Project {
 			return $this->_cached['tickets'];
 
 		$tickets = Couch_Model::factory('ticket', $this->couchdb)
-			->find_all(TRUE);
+			->find_all();
 
 		$data = array();
 		foreach ($tickets as $ticket)
 		{
-			$item = (array) $ticket;
-			$item['url'] = Route::url('hyla-tracker', array(
-				'slug'   => $this->project->get('slug'),
-				'action' => 'view',
-				'ticket' => $item['_id'],
-			));
-
-			$data[] = $item;
+			$data[] = View_Model::factory($ticket);
 		}
 
 		return $this->_cached['tickets'] = $data;
