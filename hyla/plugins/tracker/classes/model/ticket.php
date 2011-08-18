@@ -16,4 +16,10 @@ class Model_Ticket extends Couch_Model {
 			->rule('title', 'not_empty')
 			->rule('description', 'not_empty');
 	}
+
+	public function get_author()
+	{
+		return Couch_Model::factory('user', $this->_sag)
+			->find($this->get('created_by'));
+	}
 }
