@@ -47,4 +47,14 @@ abstract class Abstract_View_Base extends Kostache {
 	{
 		return $this->auth->loaded();
 	}
+
+	public function markdown()
+	{
+		$view = $this;
+
+		return function($content) use ($view)
+		{
+			return Markdown($view->render($content));
+		};
+	}
 }
