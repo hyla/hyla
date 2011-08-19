@@ -127,6 +127,8 @@ Kohana::modules(array(
 
 // Include Sag for working with CouchDB
 require Kohana::find_file('vendor/sag/src', 'Sag');
+// Include Markdown everywhere
+require Kohana::find_file('vendor/markdown', 'markdown');
 
 // Attach the CouchDB config reader
 $config = Kohana::$config->load('couchdb');
