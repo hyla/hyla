@@ -39,7 +39,11 @@ body {
 			@include clearfix;
 			min-height: 300px;
 			background: #FFF;
-			padding: 5px;
+
+			> * {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
 		}
 	}
 	.footer {

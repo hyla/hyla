@@ -1,0 +1,26 @@
+.ticket {
+
+	.info {
+		margin-top: 25px;
+	}
+
+	.comment, .info {
+		border: 1px solid #333;
+		margin-bottom: 10px;
+
+		h1, h3 {
+			margin: 0;
+			padding: 5px;
+			background: #DDD;
+		}
+		.author {
+			font-size: 0.85em;
+			padding: 2px 5px;
+			background: #DDD;
+			border-bottom: 2px solid #333;
+		}
+		.comment-content, .description {
+			padding: 5px;
+		}
+	}
+}
