@@ -1,0 +1,3 @@
+# What is Hyla?
+
+Hyla is an open source, [object oriented](http://wikipedia.org/wiki/Object-Oriented_Programming) [MVC](http://wikipedia.org/wiki/Model–View–Controller "Model View Controller") project manager built using [PHP5](http://php.net/ "PHP Hypertext Preprocessor"). Its goal is to be a highly modular application, that, through various decoupled plugins, can be the single tool needed to develop, test, deploy, and monitor applications.
