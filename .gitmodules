@@ -34,3 +34,6 @@
 [submodule "kohana/modules/minion-tasks-media"]
 	path = kohana/modules/minion-tasks-media
 	url = git://github.com/hyla/minion-tasks-media.git
+[submodule "kohana/modules/userguide"]
+	path = kohana/modules/userguide
+	url = git://github.com/hyla/kohana-userguide.git
