@@ -24,6 +24,9 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 
 	public function before()
 	{
+		// All Hyla actions have access to markdown
+		require Kohana::find_file('vendor/markdown', 'markdown');
+
 		$this->view = $this->_request_view();
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
