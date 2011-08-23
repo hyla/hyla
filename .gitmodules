@@ -31,3 +31,6 @@
 [submodule "kohana/modules/acl"]
 	path = kohana/modules/acl
 	url = git://github.com/hyla/kohana-acl.git
+[submodule "kohana/modules/minion-tasks-media"]
+	path = kohana/modules/minion-tasks-media
+	url = git://github.com/hyla/minion-tasks-media.git
