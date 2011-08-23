@@ -123,6 +123,7 @@ Kohana::modules(array(
 	'events'     => MODPATH.'event-dispatcher',    // Event Dispatcher,
 	'yform'      => MODPATH.'yform',               // Form Generation
 	'config-couchdb' => MODPATH.'config-driver-couchdb', // Config driver for CouchDB
+	'tasks-media' => MODPATH.'minion-tasks-media',
 ));
 
 // Include Sag for working with CouchDB
