@@ -124,6 +124,7 @@ Kohana::modules(array(
 	'yform'          => MODPATH.'yform',               // Form Generation
 	'config-couchdb' => MODPATH.'config-driver-couchdb', // Config driver for CouchDB
 	'tasks-media'    => MODPATH.'minion-tasks-media',
+	'userguide'      => MODPATH.'userguide',             // Documentation
 ));
 
 // Include Sag for working with CouchDB
