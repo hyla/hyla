@@ -7,6 +7,13 @@
  * $teal: #005F63;
  * $limeLight: #e7ef8a;
  */
+$color_green_white: #EAF2EC;
+$color_light-green: #D7E8DB;
+$color_green: #B7C7B7;
+$color_dark_green: #88A288;
+$color_orange: #FF9933;
+$color_light_orange: #FFCC99;
+$color_gray: #999;
 
 /**
  * Colors by purpose
@@ -17,3 +24,38 @@
  * $colorNavHover: $teal;
  * $colorNavBackground: $lineLight;
  */
+@mixin color_body() {
+	background: $color_green;
+}
+
+@mixin color_main_container() {
+	background: $color_light_green;
+}
+
+@mixin color_content() {
+	background: $color_green_white;
+	color: $color_gray;
+}
+
+@mixin color_sidebar_widget() {
+	background: $color_green_white;
+	color: $color_gray;
+}
+
+@mixin color_anchors() {
+	color: $color_orange;
+}
+
+@mixin color_footer() {
+	background: $color_dark_green;
+	color: $color_light_green;
+}
+
+@mixin color_navigation() {
+	background: $color_green_white;
+	color: $color_gray;
+
+	a {
+		@include color_anchors;
+	}
+}

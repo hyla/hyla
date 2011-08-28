@@ -1,36 +1,51 @@
+$blueprint-grid-columns: 16;
+$blueprint-container-size: 940px;
+$blueprint-grid-margin: 20px;
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+$blueprint-grid-outer-width: $blueprint-grid-width + $blueprint-grid-margin;
+
 body {
-	background: #CCC;
+	@include color_body;
 }
 
 .page {
 	@include container;
-	@include single-box-shadow;
+	@include color_main_container;
 
 	.header, .content, .footer {
 		@include column(16);
 	}
 	.header {
-		background: #182612;
 
 		nav {
 			@include column(6, true);
+			@include color_navigation;
+			@include border-bottom-left-radius(5px);
+
+			a {
+				font-size: 0.9em;
+			}
 
 			ul {
 				@include horizontal-list;
-				background: #D92A1A;
+
 				padding: 5px;
 			}
 		}
 		h1 {
-			@include column(10);
+			@include column(9);
+			@include prepend(1);
 		}
 	}
 	.content, .footer {
-		background: #D92A1A;
+
 	}
 	.content {
+		@include color_content;
+
 		nav ul {
 			@include horizontal-list;
+			@include color_navigation;
 
 			padding: 5px;
 		}
@@ -38,7 +53,6 @@ body {
 			@include column(16, true);
 			@include clearfix;
 			min-height: 300px;
-			background: #FFF;
 
 			> * {
 				margin-left: 10px;
@@ -47,10 +61,14 @@ body {
 		}
 	}
 	.footer {
+		@include color_footer;
 
-		.copyright {
-			padding: 5px;
-			font-size: 0.6em;
+		padding: 0px 10px;
+		font-size: 12px;
+		line-height: 25px;
+
+		p {
+			margin-bottom: 0;
 		}
 	}
 }
