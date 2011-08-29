@@ -25,5 +25,19 @@ class Minion_Task_Hyla_Install extends Minion_Task {
 			->set('base_url', $base_url);
 
 		file_put_contents($view->save_path(), $view->render());
+
+		Minion_CLI::write('Generating config/couchdb.php'.PHP_EOL);
+		$view = Kostache::factory('hyla/installer/config/couchdb');
+		foreach ($view->required_input() as $key => $info)
+		{
+			$response = Minion_CLI::read($info['line']);
+			$response = Valid::not_empty($response)
+				? $response
+				: $info['default'];
+
+			$view->set($key, $response);
+		}
+
+		file_put_contents($view->save_path(), $view->render());
 	}
 }
