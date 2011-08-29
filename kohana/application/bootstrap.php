@@ -64,6 +64,16 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 I18n::lang('en-us');
 
 /**
+ * Create the config class we will need after Kohana::init()
+ */
+$config = new Kohana_Config;
+
+/**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+$config->attach(new Config_File);
+
+/**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
  *
  * Note: If you supply an invalid environment name, a PHP warning will be thrown
@@ -74,6 +84,13 @@ if (isset($_SERVER['KOHANA_ENV']))
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 	// Useful for use in file paths and such
 	Kohana::$environment_string = $_SERVER['KOHANA_ENV'];
+}
+else
+{
+	// Default to 'development'
+	Kohana::$environment = Kohana::DEVELOPMENT;
+	// Useful for use in file paths and such
+	Kohana::$environment_string = 'development';
 }
 
 /**
@@ -89,10 +106,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array(
-	'base_url'   => 'http://dev.vm/hyla/',
-	'index_file' => FALSE,
-));
+Kohana::init($config->load('init')->as_array());
 
 Cookie::$salt = '28930v542308989h0f4fjksk-0sk';
 
@@ -102,30 +116,15 @@ Cookie::$salt = '28930v542308989h0f4fjksk-0sk';
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 
 /**
- * Attach a file reader to config. Multiple readers are supported.
+ * Replace Kohana::$config with ours
  */
-Kohana::$config->attach(new Config_File);
+Kohana::$config = $config;
+unset($config);
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(array(
-	// temporary until theme is taken from user/site settings
-	'theme'          => HYLAPATH.'themes/_default',      // default hyla theme
-	'tracker'        => HYLAPATH.'plugins/tracker',      // Tracker Plugin
-	'hyla'           => HYLAPATH.'core',                 // Core hyla module
-	'acl'            => MODPATH.'acl',                   // ACL Module
-	'assets'         => MODPATH.'assets',                // Asset Library
-	'media'          => MODPATH.'media',                 // Kohana CFS Media Module
-	'kostache'       => MODPATH.'kostache',              // View Classes
-	'minion'         => MODPATH.'minion',                // CLI module
-	'unittest'       => MODPATH.'unittest',              // PHPUnit support
-	'events'         => MODPATH.'event-dispatcher',      // Event Dispatcher,
-	'yform'          => MODPATH.'yform',                 // Form Generation
-	'config-couchdb' => MODPATH.'config-driver-couchdb', // Config driver for CouchDB
-	'tasks-media'    => MODPATH.'minion-tasks-media',    // Media related tasks
-	'userguide'      => MODPATH.'userguide',             // Documentation
-));
+Kohana::modules(Kohana::$config->load('modules')->as_array());
 
 // Include Sag for working with CouchDB
 require Kohana::find_file('vendor/sag/src', 'Sag');
