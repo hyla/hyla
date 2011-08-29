@@ -10,6 +10,14 @@ class View_Hyla_Installer_Config_Init extends Kostache {
 	public $profile;
 	public $caching;
 
+	public function index_file()
+	{
+		// This property can take both boolean and string values
+		return ($this->index_file === FALSE OR $this->index_file === 'FALSE')
+			? 'FALSE'
+			: '\''.$this->index_file.'\'';
+	}
+
 	public function required_input()
 	{
 		return array(
