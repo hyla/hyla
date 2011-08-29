@@ -2,39 +2,28 @@
 
 class Minion_Task_Hyla_Install extends Minion_Task {
 
-	protected $_config = array(
-		'skip-init'     => FALSE,
-		'skip-htaccess' => FALSE,
-	);
-
 	public function execute( array $config)
 	{
-		if ($config['skip-init'] === FALSE)
+		Minion_CLI::write('Generating config/init.php'.PHP_EOL);
+		$view = Kostache::factory('hyla/installer/config/init');
+		foreach ($view->required_input() as $key => $info)
 		{
-			$view = Kostache::factory('hyla/installer/config/init');
-			foreach ($view->required_input() as $key => $info)
-			{
-				$response = Minion_CLI::read($info['line']);
-				$response = Valid::not_empty($response)
-					? $response
-					: $info['default'];
+			$response = Minion_CLI::read($info['line']);
+			$response = Valid::not_empty($response)
+				? $response
+				: $info['default'];
 
-				$view->set($key, $response);
-			}
-
-			file_put_contents($view->save_path(), $view->render());
+			$view->set($key, $response);
 		}
 
-		if ($config['skip-htaccess'] === FALSE)
-		{
-			$base_url = ($config['skip-init'] === FALSE)
-				? $view->base_url
-				: Kohana::$base_url;
+		file_put_contents($view->save_path(), $view->render());
 
-			$view = Kostache::factory('hyla/installer/htaccess')
-				->set('base_url', $base_url);
+		Minion_CLI::write('Generating .htaccess'.PHP_EOL);
+		$base_url = $view->base_url;
 
-			file_put_contents($view->save_path(), $view->render());
-		}
+		$view = Kostache::factory('hyla/installer/htaccess')
+			->set('base_url', $base_url);
+
+		file_put_contents($view->save_path(), $view->render());
 	}
 }
