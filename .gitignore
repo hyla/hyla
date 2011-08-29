@@ -5,3 +5,5 @@ nbproject
 *.swp
 *~
 *.sass-cache
+kohana/application/config/*
+!kohana/application/config/modules.php
