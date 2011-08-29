@@ -3,7 +3,6 @@ RewriteEngine On
 
 # Installation directory
 RewriteBase /hyla/
-
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
@@ -11,7 +10,7 @@ RewriteBase /hyla/
 </Files>
 
 # Protect application and system files from being viewed
-RewriteRule ^(?:application|modules|system)\b - [F,L]
+RewriteRule ^(?:hyla|kohana)\b - [F,L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
