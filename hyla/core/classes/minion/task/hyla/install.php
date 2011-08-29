@@ -40,6 +40,21 @@ class Minion_Task_Hyla_Install extends Minion_Task {
 
 		file_put_contents($view->save_path(), $view->render());
 
+		Minion_CLI::write('Generating couchapp/.couchapprc');
+
+		$config = array(
+			'host' => $view->host,
+			'port' => $view->port,
+			'db'   => $view->db,
+		);
+		$view = Kostache::factory('hyla/installer/couchapp/couchapprc')
+			->set('config', $config);
+
+		file_put_contents($view->save_path(), $view->render());
+
+		Minion_CLI::write('Trying to push core couchapp');
+		exec('cd '.escapeshellarg(HYLAPATH.'core/couchapp').' && couchapp push');
+
 		Minion_CLI::write('Generating config/rabbitmq.php'.PHP_EOL);
 		$view = Kostache::factory('hyla/installer/config/rabbitmq');
 		foreach ($view->required_input() as $key => $info)
