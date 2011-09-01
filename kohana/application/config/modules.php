@@ -16,4 +16,5 @@ return array(
 	'config-couchdb' => MODPATH.'config-driver-couchdb', // Config driver for CouchDB
 	'tasks-media'    => MODPATH.'minion-tasks-media',    // Media related tasks
 	'userguide'      => MODPATH.'userguide',             // Documentation
+	'oauth2'         => MODPATH.'oauth2',                // OAuth 2 module
 );
