@@ -37,3 +37,6 @@
 [submodule "kohana/modules/userguide"]
 	path = kohana/modules/userguide
 	url = git://github.com/hyla/kohana-userguide.git
+[submodule "kohana/modules/oauth2"]
+	path = kohana/modules/oauth2
+	url = git://github.com/hyla/kohana-oauth2.git
