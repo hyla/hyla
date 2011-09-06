@@ -40,3 +40,6 @@
 [submodule "kohana/modules/oauth2"]
 	path = kohana/modules/oauth2
 	url = git://github.com/hyla/kohana-oauth2.git
+[submodule "kohana/modules/uuid"]
+	path = kohana/modules/uuid
+	url = git://github.com/hyla/kohana-uuid.git
