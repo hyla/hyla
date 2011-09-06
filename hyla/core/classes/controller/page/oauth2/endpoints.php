@@ -88,7 +88,7 @@ class Controller_Page_OAuth2_Endpoints extends Abstract_Controller_Hyla_Page {
 					'auth_params' => $auth_params,
 					'client'      => $client,
 					'user'        => $user,
-				)));
+				));
 			}
 			else
 			{
