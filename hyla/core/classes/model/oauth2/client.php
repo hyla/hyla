@@ -8,6 +8,14 @@
  */
 class Model_OAuth2_Client extends Model_OAuth2 implements Interface_Model_OAuth2_Client {
 
+	protected $_document = array(
+		'model'         => 'oauth2_client',
+		'user_id'       => NULL,
+		'client_id'     => NULL,
+		'client_secret' => NULL,
+		'redirect_uri'  => '',
+	);
+
 	/**
 	 * Find a client
 	 *
