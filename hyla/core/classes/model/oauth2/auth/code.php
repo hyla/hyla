@@ -21,7 +21,7 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	 */
 	public static function find_code($code, $client_id = NULL)
 	{
-
+		echo Debug::vars('Model_OAuth2_Auth_Code::find_code');die;
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	 */
 	public static function create_code($client_id, $redirect_uri, $user_id = NULL, $scope = NULL)
 	{
-
+		echo Debug::vars('Model_OAuth2_Auth_Code::create_code');die;
 	}
 
 	/**
@@ -56,6 +56,6 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	 */
 	public static function deleted_expired_codes()
 	{
-
+		echo Debug::vars('Model_OAuth2_Auth_Code::deleted_expired_codes');die;
 	}
 }

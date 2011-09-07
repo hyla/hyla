@@ -26,7 +26,11 @@ class Model_OAuth2_Client extends Model_OAuth2 implements Interface_Model_OAuth2
 	 */
 	public static function find_client($client_id, $client_secret = NULL)
 	{
+		$config = Kohana::$config->load('couchdb');
+		$sag = new Sag($config->host, $config->port);
 
+		return Couch_Model::factory('oauth2_client', $sag)
+			->_find($client_id, $client_secret);
 	}
 
 	/**
@@ -39,7 +43,8 @@ class Model_OAuth2_Client extends Model_OAuth2 implements Interface_Model_OAuth2
 	 */
 	public static function create_client($redirect_uri = NULL, $user_id = NULL)
 	{
-
+		echo Debug::vars('Model_OAuth2_Client::create_client');die;
+		//die('Model_OAuth2_Client::create_client');
 	}
 
 	/**
@@ -63,5 +68,22 @@ class Model_OAuth2_Client extends Model_OAuth2 implements Interface_Model_OAuth2
 	public function allowed_response_types()
 	{
 		return $this->_config->provider['supported_response_types'];
+	}
+
+	public function _find($client_id, $client_secret = NULL)
+	{
+		$key = json_encode(array($client_id, $client_secret));
+
+		$uri = '/_design/couchapp/_view/find_oauth2_client?key='.$key;
+		$response = $this->_sag->get($uri);
+
+		if (count($response->body['rows']) > 0)
+		{
+			return $this->find($response->body['rows'][0]['id']);
+		}
+		else
+		{
+			return new Model_OAuth2_Client($this->_sag);
+		}
 	}
 }
