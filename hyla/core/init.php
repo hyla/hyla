@@ -33,3 +33,15 @@ Route::set('hyla/single-project', 'projects/<slug>/<action>')
 		'directory'  => 'page',
 		'controller' => 'projects',
 	));
+
+Route::set('hyla/oauth-endpoints', 'oauth2/endpoints/<action>')
+	->defaults(array(
+		'directory'  => 'page/oauth2',
+		'controller' => 'endpoints',
+	));
+Route::set('hyla/api-test', 'api/test')
+	->defaults(array(
+		'directory'  => 'api',
+		'controller' => 'main',
+		'action'     => 'test',
+	));
