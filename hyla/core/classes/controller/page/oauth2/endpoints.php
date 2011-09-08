@@ -66,11 +66,11 @@ class Controller_Page_OAuth2_Endpoints extends Abstract_Controller_Hyla_Page {
 				 * the resource owner agreed, and pass this + the user's
 				 * primary key into the OAuth2_Provider::authorize() method.
 				 */
-				if ($this->request->method() == Request::POST)
-				{
-					$agreed = ($this->request->post('accepted') == 'Yes');
+				//if ($this->request->method() == Request::POST)
+				//{
+					//$agreed = ($this->request->post('accepted') == 'Yes');
 
-					$redirect_url = $this->_oauth->authorize($accepted, $user->pk());
+					$redirect_url = $this->_oauth->authorize(TRUE, $user->get('_id'));
 
 					/**
 					 * Finally, Redirect the resource owner back to the
@@ -78,7 +78,7 @@ class Controller_Page_OAuth2_Endpoints extends Abstract_Controller_Hyla_Page {
 					 * granted permission or not.
 					 */
 					$this->request->redirect($redirect_url);
-				}
+				//}
 
 				/**
 				 * Show the authorization form. Ensure all the $auth_params
