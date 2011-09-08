@@ -69,10 +69,14 @@ class Model_User extends Couch_Model implements Model_ACL_User {
 	{
 		$config = Kohana::$config->load('oauth')->github;
 
-		$http = new HTTPRequest($config['api_url'].'user/show?'.$token, HTTPRequest::METH_GET);
-		$response = $http->send();
+		parse_str($token, $info);
 
-		$user = Arr::get(json_decode($response->body, TRUE), 'user');
+		$request = Request::factory($config['api_url'].'user/show')
+			->query($info);
+
+		$response = $request->execute();
+
+		$user = Arr::get(json_decode($response->body(), TRUE), 'user');
 
 		$search = $this->find_by_github_id(Arr::get($user, 'id'));
 

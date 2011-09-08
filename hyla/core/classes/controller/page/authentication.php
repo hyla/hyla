@@ -17,13 +17,13 @@ class Controller_Page_Authentication extends Abstract_Controller_Hyla_Page {
 				'code'          => $this->request->query('code'),
 			);
 
-			$url = $url.'?'.http_build_query($query);
+			$request = Request::factory($url)
+				->query($query);
 
-			$http = new HTTPRequest($url, HTTPRequest::METH_GET);
-			$response = $http->send();
+			$response = $request->execute();
 
 			$user = Couch_Model::factory('user', $this->couchdb);
-			$user->github_auth($response->body);
+			$user->github_auth($response->body());
 
 			// Log the user in
 			Cookie::set('auth', $user->get('_id'));
