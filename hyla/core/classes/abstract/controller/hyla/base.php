@@ -25,7 +25,7 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	public function before()
 	{
 		// All Hyla actions have access to markdown
-		require Kohana::find_file('vendor/markdown', 'markdown');
+		require_once Kohana::find_file('vendor/markdown', 'markdown');
 
 		$this->view = $this->_request_view();
 		$this->dispatcher = Event_Dispatcher::factory()
@@ -49,7 +49,13 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	{
 		// If content is NULL, then there is no View to render
 		if ($this->view === NULL)
-			throw new Kohana_View_Exception('There was no View created for this request.');
+		{
+			if ( ! Valid::not_empty($this->response->body()))
+				throw new Kohana_View_Exception('There was no View created for this request.');
+
+			// Response was handled manually
+			return;
+		}
 
 		$this->view
 			->set('request', $this->request)

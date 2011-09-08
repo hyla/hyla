@@ -69,5 +69,8 @@ class Minion_Task_Hyla_Install extends Minion_Task {
 		Minion_CLI::write('Trying to push couchapp');
 		// Use `media:compile` but only compile the couchapp
 		exec('cd '.escapeshellarg(DOCROOT).' && ./minion media:compile --pattern=media/couchapp/monkeys');
+
+		// Run `hyla:migrate` in order to create the OAuth2 documents
+		exec('cd '.escapeshellarg(DOCROOT).' && ./minion hyla:migrate');
 	}
 }

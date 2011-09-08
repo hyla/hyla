@@ -17,4 +17,6 @@ return array(
 	'tasks-media'    => MODPATH.'minion-tasks-media',    // Media related tasks
 	'userguide'      => MODPATH.'userguide',             // Documentation
 	'oauth2'         => MODPATH.'oauth2',                // OAuth 2 module
+	'api'            => MODPATH.'api',                   // API module
+	'uuid'           => MODPATH.'uuid',                  // UUID module
 );

@@ -135,6 +135,16 @@ abstract class Couch_Model implements Interface_Model {
 		return $this;
 	}
 
+	public function delete()
+	{
+		$this->_sag->delete($this->get('_id'), $this->get('_rev'));
+
+		$class = get_class($this);
+		$reflection = new ReflectionClass($class);
+
+		return $reflection->newInstance($this->_sag);
+	}
+
 	protected function _setup_validation(Validation $validation)
 	{
 		return $validation;

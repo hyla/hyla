@@ -7,7 +7,7 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
-Route::set('hyla/log_in', 'log_in/github')
+Route::set('hyla/log_in', 'log_in/<action>', array('action' => 'github|hyla'))
 	->defaults(array(
 		'directory'  => 'page',
 		'controller' => 'authentication',
@@ -32,4 +32,16 @@ Route::set('hyla/single-project', 'projects/<slug>/<action>')
 	->defaults(array(
 		'directory'  => 'page',
 		'controller' => 'projects',
+	));
+
+Route::set('hyla/oauth-endpoints', 'oauth2/endpoints/<action>')
+	->defaults(array(
+		'directory'  => 'page/oauth2',
+		'controller' => 'endpoints',
+	));
+Route::set('hyla/api-test', 'api/test')
+	->defaults(array(
+		'directory'  => 'api',
+		'controller' => 'main',
+		'action'     => 'test',
 	));
