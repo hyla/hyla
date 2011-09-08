@@ -53,7 +53,7 @@ class Model_OAuth2_User_Token extends Model_OAuth2 implements Interface_Model_OA
 		$config = Kohana::$config->load('couchdb');
 		$sag = new Sag($config->host, $config->port);
 
-		$token = Couch_Model::factory('oauth2_refresh_token', $sag)
+		$token = Couch_Model::factory('oauth2_user_token', $sag)
 			->set('provider', $provider)
 			->set('token_type', $token_type)
 			->set('access_token', $access_token)
