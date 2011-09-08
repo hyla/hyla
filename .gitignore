@@ -7,3 +7,4 @@ nbproject
 *.sass-cache
 kohana/application/config/*
 !kohana/application/config/modules.php
+!kohana/application/config/oauth.php
