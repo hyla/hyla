@@ -27,6 +27,7 @@ class Minion_Task_Hyla_Migrate extends Minion_Task {
 		$model = Couch_Model::factory('oauth2_client', $sag)
 			->set('client_id', $client_id)
 			->set('client_secret', $client_secret)
+			->set('redirect_uri', Route::url('hyla/log_in', array('action' => 'hyla')))
 			->create();
 	}
 }
