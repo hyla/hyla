@@ -6,6 +6,16 @@
  */
 class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAuth2_Auth_Code {
 
+	protected $_document = array(
+		'model'        => 'oauth2_auth_code',
+		'code'         => NULL,
+		'client_id'    => NULL,
+		'user_id'      => NULL,
+		'redirect_uri' => NULL,
+		'expires'      => NULL,
+		'scope'        => NULL,
+	);
+
 	/**
 	 * @var  integer  Lifetime
 	 */
@@ -21,7 +31,11 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	 */
 	public static function find_code($code, $client_id = NULL)
 	{
-		echo Debug::vars('Model_OAuth2_Auth_Code::find_code');die;
+		$config = Kohana::$config->load('couchdb');
+		$sag = new Sag($config->host, $config->port);
+
+		return Couch_Model::factory('oauth2_auth_code', $sag)
+			->_find($code, $client_id);
 	}
 
 	/**
@@ -36,7 +50,19 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	 */
 	public static function create_code($client_id, $redirect_uri, $user_id = NULL, $scope = NULL)
 	{
-		echo Debug::vars('Model_OAuth2_Auth_Code::create_code');die;
+		$config = Kohana::$config->load('couchdb');
+		$sag = new Sag($config->host, $config->port);
+
+		$code = Couch_Model::factory('oauth2_Auth_Code', $sag)
+			->set('client_id', $client_id)
+			->set('redirect_uri', $redirect_uri)
+			->set('user_id', $user_id)
+			->set('scope', serialize($scope))
+			->set('expires', time() + Model_OAuth2_Auth_Code::$lifetime)
+			->set('code', UUID::v4())
+			->create();
+
+		return $code;
 	}
 
 	/**
@@ -57,5 +83,22 @@ class Model_OAuth2_Auth_Code extends Model_OAuth2 implements Interface_Model_OAu
 	public static function deleted_expired_codes()
 	{
 		echo Debug::vars('Model_OAuth2_Auth_Code::deleted_expired_codes');die;
+	}
+
+	public function _find($code, $client_id = NULL)
+	{
+		$key = json_encode(array($code, $client_id));
+
+		$uri = '/_design/couchapp/_view/find_oauth2_auth_code?key='.$key;
+		$response = $this->_sag->get($uri);
+
+		if (count($response->body['rows']) > 0)
+		{
+			return $this->find($response->body['rows'][0]['id']);
+		}
+		else
+		{
+			return new Model_OAuth2_Auth_Code($this->_sag);
+		}
 	}
 }
