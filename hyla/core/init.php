@@ -7,7 +7,7 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
-Route::set('hyla/log_in', 'log_in/github')
+Route::set('hyla/log_in', 'log_in/<action>', array('action' => 'github|hyla'))
 	->defaults(array(
 		'directory'  => 'page',
 		'controller' => 'authentication',
