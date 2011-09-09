@@ -22,6 +22,11 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $auth;
 
+	/**
+	 * @var object the OAuth Consumer object
+	 */
+	public $oauth_client;
+
 	public function before()
 	{
 		// All Hyla actions have access to markdown
@@ -37,6 +42,12 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		// Try to log the user in
 		$this->auth = Couch_Model::factory('user', $this->couchdb)
 			->find(Cookie::get('auth'));
+
+		if ($this->auth->loaded())
+		{
+			// Create a consumer
+			$this->oauth_client = OAuth2_Consumer::factory('web', $this->auth->get('_id'));
+		}
 	}
 
 	/**
@@ -61,7 +72,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			->set('request', $this->request)
 			->set('dispatcher', $this->dispatcher)
 			->set('couchdb', $this->couchdb)
-			->set('auth', $this->auth);
+			->set('auth', $this->auth)
+			->set('oauth_client', $this->oauth_client);
 
 		$this->response->body($this->view);
 	}
@@ -82,5 +94,30 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		return (bool) $_POST;
 	}
 
-	abstract protected function _request_view();
+	protected function _request_view()
+	{
+		// Set default title and content views (path only)
+		$directory = $this->request->directory();
+		$controller = $this->request->controller();
+		$action = $this->request->action();
+
+		// Removes leading slash if this is not a subdirectory controller
+		$controller_path = trim($directory.'/'.$controller.'/'.$action, '/');
+
+		try
+		{
+			$view = Kostache::factory($controller_path)
+				->assets(new Assets);
+		}
+		catch (Kohana_View_Exception $x)
+		{
+			/*
+			 * The View class could not be found, so the controller action is
+			 * repsonsible for making sure this is resolved.
+			 */
+			$view = NULL;
+		}
+
+		return $view;
+	}
 }
