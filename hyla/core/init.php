@@ -40,6 +40,7 @@ Route::set('hyla/oauth-endpoints', 'oauth2/endpoints/<action>')
 		'controller' => 'endpoints',
 	));
 Route::set('hyla/api-test', 'api/test')
+	->callback('API_Router::route_method')
 	->defaults(array(
 		'directory'  => 'api',
 		'controller' => 'main',
