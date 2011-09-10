@@ -44,7 +44,7 @@ class Controller_Page_Authentication extends Abstract_Controller_Hyla_Page {
 
 	public function action_hyla()
 	{
-		$config = Kohana::$config->load('oauth2')->consumer['web'];
+		$config = Kohana::$config->load('oauth2')->consumer['hyla-auth'];
 
 		if ($this->request->query('code'))
 		{
@@ -75,7 +75,7 @@ class Controller_Page_Authentication extends Abstract_Controller_Hyla_Page {
 			$access_token = $info['access_token'];
 			$refresh_token = $info['refresh_token'];
 
-			$token = Model_OAuth2_User_Token::create_token('web', $token_type, $access_token, $this->auth->get('_id'), $refresh_token);
+			$token = Model_OAuth2_User_Token::create_token('hyla-auth', $token_type, $access_token, $this->auth->get('_id'), $refresh_token);
 
 			$this->request->redirect(Route::url('hyla/home'));
 		}
