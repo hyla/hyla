@@ -119,32 +119,7 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_OAu
 			$this->response->headers('cache-control', 'no-cache, no-store, max-age=0, must-revalidate');
 		}
 
-		$this->_prepare_response_body();
-	}
-
-	/**
-	 * @todo Support more than just JSON
-	 */
-	protected function _prepare_response_body()
-	{
-		try
-		{
-			// Set the correct content-type header
-			$this->response->headers('Content-Type', 'application/json');
-
-			$response = array (
-				'metadata' => $this->_response_metadata,
-				'links'    => $this->_response_links,
-				'payload'  => $this->_response_payload
-			);
-
-			// Format the reponse as JSON
-			$this->response->body(json_encode($response));
-		}
-		catch (Exception $e)
-		{
-			Kohana::$log->add(Log::ERROR, 'Error while formatting response: '.$e->getMessage());
-			throw new Http_Exception_500('Error while formatting response');
-		}
+		// Set the correct content-type header
+		$this->response->headers('Content-Type', 'application/json');
 	}
 }
