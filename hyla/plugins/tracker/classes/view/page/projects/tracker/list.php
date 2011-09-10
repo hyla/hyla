@@ -11,16 +11,15 @@ class View_Page_Projects_Tracker_List extends Abstract_View_Page_Project {
 		if ($this->_cached['tickets'] !== NULL)
 			return $this->_cached['tickets'];
 
-		$tickets = Couch_Model::factory('ticket', $this->couchdb)
-			->find_all();
+		$request = Request::factory(Route::get('hyla/api/tickets')->uri())
+			->query(array(
+				'project' => $this->project->get('_id'),
+			));
+		$response = $this->oauth_client->execute($request);
+		$body = json_decode($response->body(), TRUE);
+		$tickets = $body['collection'];
 
-		$data = array();
-		foreach ($tickets as $ticket)
-		{
-			$data[] = View_Model::factory($ticket);
-		}
-
-		return $this->_cached['tickets'] = $data;
+		return $this->_cached['tickets'] = $tickets;
 	}
 
 	public function can_create_ticket()
