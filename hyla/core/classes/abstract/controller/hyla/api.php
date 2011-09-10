@@ -69,13 +69,6 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_OAu
 	 */
 	protected function _parse_request()
 	{
-		// Override the method if needed.
-		$this->request->method(Arr::get(
-			$_SERVER,
-			'HTTP_X_HTTP_METHOD_OVERRIDE',
-			$this->request->method()
-		));
-
 		// Is that a valid method?
 		if ( ! isset($this->_action_map[$this->request->method()]))
 		{
@@ -153,101 +146,5 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_OAu
 			Kohana::$log->add(Log::ERROR, 'Error while formatting response: '.$e->getMessage());
 			throw new Http_Exception_500('Error while formatting response');
 		}
-	}
-
-	/**
-	 * Execute the API call..
-	 */
-	public function action_index()
-	{
-		// Get the basic verb based action..
-		$action = $this->_action_map[$this->request->method()];
-
-		// If this is a custom action, lets make sure we use it.
-		if ($this->request->param('custom', FALSE) !== FALSE)
-		{
-			$action .= '_'.$this->request->param('custom');
-		}
-
-		// If we are acting on a collection, append _collection to the action name.
-		if ($this->request->param('id', FALSE) === FALSE)
-		{
-			$action .= '_collection';
-		}
-
-		// Execute the request
-		if (method_exists($this, $action))
-		{
-			try
-			{
-				$this->_execute($action);
-			}
-			catch (Exception $e)
-			{
-				$this->response->status(500);
-				$this->_response_payload = NULL;
-			}
-		}
-		else
-		{
-			/**
-			 * @todo .. HTTP_Exception_405 is more approperiate, sometimes.
-			 * Need to figure out a way to decide which to send...
-			 */
-			throw new HTTP_Exception_404('The requested URL :uri was not found on this server.', array(
-				':uri' => $this->request->uri()
-			));
-		}
-	}
-
-	protected function _execute($action)
-	{
-		try
-		{
-			$this->{$action}();
-		}
-		catch (Exception $e)
-		{
-			$this->response->status(500);
-
-			$this->_response_metadata = array(
-				'error' => TRUE,
-				'type' => 'error_exception',
-			);
-
-			$this->_response_payload = array(
-				'message' => $e->getMessage(),
-				'code'    => $e->getCode(),
-			);
-
-			$this->_response_links = array();
-		}
-	}
-
-	protected function _generate_link($method, $uri, $type, $parameters = NULL)
-	{
-		$link = array(
-			'method'     => $method,
-			'url'        => $uri,
-			'type'       => $type,
-			'parameters' => array(),
-		);
-
-		if ($parameters !== NULL)
-		{
-			foreach ($parameters as $search => $replace)
-			{
-				if (is_numeric($search))
-				{
-					$link['parameters'][':'.$replace] = $replace;
-				}
-				else
-				{
-					$link['parameters'][$search] = $replace;
-				}
-			}
-		}
-
-		return $link;
 	}
 }
