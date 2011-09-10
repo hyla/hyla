@@ -36,4 +36,9 @@ abstract class Abstract_View_Model implements Interface_Model {
 	{
 		throw new Kohana_Exception('Cannot set values in View Models');
 	}
+
+	public function document()
+	{
+		return $this->_model->document();
+	}
 }
