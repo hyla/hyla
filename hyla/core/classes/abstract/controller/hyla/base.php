@@ -43,11 +43,12 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->auth = Couch_Model::factory('user', $this->couchdb)
 			->find(Cookie::get('auth'));
 
-		if ($this->auth->loaded())
-		{
-			// Create a consumer
-			$this->oauth_client = OAuth2_Consumer::factory('web', $this->auth->get('_id'));
-		}
+		// Create a consumer
+		$this->oauth_client = ($this->auth->loaded())
+			// Use auth_code
+			? OAuth2_Consumer::factory('hyla-auth', $this->auth->get('_id'))
+			// Use client_credentials
+			: $this->oauth_client = OAuth2_Consumer::factory('hyla-web');
 	}
 
 	/**
