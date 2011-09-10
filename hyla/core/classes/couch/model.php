@@ -11,13 +11,17 @@ abstract class Couch_Model implements Interface_Model {
 	protected $_sag;
 	protected $_db = 'hyla';
 	protected $_document = array();
+	protected $_initial_document = array();
 
 	public function __construct(Sag $sag)
 	{
 		$this->_sag = $sag->setDatabase($this->_db, TRUE);
 
-		if ( ! isset($this->_document))
+		if ( ! Valid::not_empty($this->_document['model']))
 			throw new Kohana_Exception('Must define $_document[\'model\']');
+
+		// Save the initial document so we can clear the state of the model
+		$this->_initial_document = $this->_document;
 	}
 
 	public function path($path, $default = NULL)
@@ -78,8 +82,19 @@ abstract class Couch_Model implements Interface_Model {
 		return $this->_document;
 	}
 
+	public function clear()
+	{
+		// Restore the initial document
+		$this->_document = $this->_initial_document;
+
+		return $this;
+	}
+
 	public function find($id)
 	{
+		if ( ! Valid::not_empty($id))
+			return $this->clear();
+
 		$response = $this->_sag->get($id);
 
 		return $this->set($response->body);
