@@ -9,7 +9,17 @@ class Minion_Task_Hyla_Migrate extends Minion_Task {
 		// Just create the web oauth consumer in the config
 		$config = Kohana::$config->load('oauth2');
 		$config->set('consumer', array(
-			'web' => array(
+			'hyla-auth' => array(
+				'redirect_uri'  => 'http://dev.vm/hyla/inbound',
+				'grant_type'    => OAuth2::GRANT_TYPE_AUTH_CODE,
+				'client_id'     => $client_id,
+				'client_secret' => $client_secret,
+				'authorize_uri' => Route::get('hyla/oauth-endpoints')
+					->uri(array('action' => 'authorize')),
+				'token_uri'     => Route::get('hyla/oauth-endpoints')
+					->uri(array('action' => 'token')),
+			),
+			'hyla-web' => array(
 				'redirect_uri'  => 'http://dev.vm/hyla/inbound',
 				'grant_type'    => OAuth2::GRANT_TYPE_CLIENT_CREDENTIALS,
 				'client_id'     => $client_id,
