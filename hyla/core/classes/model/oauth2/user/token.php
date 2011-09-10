@@ -20,7 +20,7 @@ class Model_OAuth2_User_Token extends Model_OAuth2 implements Interface_Model_OA
 	/**
 	 * @var  integer  Token Lifetime in seconds
 	 */
-	public static $lifetime = 900; // 5 Minutes
+	public static $lifetime = 3600; // 1 hour
 
 	/**
 	 * Find an access token
