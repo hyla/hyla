@@ -427,7 +427,7 @@ class Route {
 			elseif (is_array($passed))
 			{
 				// Callback replaced params
-				$params = $passed;
+				$params = $bound_values[':params'] = $passed;
 			}
 		}
 
