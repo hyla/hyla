@@ -113,4 +113,26 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 			}
 		}
 	}
+
+	public function action_delete()
+	{
+		$project = Couch_Model::factory('project', $this->couchdb)
+			->find_by_slug($this->request->param('slug'));
+
+		if ($this->request->post())
+		{
+			$request = Request::factory(Route::get('hyla/api/tickets')
+			->uri(array(
+				'id' => $this->request->param('ticket'),
+			)))
+			->method(Request::DELETE);
+			$response = $this->oauth_client->execute($request);
+
+			$this->request->redirect(Route::url('hyla-tracker', array(
+					'slug' => $project->get('slug'),
+				)));
+		}
+
+		throw new HTTP_Exception_404;
+	}
 }
