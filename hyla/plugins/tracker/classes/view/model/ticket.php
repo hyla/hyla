@@ -2,19 +2,16 @@
 
 class View_Model_Ticket extends View_Model {
 
-	public function title()
-	{
-		return $this->_model->get('title');
-	}
-
-	public function description()
-	{
-		return $this->_model->get('description');
-	}
+	protected $_as_array_methods = array(
+		'author', 'history',
+		'url', 'update_url',
+		'created_on_date_time', 'created_on_date_time',
+	);
 
 	public function author()
 	{
-		return View_Model::factory($this->_model->get_author());
+		return View_Model::factory($this->_model->get_author())
+			->as_array();
 	}
 
 	public function history()
@@ -54,5 +51,14 @@ class View_Model_Ticket extends View_Model {
 				'action' => 'view',
 				'ticket' => $this->_model->get('_id'),
 			));
+	}
+
+	public function update_url()
+	{
+		return Route::url('hyla-tracker', array(
+			'action' => 'update',
+			'slug'   => $this->_model->get_project()->get('slug'),
+			'ticket' => $this->_model->get('_id'),
+		));
 	}
 }
