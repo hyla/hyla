@@ -4,7 +4,7 @@ class View_Model_Ticket extends View_Model {
 
 	protected $_as_array_methods = array(
 		'author', 'history',
-		'url', 'update_url',
+		'url', 'update_url', 'delete_url',
 		'created_on_date_time', 'created_on_date_time',
 	);
 
@@ -60,5 +60,14 @@ class View_Model_Ticket extends View_Model {
 			'slug'   => $this->_model->get_project()->get('slug'),
 			'ticket' => $this->_model->get('_id'),
 		));
+	}
+
+	public function delete_url()
+	{
+			return Route::url('hyla-tracker', array(
+				'action' => 'delete',
+				'slug'   => $this->_model->get_project()->get('slug'),
+				'ticket' => $this->_model->get('_id'),
+			));
 	}
 }
