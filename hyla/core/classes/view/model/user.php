@@ -2,6 +2,8 @@
 
 class View_Model_User extends View_Model {
 
+	protected $_as_array_methods = array('display_name');
+
 	public function display_name()
 	{
 		if (($name = $this->_model->path('github.name')) !== NULL)
