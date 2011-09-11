@@ -82,10 +82,14 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 		$project = Couch_Model::factory('project', $this->couchdb)
 			->find_by_slug($this->request->param('slug'));
 
-		$ticket = Couch_Model::factory('ticket', $this->couchdb)
-			->find($this->request->param('ticket'));
+		$request = Request::factory(Route::get('hyla/api/tickets')->uri(array(
+			'id' => $this->request->param('ticket'),
+		)));
+		$response = $this->oauth_client->execute($request);
 
-		if ( ! $project->loaded() OR ! $ticket->loaded())
+		$ticket = Arr::get(json_decode($response->body(), TRUE), 'ticket');
+
+		if ( ! $project->loaded() OR empty($ticket['_id']))
 			throw new HTTP_Exception_404;
 
 		if ($this->request->post())
