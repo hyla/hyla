@@ -7,7 +7,7 @@ Route::set('hyla-tracker', 'projects/<slug>/tracker(/<action>(/<ticket>))')
 		'action'     => 'list',
 	));
 
-Route::set('hyla/api/tickets', 'api/tickets(/<id>)', array('id' => '\d'))
+Route::set('hyla/api/tickets', 'api/tickets(/<id>)')
 	->callback(function($route, $uri, $params, $request) {
 		$params['action'] = Valid::not_empty($params['id'])
 			? 'ticket'
