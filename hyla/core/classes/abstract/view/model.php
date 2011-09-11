@@ -21,6 +21,7 @@ abstract class Abstract_View_Model implements Interface_Model {
 	}
 
 	protected $_model;
+	protected $_as_array_methods = array();
 
 	public function __construct(Interface_Model $model)
 	{
@@ -40,5 +41,16 @@ abstract class Abstract_View_Model implements Interface_Model {
 	public function document()
 	{
 		return $this->_model->document();
+	}
+
+	public function as_array()
+	{
+		$additions = array();
+		foreach ($this->_as_array_methods as $method)
+		{
+			$additions[$method] = $this->{$method}();
+		}
+
+		return $additions + $this->document();
 	}
 }
