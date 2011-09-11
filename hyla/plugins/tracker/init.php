@@ -19,6 +19,7 @@ Route::set('hyla/api/tickets', 'api/tickets(/<id>)', array('id' => '\d'))
 	->defaults(array(
 		'directory'  => 'api/tracker',
 		'controller' => 'tickets',
+		// Just here so I can be sure they are set in the callbacks
 		'action'     => NULL,
 		'id'         => NULL,
 	));
