@@ -21,6 +21,13 @@ Route::set('hyla/log_out', 'log_out')
 		'action'     => 'log_out',
 	));
 
+Route::set('hyla/account-settings', 'account/settings(/<action>)')
+	->defaults(array(
+		'directory'  => 'page/account',
+		'controller' => 'settings',
+		'action'     => 'home',
+	));
+
 Route::set('hyla/projects', 'projects(/<action>)', array('action' => 'create'))
 	->defaults(array(
 		'directory'  => 'page',
@@ -45,4 +52,12 @@ Route::set('hyla/api', 'api')
 	->defaults(array(
 		'directory'  => 'api',
 		'controller' => 'main',
+	));
+
+Route::set('hyla/api/accounts/notification-settings', 'api/accounts/<id>/notification-settings')
+	->callback('API_Router::prefix_request_method')
+	->defaults(array(
+		'directory'  => 'api/accounts/settings',
+		'controller' => 'notifications',
+		'action'     => 'notifications',
 	));
