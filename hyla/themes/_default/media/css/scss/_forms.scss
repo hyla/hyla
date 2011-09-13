@@ -2,12 +2,16 @@ label {
 	display: block;
 }
 
+.yform-checkbox label {
+	display: inline;
+}
+
 input {
 	font-size: 1.2em;
 	padding: 3px;
 }
 
-input, textarea {
+.yform-input input, textarea {
 	margin-bottom: 10px;
 	width: 500px;
 	border: 1px solid #182612;
