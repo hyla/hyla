@@ -33,7 +33,7 @@ class Minion_Task_Workers_Notifier extends Minion_Task {
 
 	protected function _handle_message(array $message)
 	{
-		$handler = '_handle_'.implode('_', explode('.', $message['routing_key']));
+		$handler = '_handle_'.str_replace('.', '.', $message['routing_key']);
 		if (method_exists($this, $handler))
 		{
 			call_user_func(array($this, $handler), $message['msg']);
