@@ -47,4 +47,19 @@ class Model_Project extends Couch_Model {
 
 		return $this;
 	}
+
+	public function create()
+	{
+		parent::create();
+
+		// Trigger a RabbitMQ event for model.project.create
+		$config = Kohana::$config->load('rabbitmq');
+		$credentials = $config->servers['local'];
+		$connection = new AMQPConnection($credentials);
+		$connection->connect();
+
+		$exchange = new AMQPExchange($connection);
+		$exchange->declare('events', AMQP_EX_TYPE_TOPIC);
+		$exchange->publish($this->get('_id'), 'model.project.create', 0, array('delivery_mode' => 2));
+	}
 }
