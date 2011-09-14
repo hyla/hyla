@@ -39,5 +39,26 @@ class Minion_Task_Hyla_Migrate extends Minion_Task {
 			->set('client_secret', $client_secret)
 			->set('redirect_uri', Route::url('hyla/log_in', array('action' => 'hyla')))
 			->create();
+
+		// Create the configs needed for the KRabbit class
+		$config = Kohana::$config->load('rabbitmq');
+		$config->set('exchanges', array(
+			'events' => array(
+				'connection' => 'hyla',
+				'name'       => 'events',
+				'type'       => AMQP_EX_TYPE_TOPIC,
+				'flags'      => AMQP_DURABLE,
+			),
+		));
+		$config->set('queues', array(
+			'notifications' => array(
+				'connection' => 'hyla',
+				'name'       => 'notifications',
+				'flags'      => AMQP_DURABLE,
+				'bindings'   => array(
+					'events' => 'model.#',
+				),
+			),
+		));
 	}
 }
