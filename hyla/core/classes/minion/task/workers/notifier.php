@@ -4,18 +4,7 @@ class Minion_Task_Workers_Notifier extends Minion_Task {
 
 	public function execute(array $config)
 	{
-		$config = Kohana::$config->load('rabbitmq');
-		$credentials = $config->servers['local'];
-		$connection = new AMQPConnection($credentials);
-		$connection->connect();
-
-		$exchange = new AMQPExchange($connection);
-		$exchange->declare('events', AMQP_EX_TYPE_TOPIC);
-
-		$queue = new AMQPQueue($connection);
-		$queue->declare('notifications', AMQP_EXCLUSIVE);
-		// Bind to any model event
-		$queue->bind('events', 'model.#');
+		$queue = KRabbit::factory()->queue('notifications');
 
 		while(TRUE)
 		{
