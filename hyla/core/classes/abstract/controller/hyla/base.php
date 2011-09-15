@@ -82,7 +82,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			->set('dispatcher', $this->dispatcher)
 			->set('couchdb', $this->couchdb)
 			->set('auth', $this->auth)
-			->set('oauth_client', $this->oauth_client);
+			->set('oauth_client', $this->oauth_client)
+			->set('di_container', $this->di_container);
 
 		$this->response->body($this->view);
 	}
