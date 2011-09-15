@@ -46,3 +46,6 @@
 [submodule "kohana/modules/api"]
 	path = kohana/modules/api
 	url = git://github.com/hyla/kohana-api.git
+[submodule "kohana/modules/dependencies"]
+	path = kohana/modules/dependencies
+	url = git://github.com/hyla/kohana-dependencies.git
