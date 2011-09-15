@@ -27,10 +27,19 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $oauth_client;
 
+	/**
+	 * @var object the Dependency Container object
+	 */
+	public $di_container;
+
 	public function before()
 	{
 		// All Hyla actions have access to markdown
 		require_once Kohana::find_file('vendor/markdown', 'markdown');
+
+		$definitions = Dependency_Definition_List::factory()
+			->from_array(Kohana::$config->load('dependencies')->as_array());
+		$this->di_container = new Dependency_Container($definitions);
 
 		$this->view = $this->_request_view();
 		$this->dispatcher = Event_Dispatcher::factory()
