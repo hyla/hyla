@@ -21,7 +21,7 @@ class View_Page_Projects_List extends Abstract_View_Page {
 		if ($this->_cached['projects'] !== NULL)
 			return $this->_cached['projects'];
 
-		$projects = Couch_Model::factory('project', $this->couchdb)
+		$projects = $this->di_container->get('couch_model.project')
 			->find_all(TRUE);
 
 		$data = array();

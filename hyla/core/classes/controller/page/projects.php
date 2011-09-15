@@ -9,7 +9,7 @@ class Controller_Page_Projects extends Abstract_Controller_Hyla_Page {
 		$this->view
 			->bind('project', $project);
 
-		$project = Couch_Model::factory('project', $this->couchdb)
+		$project = $this->di_container->get('couch_model.project')
 			->find_by_slug($this->request->param('slug'));
 
 		if ( ! $project->loaded())
@@ -28,7 +28,7 @@ class Controller_Page_Projects extends Abstract_Controller_Hyla_Page {
 
 			try
 			{
-				$project = Couch_Model::factory('project', $this->couchdb);
+				$project = $this->di_container->get('couch_model.project');
 				$project->values($values, array('name', 'slug', 'description'));
 				$project->create();
 
