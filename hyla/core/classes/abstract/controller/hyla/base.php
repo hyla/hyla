@@ -45,11 +45,10 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
 
-		$config = Kohana::$config->load('couchdb');
-		$this->couchdb = new Sag($config->host, $config->port);
+		$this->couchdb = $this->di_container->get('couchdb');
 
 		// Try to log the user in
-		$this->auth = Couch_Model::factory('user', $this->couchdb)
+		$this->auth = $this->di_container->get('couch_model.user')
 			->find(Cookie::get('auth'));
 
 		// Create a consumer
