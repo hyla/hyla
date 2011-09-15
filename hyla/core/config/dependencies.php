@@ -24,5 +24,10 @@ return array(
 				'arguments' => array('user', '%couchdb%'),
 			),
 		),
+		'project' => array(
+			'_settings' => array(
+				'arguments' => array('project', '%couchdb%'),
+			),
+		),
 	),
 );
