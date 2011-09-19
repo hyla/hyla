@@ -51,6 +51,23 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		return $assets;
 	}
 
+	public function site_navigation()
+	{
+		$navigation = array(
+			array(
+				'url'  => Route::url('hyla/home'),
+				'text' => 'Home',
+			),
+		);
+
+		$arguments = array('auth' => $this->auth);
+
+		// Trigger this event so plugins can alter the navigation before it's rendered
+		$this->dispatcher->trigger('hyla:site-nav', new Event($navigation, $arguments));
+
+		return $navigation;
+	}
+
 	public function auth_navigation()
 	{
 		$navigation = array();

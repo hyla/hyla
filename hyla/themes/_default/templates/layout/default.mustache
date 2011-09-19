@@ -8,14 +8,23 @@
 	<body>
 		<div class="page">
 			<div class="header">
+				<div class="global-navigation">
+					<nav class="site-navigation">
+						<ul>
+							{{#site_navigation}}
+							<li><a href="{{url}}">{{text}}</a></li>
+							{{/site_navigation}}
+						</ul>
+					</nav>
+					<nav class="auth-navigation">
+						<ul>
+							{{#auth_navigation}}
+							<li><a href="{{url}}">{{text}}</a></li>
+							{{/auth_navigation}}
+						</ul>
+					</nav>
+				</div>
 				<h1><a href="{{home_url}}"><img src="{{logo_url}}" alt="{{title}}" /></a></h1>
-				<nav>
-					<ul>
-						{{#auth_navigation}}
-						<li><a href="{{url}}">{{text}}</a></li>
-						{{/auth_navigation}}
-					</ul>
-				</nav>
 			</div>
 			<div class="content">
 				<nav>
