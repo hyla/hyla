@@ -13,7 +13,7 @@ class View_Page_Account_Settings_Notifications extends Abstract_View_Page_Accoun
 			->add_values( (array) $this->values);
 
 		// Auto Populate the forms
-		foreach ($this->auth->get('notification-settings') as $notification => $notifiers)
+		foreach ($this->auth->get('notification-settings', array()) as $notification => $notifiers)
 		{
 			foreach ($notifiers as $notifier)
 			{
