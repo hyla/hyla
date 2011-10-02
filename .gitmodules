@@ -49,3 +49,6 @@
 [submodule "kohana/modules/dependencies"]
 	path = kohana/modules/dependencies
 	url = git://github.com/hyla/kohana-dependencies.git
+[submodule "hyla/core/vendor/swiftmailer"]
+	path = hyla/core/vendor/swiftmailer
+	url = git://github.com/swiftmailer/swiftmailer.git
