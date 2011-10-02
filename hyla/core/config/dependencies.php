@@ -30,4 +30,21 @@ return array(
 			),
 		),
 	),
+	'swiftmail' => array(
+		'_settings' => array(
+			'path' => 'vendor/swiftmailer/lib/swift_required',
+		),
+		'transport' => array(
+			'_settings' => array(
+				'class'     => 'Swift_SendmailTransport',
+			),
+		),
+		'mailer' => array(
+			'_settings' => array(
+				'class'     => 'Swift_Mailer',
+				'arguments' => array('%swift.transport%'),
+				'shared'    => TRUE,
+			),
+		),
+	),
 );
