@@ -74,9 +74,13 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 		if ($this->auth->can('logOut'))
 		{
-			$navigation += array(
+			$navigation[] = array(
 				'url'  => Route::url('hyla/log_out'),
 				'text' => 'Log Out',
+			);
+			$navigation[] = array(
+				'url'  => Route::url('hyla/account-settings'),
+				'text' => 'Account Settings',
 			);
 		}
 		elseif ($this->auth->can('logIn'))
