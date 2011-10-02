@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class View_Page_Projects_Tracker_List extends Abstract_View_Page_Project {
+class View_Page_Tracker_Tickets_List extends Abstract_View_Page_Project {
 
 	protected $_cached = array(
 		'tickets' => NULL,
@@ -30,7 +30,7 @@ class View_Page_Projects_Tracker_List extends Abstract_View_Page_Project {
 	public function urls()
 	{
 		return array(
-			'new-ticket' => Route::url('hyla-tracker', array(
+			'new-ticket' => Route::url('hyla/tickets', array(
 				'slug'   => $this->project->get('slug'),
 				'action' => 'new',
 			)),

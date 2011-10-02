@@ -1,2 +1,1 @@
-rabbit: ./minion workers:rabbit
-worker: ./minion workers:test
+notifier: ./miniond workers:notifier

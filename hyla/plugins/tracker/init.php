@@ -1,9 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-Route::set('hyla-tracker', 'projects/<slug>/tracker(/<action>(/<ticket>))')
+Route::set('hyla/tickets', 'projects/<slug>/tickets(/<action>(/<ticket>))')
 	->defaults(array(
-		'directory'  => 'page/projects',
-		'controller' => 'tracker',
+		'directory'  => 'page/tracker',
+		'controller' => 'tickets',
 		'action'     => 'list',
 	));
 

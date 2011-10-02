@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
+class Controller_Page_Tracker_Tickets extends Abstract_Controller_Hyla_Page {
 
 	public function action_list()
 	{
@@ -40,7 +40,7 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 				$ticket->set('created_by', $this->auth->get('_id'));
 				$ticket->create();
 
-				$this->request->redirect(Route::url('hyla-tracker', array(
+				$this->request->redirect(Route::url('hyla/tickets', array(
 					'slug' => $project->get('slug'),
 				)));
 			}
@@ -101,7 +101,7 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 				$ticket->add_comment($this->auth->get('_id'), $comment);
 				$ticket->update();
 
-				$this->request->redirect(Route::url('hyla-tracker', array(
+				$this->request->redirect(Route::url('hyla/tickets', array(
 					'action' => 'view',
 					'slug'   => $project->get('slug'),
 					'ticket' => $ticket->get('_id'),
@@ -128,7 +128,7 @@ class Controller_Page_Projects_Tracker extends Abstract_Controller_Hyla_Page {
 			->method(Request::DELETE);
 			$response = $this->oauth_client->execute($request);
 
-			$this->request->redirect(Route::url('hyla-tracker', array(
+			$this->request->redirect(Route::url('hyla/tickets', array(
 					'slug' => $project->get('slug'),
 				)));
 		}

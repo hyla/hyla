@@ -47,4 +47,13 @@ class Model_Project extends Couch_Model {
 
 		return $this;
 	}
+
+	public function create()
+	{
+		parent::create();
+
+		// Trigger a RabbitMQ event for model.project.create
+		$exchange = KRabbit::factory()->exchange('events');
+		$exchange->publish($this->get('_id'), 'model.project.create', 0, array('delivery_mode' => 2));
+	}
 }

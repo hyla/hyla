@@ -17,10 +17,9 @@ body {
 	}
 	.header {
 
-		nav {
-			@include column(6, true);
+		.global-navigation {
+			@include column(16, true);
 			@include color_navigation;
-			@include border-bottom-left-radius(5px);
 
 			a {
 				font-size: 0.9em;
@@ -28,12 +27,18 @@ body {
 
 			ul {
 				@include horizontal-list;
-
 				padding: 5px;
+			}
+
+			.site-navigation {
+				float: left;
+			}
+			.auth-navigation {
+				float: right;
 			}
 		}
 		h1 {
-			@include column(9);
+			@include column(15, true);
 			@include prepend(1);
 		}
 	}

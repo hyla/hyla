@@ -22,7 +22,7 @@ class Controller_Page_Authentication extends Abstract_Controller_Hyla_Page {
 
 			$response = $request->execute();
 
-			$user = Couch_Model::factory('user', $this->couchdb);
+			$user = $this->di_container->get('couch_model.user');
 			$user->github_auth($response->body());
 
 			// Log the user in

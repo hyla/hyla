@@ -1,0 +1,21 @@
+<h1>Notifications</h1>
+<p>
+	These settings allow you to decide which kind of notifications you would
+	like to receive for certain things that happen within Hyla.
+</p>
+<div class="notifications">
+{{#form}}
+	{{{open}}}
+	{{#notifications}}
+	<div class="notification">
+		<h2>{{name}}</h2>
+		<p class="description">{{description}}</p>
+		<div class="notifiers">
+			{{#notifiers}}<div class="notifier">{{{notifier}}}</div>{{/notifiers}}
+		</div>
+	</div>
+	{{/notifications}}
+	{{{submit}}}
+	{{{close}}}
+{{/form}}
+</div>

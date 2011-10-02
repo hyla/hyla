@@ -27,20 +27,28 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $oauth_client;
 
+	/**
+	 * @var object the Dependency Container object
+	 */
+	public $di_container;
+
 	public function before()
 	{
 		// All Hyla actions have access to markdown
 		require_once Kohana::find_file('vendor/markdown', 'markdown');
 
+		$definitions = Dependency_Definition_List::factory()
+			->from_array(Kohana::$config->load('dependencies')->as_array());
+		$this->di_container = new Dependency_Container($definitions);
+
 		$this->view = $this->_request_view();
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
 
-		$config = Kohana::$config->load('couchdb');
-		$this->couchdb = new Sag($config->host, $config->port);
+		$this->couchdb = $this->di_container->get('couchdb');
 
 		// Try to log the user in
-		$this->auth = Couch_Model::factory('user', $this->couchdb)
+		$this->auth = $this->di_container->get('couch_model.user')
 			->find(Cookie::get('auth'));
 
 		// Create a consumer
@@ -74,7 +82,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			->set('dispatcher', $this->dispatcher)
 			->set('couchdb', $this->couchdb)
 			->set('auth', $this->auth)
-			->set('oauth_client', $this->oauth_client);
+			->set('oauth_client', $this->oauth_client)
+			->set('di_container', $this->di_container);
 
 		$this->response->body($this->view);
 	}

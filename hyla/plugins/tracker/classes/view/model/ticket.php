@@ -46,7 +46,7 @@ class View_Model_Ticket extends View_Model {
 
 	public function url()
 	{
-		return Route::url('hyla-tracker', array(
+		return Route::url('hyla/tickets', array(
 				'slug'   => $this->_model->get_project()->get('slug'),
 				'action' => 'view',
 				'ticket' => $this->_model->get('_id'),
@@ -55,7 +55,7 @@ class View_Model_Ticket extends View_Model {
 
 	public function update_url()
 	{
-		return Route::url('hyla-tracker', array(
+		return Route::url('hyla/tickets', array(
 			'action' => 'update',
 			'slug'   => $this->_model->get_project()->get('slug'),
 			'ticket' => $this->_model->get('_id'),
@@ -64,7 +64,7 @@ class View_Model_Ticket extends View_Model {
 
 	public function delete_url()
 	{
-			return Route::url('hyla-tracker', array(
+			return Route::url('hyla/tickets', array(
 				'action' => 'delete',
 				'slug'   => $this->_model->get_project()->get('slug'),
 				'ticket' => $this->_model->get('_id'),

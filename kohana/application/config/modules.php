@@ -19,4 +19,5 @@ return array(
 	'oauth2'         => MODPATH.'oauth2',                // OAuth 2 module
 	'api'            => MODPATH.'api',                   // API module
 	'uuid'           => MODPATH.'uuid',                  // UUID module
+	'dependencies'   => MODPATH.'dependencies'           // DI Container module
 );
