@@ -130,4 +130,21 @@ class Model_User extends Couch_Model implements Model_ACL_User {
 
 		return $this;
 	}
+
+	public function find_by_notification_setting($notification)
+	{
+		$uri = '/_design/couchapp/_view/find_user_by_notification_setting?key="'.$notification.'"';
+		$response = $this->_sag->get($uri);
+
+		$models = array();
+		foreach ($response->body['rows'] as $row)
+		{
+			$model = Couch_Model::factory($this->get('model'), $this->_sag)
+				->find($row['id']);
+
+			$models[] = $model;
+		}
+
+		return $models;
+	}
 }
