@@ -36,14 +36,17 @@ return array(
 		),
 		'transport' => array(
 			'_settings' => array(
-				'class'     => 'Swift_SendmailTransport',
+				'class'       => 'Swift_SmtpTransport',
+				'constructor' => 'newInstance',
+				'arguments'   => array('smtp.cox.net', 25),
 			),
 		),
 		'mailer' => array(
 			'_settings' => array(
-				'class'     => 'Swift_Mailer',
-				'arguments' => array('%swift.transport%'),
-				'shared'    => TRUE,
+				'class'       => 'Swift_Mailer',
+				'constructor' => 'newInstance',
+				'arguments'   => array('%swiftmail.transport%'),
+				'shared'      => TRUE,
 			),
 		),
 	),
