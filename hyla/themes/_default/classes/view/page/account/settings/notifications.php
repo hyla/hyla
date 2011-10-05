@@ -27,7 +27,7 @@ class View_Page_Account_Settings_Notifications extends Abstract_View_Page_Accoun
 			}
 		}
 
-		return array(
+		$data = array(
 			'open'          => $form->open($this->request->uri()),
 			'notifications' => array(
 				array(
@@ -44,5 +44,15 @@ class View_Page_Account_Settings_Notifications extends Abstract_View_Page_Accoun
 			'submit'        => $form->submit('save'),
 			'close'         => $form->close(),
 		);
+
+		$arguments = array(
+			'auth' => $this->auth,
+			'form' => $form,
+		);
+
+		// Trigger this event so plugins can alter the notifications form
+		$this->dispatcher->trigger('hyla:account-settings.notifications-form', new Event($data, $arguments));
+
+		return $data;
 	}
 }
