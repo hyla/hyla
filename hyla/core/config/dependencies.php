@@ -29,6 +29,11 @@ return array(
 				'arguments' => array('project', '%couchdb%'),
 			),
 		),
+		'ticket' => array(
+			'_settings' => array(
+				'arguments' => array('ticket', '%couchdb%'),
+			),
+		),
 	),
 	'swiftmail' => array(
 		'_settings' => array(
