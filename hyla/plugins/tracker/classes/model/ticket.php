@@ -29,7 +29,11 @@ class Model_Ticket extends Couch_Model {
 			$this->set('created_on', time());
 		}
 
-		return parent::create();
+		parent::create();
+
+		// Trigger a RabbitMQ event for model.ticket.create
+		$exchange = KRabbit::factory()->exchange('events');
+		$exchange->publish($this->get('_id'), 'model.ticket.create', 0, array('delivery_mode' => 2));
 	}
 
 	public function update()
