@@ -43,7 +43,11 @@ return array(
 			'_settings' => array(
 				'class'       => 'Swift_SmtpTransport',
 				'constructor' => 'newInstance',
-				'arguments'   => array('smtp.cox.net', 25),
+				'arguments'   => array('@email.smtp_host@', '@email.smtp_port@'),
+				'methods'     => array(
+					array('setUsername', array('@email.smtp_username@')),
+					array('setPassword', array('@email.smtp_password@')),
+				),
 			),
 		),
 		'mailer' => array(
