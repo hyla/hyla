@@ -66,6 +66,20 @@ class Minion_Task_Hyla_Install extends Minion_Task {
 
 		file_put_contents($view->save_path(), $view->render());
 
+		Minion_CLI::write('Generating config/email.php'.PHP_EOL);
+		$view = Kostache::factory('hyla/installer/config/email');
+		foreach ($view->required_input() as $key => $info)
+		{
+			$response = Minion_CLI::read($info['line']);
+			$response = Valid::not_empty($response)
+				? $response
+				: $info['default'];
+
+			$view->set($key, $response);
+		}
+
+		file_put_contents($view->save_path(), $view->render());
+
 		Minion_CLI::write('Trying to push couchapp');
 		// Use `media:compile` but only compile the couchapp
 		exec('cd '.escapeshellarg(DOCROOT).' && ./minion media:compile --pattern=media/couchapp/monkeys');
