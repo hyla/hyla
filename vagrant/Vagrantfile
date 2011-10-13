@@ -1,0 +1,8 @@
+Vagrant::Config.run do |config|
+  config.vm.box = "synvm"
+  config.vm.box_url = "http://synvm.s3.amazonaws.com/synvm.box"
+  config.vm.share_folder "hyla", "/home/vagrant/web/hyla", "../"
+  config.vm.forward_port("web", 80, 43123)
+
+  config.vm.provision :puppet
+end
