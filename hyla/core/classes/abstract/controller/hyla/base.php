@@ -56,7 +56,7 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			// Use auth_code
 			? OAuth2_Consumer::factory('hyla-auth', $this->auth->get('_id'))
 			// Use client_credentials
-			: $this->oauth_client = OAuth2_Consumer::factory('hyla-web');
+			: OAuth2_Consumer::factory('hyla-web');
 	}
 
 	/**
