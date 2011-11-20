@@ -54,6 +54,22 @@ Route::set('hyla/api', 'api')
 		'controller' => 'main',
 	));
 
+Route::set('hyla/api/projects', 'api/projects(/<id>)')
+	->callback(function($route, $uri, $params, $request) {
+		$params['action'] = Valid::not_empty($params['id'])
+			? 'project'
+			: 'collection';
+
+		return $params;
+	})
+	->callback('API_Router::prefix_request_method')
+	->defaults(array(
+		'directory'  => 'api',
+		'controller' => 'projects',
+		'action'     => 'projects',
+		'id'         => NULL,
+	));
+
 Route::set('hyla/api/accounts/notification-settings', 'api/accounts/<id>/notification-settings')
 	->callback('API_Router::prefix_request_method')
 	->defaults(array(
