@@ -13,6 +13,9 @@ require_recipe "php::module_memcache"
 require_recipe "php::module_mysql"
 require_recipe "php::module_sqlite3"
 
+require_recipe "rabbitmq"
+require_recipe "couchdb"
+
 web_app "localhost" do
   server_name "localhost"
   docroot "/var/www/hyla"
