@@ -1,0 +1,30 @@
+{
+  "name": "rabbitmq-management",
+  "description": "Enables the rabbitmq-management plugin and dependencies",
+  "long_description": "# Description\n\nInstalls the rabbitmq-management plugin and dependencies and tells rabbitmq-server to restart.\n\n# Requirements\n\nOpscode cookbooks:\n\n* rabbitmq\n\nPlatform:\n\nAny platform supported by the Opscode rabbitmq cookbook.\n\nServices:\n\n* rabbitmq-server v2.7.0 (or greater)\n\nThe rabbitmq cookbook (as of version 1.3.0) does not provide a service definition for rabbitmq-server, so you will need to add something like this to it:\n\n```ruby\nservice \"rabbitmq-server\" do\n  stop_command \"/usr/sbin/rabbitmqctl stop\"\n  action [:enable, :start]\nend\n```\n\nThis should become unnecessary once [COOK-585](http://tickets.opscode.com/browse/COOK-585) is closed and merged.\n\n# Usage\n\nAdd `recipe[rabbitmq-management]` to a run list.\n\n# License & Author\n\nAuthor: J.D. Hollis (<http://densityofspace.com>)\n\nCopyright: 2011, J.D. Hollis\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "maintainer": "J.D. Hollis",
+  "maintainer_email": "youremail@example.com",
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "dependencies": {
+    "rabbitmq": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.0.3"
+}
