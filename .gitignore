@@ -7,6 +7,7 @@ nbproject
 *.sass-cache
 *.sublime-project
 *.sublime-workspace
+vagrant/.vagrant
 kohana/application/config/*
 !kohana/application/config/modules.php
 !kohana/application/config/oauth.php
