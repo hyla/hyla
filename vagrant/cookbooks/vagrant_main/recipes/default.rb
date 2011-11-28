@@ -4,6 +4,7 @@ require_recipe "apache2"
 require_recipe "apache2::mod_php5"
 require_recipe "apache2::mod_rewrite"
 require_recipe "apache2::mod_ssl"
+require_recipe "apache2::mod_headers"
 
 require_recipe "php"
 require_recipe "php::module_curl"
