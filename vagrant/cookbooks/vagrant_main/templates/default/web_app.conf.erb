@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+  ServerName <%= @params[:server_name] %>
+  DocumentRoot <%= @params[:docroot] %>
+  RewriteEngine On
+
+  LogLevel debug
+  ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+  CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+
+  RewriteEngine On
+  RewriteLog <%= node[:apache][:log_dir] %>/<%= @application_name %>-rewrite.log
+  RewriteLogLevel 0
+
+  <Directory <%= @params[:docroot] %>>
+      DirectoryIndex index.html index.php
+      RewriteEngine on
+      Options +FollowSymlinks
+      AllowOverride none
+      RewriteBase /
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule .* index.php/$0 [PT]
+  </Directory>
+</VirtualHost>
