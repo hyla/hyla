@@ -20,3 +20,9 @@ web_app "localhost" do
   server_name "localhost"
   docroot "/var/www/hyla"
 end
+
+gem_package "compass" do
+  action :install
+  version "0.11.5"
+  provider Chef::Provider::Package::Rubygems
+end
