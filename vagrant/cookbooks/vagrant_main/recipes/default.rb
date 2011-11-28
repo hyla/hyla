@@ -26,3 +26,9 @@ gem_package "compass" do
   version "0.11.5"
   provider Chef::Provider::Package::Rubygems
 end
+
+gem_package "foreman" do
+  action :install
+  version "0.26.1"
+  provider Chef::Provider::Package::Rubygems
+end
