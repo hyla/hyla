@@ -1,5 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+Route::set('installer', 'installer(/<action>)')
+	->defaults(array(
+		'directory'  => 'page',
+		'controller' => 'installer',
+		'action'     => 'home',
+	));
+
 Route::set('hyla/home', '')
 	->defaults(array(
 		'directory'  => 'page',
