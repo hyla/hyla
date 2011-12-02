@@ -1,3 +1,6 @@
+node.set["apache"]["user"] = "vagrant"
+node.set["apache"]["group"] = "vagrant"
+
 require_recipe "apt"
 
 require_recipe "apache2"
@@ -16,6 +19,9 @@ require_recipe "php::module_sqlite3"
 
 require_recipe "rabbitmq"
 require_recipe "couchdb"
+
+package "couchapp"
+package "php5-xdebug"
 
 web_app "localhost" do
   server_name "localhost"
