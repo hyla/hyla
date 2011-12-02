@@ -1,0 +1,13 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+{{#values}}
+return array(
+	'base_url'   => '{{base_url}}',
+	'index_file' => '{{index_file}}',
+	'charset'    => '{{charset}}',
+	'cache_dir'  => '{{cache_dir}}',
+	'errors'     => {{errors}},
+	'profile'    => {{profile}},
+	'caching'    => {{caching}},
+);
+{{/values}}
