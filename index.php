@@ -105,11 +105,22 @@ if ( ! defined('KOHANA_START_MEMORY'))
 // Bootstrap the application
 require APPPATH.'bootstrap'.EXT;
 
-/**
- * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
- * If no source is specified, the URI will be automatically detected.
- */
-echo Request::factory()
-	->execute()
-	->send_headers()
-	->body();
+if ( ! defined('INSTALLER'))
+{
+	/**
+	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+	 * If no source is specified, the URI will be automatically detected.
+	 */
+	echo Request::factory()
+		->execute()
+		->send_headers()
+		->body();
+}
+else
+{
+	// User is on the installer page
+	echo Request::factory('installer')
+		->execute()
+		->send_headers()
+		->body();
+}
