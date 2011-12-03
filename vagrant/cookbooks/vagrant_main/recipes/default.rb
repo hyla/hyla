@@ -39,3 +39,15 @@ gem_package "foreman" do
   version "0.26.1"
   provider Chef::Provider::Package::Rubygems
 end
+
+template "couchdb/local.ini" do
+  owner "couchdb"
+  group "couchdb"
+  mode 0664
+  path "/etc/couchdb/local.ini"
+  source "couchdb.local.ini.erb"
+end
+
+service "couchdb" do
+  action [ :enable, :start ]
+end
