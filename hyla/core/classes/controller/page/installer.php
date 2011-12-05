@@ -26,6 +26,11 @@ class Controller_Page_Installer extends Abstract_Controller_Hyla_Page {
 
 			file_put_contents($couchapprc->filepath(), $couchapprc->render());
 
+			// This is just an extra request to enable the new init.php config
+			$this->request->redirect($_SERVER['SCRIPT_URI'].'?installer-success=1');
+		}
+		elseif ($this->request->query('installer-success'))
+		{
 			$this->request->redirect(Route::url('installer', array('action' => 'database')));
 		}
 	}
