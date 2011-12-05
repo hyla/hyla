@@ -8,7 +8,7 @@ class View_Page_Installer_Home extends Abstract_View_Page {
 	{
 		return array(
 			'base_url'     => str_replace('installer.php', '', $_SERVER['SCRIPT_URI']),
-			'index_file'   => '',
+			'index_file'   => 'index.php',
 			'charset'      => 'UTF-8',
 			'cache_dir'    => APPPATH.'cache',
 			'couchdb'      => array(
