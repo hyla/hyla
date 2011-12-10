@@ -7,6 +7,10 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 	 */
 	public $view;
 
+	protected $_filters = array();
+	protected $_values = array();
+	protected $_params = array();
+
 	/**
 	 * @var object the event dispatcher for this request
 	 */
@@ -57,6 +61,11 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			? OAuth2_Consumer::factory('hyla-auth', $this->auth->get('_id'))
 			// Use client_credentials
 			: OAuth2_Consumer::factory('hyla-web');
+
+		// Default filters/values/params
+		$this->_filters = $this->request->query();
+		$this->_values = $this->request->post();
+		$this->_params = $this->request->param();
 	}
 
 	/**
@@ -83,7 +92,10 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 			->set('couchdb', $this->couchdb)
 			->set('auth', $this->auth)
 			->set('oauth_client', $this->oauth_client)
-			->set('di_container', $this->di_container);
+			->set('di_container', $this->di_container)
+			->set('filters', $this->_filters)
+			->set('values', $this->_values)
+			->set('params', $this->_params);
 
 		$this->response->body($this->view);
 	}
