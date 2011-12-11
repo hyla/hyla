@@ -17,4 +17,10 @@ class Controller_API_Projects extends Abstract_Controller_Hyla_API {
 		$project->values($values, array('name', 'slug', 'description'));
 		$project->update();
 	}
+	public function action_delete_project()
+	{
+		$project = $this->di_container->get('couch_model.project')
+			->find($this->request->param('id'))
+			->delete();
+	}
 }
