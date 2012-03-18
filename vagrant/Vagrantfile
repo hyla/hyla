@@ -2,8 +2,8 @@ Vagrant::Config.run do |config|
   config.vm.box = "dev-vm-2.0"
   config.vm.box_url = "http://zeelot.s3.amazonaws.com/dev-vm-2.0-base.box"
 
-  config.vm.forward_port("couchdb", 5984, 5984)
-  config.vm.forward_port("http", 80, 8080)
+  config.vm.forward_port(5984, 5984)
+  config.vm.forward_port(80, 8080)
   config.vm.share_folder("hyla", "/var/www/hyla", "../", :owner => "vagrant")
 
   config.vm.provision :chef_solo do |chef|
