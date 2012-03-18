@@ -25,8 +25,7 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_Bas
 	/**
 	 * @var array Map of HTTP methods -> actions
 	 */
-	protected $_action_map = array
-	(
+	protected $_action_map = array(
 		Http_Request::POST   => 'post',   // Typically Create..
 		Http_Request::GET    => 'get',
 		Http_Request::PUT    => 'put',    // Typically Update..
@@ -36,8 +35,7 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_Bas
 	/**
 	 * @var array List of HTTP methods which support body content
 	 */
-	protected $_methods_with_body_content = array
-	(
+	protected $_methods_with_body_content = array(
 		Http_Request::POST,
 		Http_Request::PUT,
 	);
@@ -45,9 +43,20 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_Bas
 	/**
 	 * @var array List of HTTP methods which may be cached
 	 */
-	protected $_cacheable_methods = array
-	(
+	protected $_cacheable_methods = array(
 		Http_Request::GET,
+	);
+
+	/**
+	 * @var array Map of json errors to their string values
+	 */
+	protected $_json_error_map = array(
+		JSON_ERROR_NONE           => 'No error has occurred',
+		JSON_ERROR_DEPTH          => 'The maximum stack depth has been exceeded',
+		JSON_ERROR_STATE_MISMATCH => 'Invalid or malformed JSON',
+		JSON_ERROR_CTRL_CHAR      => 'Control character error, possibly incorrectly encoded',
+		JSON_ERROR_SYNTAX         => 'Syntax error',
+		JSON_ERROR_UTF8           => 'Malformed UTF-8 characters, possibly incorrectly encoded',
 	);
 
 	public function before()
@@ -86,29 +95,18 @@ abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_Bas
 		}
 	}
 
-	/**
-	 * @todo Support more than just JSON
-	 */
 	protected function _parse_request_body()
 	{
 		if ($this->request->body() == '')
 			return;
 
-		try
-		{
-			$this->_request_payload = json_decode($this->request->body(), TRUE);
+		$this->_request_payload = json_decode($this->request->body(), TRUE);
 
-			if ( ! is_array($this->_request_payload) AND ! is_object($this->_request_payload))
-				throw new Http_Exception_400('Invalid json supplied. \':json\'', array(
-					':json' => $this->request->body(),
-				));
-		}
-		catch (Exception $e)
-		{
-			throw new Http_Exception_400('Invalid json supplied. \':json\'', array(
-				':json' => $this->request->body(),
+		if ( ! is_array($this->_request_payload) AND ! is_object($this->_request_payload))
+			throw new Http_Exception_400('Invalid json supplied ":error". \':json\'', array(
+				':error' => Arr::get($this->_json_error_map, json_last_error()),
+				':json'  => $this->request->body(),
 			));
-		}
 	}
 
 	protected function _prepare_response()
