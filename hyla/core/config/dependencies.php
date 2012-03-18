@@ -8,30 +8,20 @@ return array(
 			'shared'      => TRUE,
 		),
 	),
-	'couchdb' => array(
-		'_settings' => array(
-			'class'     => 'Sag',
-			'arguments' => array('@couchdb.host@', '@couchdb.port@'),
-		),
-	),
-	'couch_model' => array(
-		'_settings' => array(
-			'class'       => 'Couch_Model',
-			'constructor' => 'factory',
-		),
+	'model' => array(
 		'user' => array(
 			'_settings' => array(
-				'arguments' => array('user', '%couchdb%'),
+				'class' => 'Model_User',
 			),
 		),
 		'project' => array(
 			'_settings' => array(
-				'arguments' => array('project', '%couchdb%'),
+				'class' => 'Model_Project',
 			),
 		),
 		'ticket' => array(
 			'_settings' => array(
-				'arguments' => array('ticket', '%couchdb%'),
+				'class' => 'Model_Ticket',
 			),
 		),
 	),
