@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_OAuth2 {
+abstract class Abstract_Controller_Hyla_API extends Abstract_Controller_Hyla_Base {
 
 	/**
 	 * @var Object Request Payload
