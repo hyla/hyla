@@ -126,15 +126,12 @@ unset($config);
  */
 Kohana::modules(Kohana::$config->load('modules')->as_array());
 
-// Include Sag for working with CouchDB
-require Kohana::find_file('vendor/sag/src', 'Sag');
-
 // Attach the CouchDB config reader
 $config = Kohana::$config->load('couchdb');
 if (count($config->as_array()))
 {
-	$sag = new Sag($config->host, $config->port);
-	$sag->setDatabase($config->db);
-	Kohana::$config->attach(new Config_CouchDB_Writer($sag));
+	//$sag = new Sag($config->host, $config->port);
+	//$sag->setDatabase($config->db);
+	//Kohana::$config->attach(new Config_CouchDB_Writer($sag));
 }
 unset($config, $sag);
