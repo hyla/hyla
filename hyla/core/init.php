@@ -14,6 +14,13 @@ Route::set('hyla/home', '')
 		'action'     => 'home',
 	));
 
+Route::set('hyla/apitests', 'api-tests(/<action>)')
+	->defaults(array(
+		'directory'  => 'page',
+		'controller' => 'apitests',
+		'action'     => 'list',
+	));
+
 Route::set('hyla/log_in', 'log_in/<action>', array('action' => 'github|hyla'))
 	->defaults(array(
 		'directory'  => 'page',
