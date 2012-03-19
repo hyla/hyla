@@ -55,12 +55,6 @@ Route::set('hyla/single-project', 'projects/<slug>/<action>')
 		'controller' => 'projects',
 	));
 
-Route::set('hyla/oauth-endpoints', 'oauth2/endpoints/<action>')
-	->defaults(array(
-		'directory'  => 'page/oauth2',
-		'controller' => 'endpoints',
-	));
-
 Route::set('hyla/api', 'api')
 	->callback('API_Router::prefix_request_method')
 	->defaults(array(
