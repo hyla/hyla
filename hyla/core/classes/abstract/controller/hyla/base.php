@@ -49,18 +49,8 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->dispatcher = Event_Dispatcher::factory()
 			->load_subscribers();
 
-		$this->couchdb = $this->di_container->get('couchdb');
-
 		// Try to log the user in
-		$this->auth = $this->di_container->get('couch_model.user')
-			->find(Cookie::get('auth'));
-
-		// Create a consumer
-		$this->oauth_client = ($this->auth->loaded())
-			// Use auth_code
-			? OAuth2_Consumer::factory('hyla-auth', $this->auth->get('_id'))
-			// Use client_credentials
-			: OAuth2_Consumer::factory('hyla-web');
+		$this->auth = $this->di_container->get('model.user');
 
 		// Default filters/values/params
 		$this->_filters = $this->request->query();
@@ -89,9 +79,7 @@ abstract class Abstract_Controller_Hyla_Base extends Controller {
 		$this->view
 			->set('request', $this->request)
 			->set('dispatcher', $this->dispatcher)
-			->set('couchdb', $this->couchdb)
 			->set('auth', $this->auth)
-			->set('oauth_client', $this->oauth_client)
 			->set('di_container', $this->di_container)
 			->set('filters', $this->_filters)
 			->set('values', $this->_values)
